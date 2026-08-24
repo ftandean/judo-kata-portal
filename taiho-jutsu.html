@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>警察逮捕術形 — Keisatsu Taiho-jutsu Kata e-Learning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;600;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #9b2c2c;
+      --primary-dark: #742a2a;
+      --primary-light: #fff5f5;
+      --accent: #d97706;
+      --accent-light: #fef3c7;
+      --ink: #1e293b;
+      --text: #334155;
+      --text-muted: #64748b;
+      --bg: #ffffff;
+      --bg-alt: #f8fafc;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.03);
+      --font-display: 'Cinzel', serif;
+      --font-jp: 'Noto Serif JP', serif;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Strip / Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--ink);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+
+    .nav-brand .kanji {
+      font-family: var(--font-jp);
+      color: var(--primary);
+      font-size: 1.25rem;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: color 0.2s ease;
+    }
+
+    .nav-menu a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: radial-gradient(circle at 80% 20%, rgba(155, 44, 44, 0.04) 0%, transparent 50%),
+                  radial-gradient(circle at 20% 80%, rgba(217, 119, 6, 0.04) 0%, transparent 50%),
+                  #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: 5.5rem 2rem 4.5rem;
+    }
+
+    .hero-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero h1 span.jp {
+      display: inline-block;
+      font-family: var(--font-jp);
+      font-size: 0.8em;
+      color: var(--primary);
+      margin-left: 0.6rem;
+      font-weight: 900;
+    }
+
+    .hero-lead {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin: 1.25rem 0 2rem;
+      font-weight: 400;
+      max-width: 600px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.6rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      border: 1px solid var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      border-color: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: var(--bg-alt);
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.75rem;
+    }
+
+    .stat-item .num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .stat-item .lbl {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+    }
+
+    /* Hero Emblem Badge */
+    .hero-emblem {
+      background: linear-gradient(135deg, var(--primary-light), #fff);
+      border: 1px solid #fed7d7;
+      border-radius: 8px;
+      padding: 3rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .hero-emblem::before {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 1px dashed rgba(155, 44, 44, 0.2);
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    .hero-emblem .big-kanji {
+      font-family: var(--font-jp);
+      font-size: 4.8rem;
+      font-weight: 900;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .hero-emblem .emblem-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-top: 1rem;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-emblem .emblem-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    /* Section Global Styles */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .section-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .sec-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .sec-heading {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+
+    .sec-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      max-width: 750px;
+    }
+
+    /* About Section */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      margin-bottom: 1.25rem;
+      color: #475569;
+    }
+
+    .about-sidebar {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sidebar-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+
+    .meta-row span:first-child {
+      color: var(--text-muted);
+    }
+
+    .meta-row span:last-child {
+      font-weight: 600;
+      color: var(--ink);
+      text-align: right;
+    }
+
+    /* Three Sets Overview */
+    .sets-bg {
+      background-color: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sets-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .set-panel {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .set-tag {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: var(--primary);
+      margin-bottom: 0.35rem;
+    }
+
+    .set-panel h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .set-panel .kanji-sub {
+      font-family: var(--font-jp);
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .set-panel p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .set-tech-list {
+      list-style: none;
+      margin-top: auto;
+      border-top: 1px solid var(--border);
+      padding-top: 0.75rem;
+    }
+
+    .set-tech-list li {
+      padding: 0.45rem 0;
+      font-size: 0.88rem;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed var(--border-light);
+    }
+
+    .set-tech-list li span.trans {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    /* Technique Breakdown Section */
+    .filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: none;
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      color: var(--ink);
+      background: var(--bg-alt);
+    }
+
+    .filter-btn.active {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .technique-item {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 1.75rem;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tech-idx {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #cbd5e1;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .tech-header-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .tech-name-jp {
+      font-family: var(--font-jp);
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--ink);
+    }
+
+    .tech-name-romaji {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .tech-name-trans {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .tech-overview-p {
+      color: var(--text);
+      font-size: 0.98rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .step-list {
+      background: var(--bg-alt);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .step-row {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 0.75rem;
+      font-size: 0.92rem;
+      color: #334155;
+    }
+
+    .step-num {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .principle-box {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      padding: 0.85rem 1.2rem;
+      border-radius: 0 4px 4px 0;
+      font-size: 0.88rem;
+      color: #92400e;
+      margin-bottom: 1.25rem;
+    }
+
+    .principle-box strong {
+      color: #78350f;
+    }
+
+    .tags-container {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .pill-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 50px;
+      background: #f1f5f9;
+      color: var(--text-muted);
+    }
+
+    /* Principles & Reihō Section */
+    .reiho-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .reiho-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+    }
+
+    .reiho-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .reiho-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    /* Quiz Section */
+    .quiz-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .question-block {
+      margin-bottom: 2rem;
+    }
+
+    .question-title {
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 1.05rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .option-item {
+      display: block;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      padding: 0.85rem 1.2rem;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      font-size: 0.92rem;
+      transition: all 0.2s ease;
+    }
+
+    .option-item:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .option-item input {
+      margin-right: 0.75rem;
+      accent-color: var(--primary);
+    }
+
+    #quiz-feedback {
+      display: none;
+      padding: 1.25rem;
+      border-radius: 4px;
+      margin-top: 1.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 3rem 2rem;
+      background: var(--bg-alt);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-container, .about-layout, .sets-grid-3, .reiho-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-menu { display: none; }
+      .technique-item { grid-template-columns: 1fr; }
+      .tech-idx { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav>
+    <a href="#" class="nav-brand">
+      <span class="kanji">逮捕術形</span>
+      <span>Taiho-jutsu Kata</span>
+    </a>
+    <ul class="nav-menu">
+      <li><a href="#about">About</a></li>
+      <li><a href="#sets">Three Sets</a></li>
+      <li><a href="#techniques">Techniques</a></li>
+      <li><a href="#principles">Principles & Doctrine</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container">
+      <div>
+        <p class="hero-kicker">Japanese National Police Agency — Defensive Tactics & Arrest Kata</p>
+        <h1>Taiho-jutsu Kata <span class="jp">逮捕術形</span></h1>
+        <p class="hero-lead">The Formal Arrest and Restraint Forms of the Japanese Police. A specialized synthesis of Judo, Aikido, Jujutsu, and Kendo designed to disarm, subdue, and cuff suspects safely while strictly minimizing unnecessary injury.</p>
+        
+        <div class="hero-cta-group">
+          <a href="#techniques" class="btn btn-primary">Start Learning</a>
+          <a href="#sets" class="btn btn-secondary">Overview</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="num">15</div>
+            <div class="lbl">Arrest Techniques</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">3</div>
+            <div class="lbl">Core Modules</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">1947</div>
+            <div class="lbl">System Established</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-emblem">
+        <div class="big-kanji">逮捕</div>
+        <div class="emblem-title">TAIHO</div>
+        <div class="emblem-sub">Arrest · Restraint Control</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="section-wrap">
+      <div class="about-layout">
+        <div class="about-text">
+          <p class="sec-kicker">Introduction</p>
+          <h2 class="sec-heading">What is Keisatsu Taiho-jutsu?</h2>
+          <p><strong>Keisatsu Taiho-jutsu (警察逮捕術)</strong>, meaning "Police Arresting Art," is the standardized defensive tactics and subject-control martial art developed for law enforcement officers in Japan following World War II.</p>
+          <p>Formulated by a joint council of masters from <strong>Kodokan Judo</strong>, <strong>Kendo</strong>, <strong>Aikido</strong>, <strong>Nihon Jujutsu</strong>, and <strong>Karate-do</strong>, the system replaced feudal-era apprehension methods with an evidence-based, legally proportionate doctrine.</p>
+          <p>Unlike sport martial arts where maximum impact or scoring an Ippon is the objective, the guiding philosophy of Taiho-jutsu is <strong>Safety, Restraint, and Proportionality</strong>. Officers are trained to neutralize aggression with minimal injury, safely disarm weapons, and transition smoothly into prone pinning and handcuffing (<em>Tejō-kake</em>).</p>
+          <p>The kata incorporates empty-hand self-defense (<em>Toshu-waza</em>), edged weapon disarming (<em>Tanto-waza</em>), and telescopic baton control (<em>Keibo-waza</em>), serving as the technical core of police academy defensive training across Japan.</p>
+        </div>
+
+        <div class="about-sidebar">
+          <div class="sidebar-title">At a Glance</div>
+          <div class="meta-row"><span>Full Name</span><span>Keisatsu Taiho-jutsu 警察逮捕術</span></div>
+          <div class="meta-row"><span>Translation</span><span>Police Arresting Technique Forms</span></div>
+          <div class="meta-row"><span>Governance</span><span>National Police Agency (NPA)</span></div>
+          <div class="meta-row"><span>Established</span><span>c. 1947 (Post-War Revision)</span></div>
+          <div class="meta-row"><span>Roles</span><span>Officer (Tori) & Subject (Uke)</span></div>
+          <div class="meta-row"><span>Structure</span><span>3 sets × 5 techniques</span></div>
+          <div class="meta-row"><span>Core Tools</span><span>Keibo (Baton), Tanto, Handcuffs</span></div>
+          <div class="meta-row"><span>Core Ethos</span><span>Proportionality & Safe Restraint</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Structure / Three Sets -->
+  <section id="sets" class="sets-bg">
+    <div class="section-wrap">
+      <p class="sec-kicker">Structure</p>
+      <h2 class="sec-heading">The Three Sets</h2>
+      <p class="sec-sub">Taiho-jutsu Kata is structured into three distinct domains of tactical engagement, progressing from empty-hand restraint to armed disarms and baton leverage.</p>
+
+      <div class="sets-grid-3">
+        <!-- Set 1 -->
+        <div class="set-panel">
+          <div class="set-tag">SET 01</div>
+          <h3>Toshu Taiho-waza</h3>
+          <div class="kanji-sub">徒手逮捕技 — Empty-Hand Restraint</div>
+          <p>Neutralizing unarmed grabs, punches, and rear bear-hugs using balance breaks, joint locks, takedowns, and immediate prone pinning.</p>
+          <ul class="set-tech-list">
+            <li>1. Katate-dori Kote-gaeshi <span class="trans">Wrist Twist</span></li>
+            <li>2. Ryōte-dori Ude-gatame <span class="trans">Straight Arm Lock</span></li>
+            <li>3. Mune-dori Hiki-taoshi <span class="trans">Lapel Pull-Down</span></li>
+            <li>4. Tsuki-komi Waki-gatame <span class="trans">Armpit Entanglement</span></li>
+            <li>5. Ushiro-dori Osae <span class="trans">Rear Hug Escape</span></li>
+          </ul>
+        </div>
+
+        <!-- Set 2 -->
+        <div class="set-panel">
+          <div class="set-tag">SET 02</div>
+          <h3>Tanto Taiho-waza</h3>
+          <div class="kanji-sub">短刀逮捕技 — Knife Disarming Forms</div>
+          <p>Defensive body shifting (Tai-sabaki), blade redirection, joint lock disarms, and ground control against straight, diagonal, and overhead knife attacks.</p>
+          <ul class="set-tech-list">
+            <li>6. Choku-tsuki Kote-osae <span class="trans">Thrust Arm Lock</span></li>
+            <li>7. Naname-tsuki Shihō-nage <span class="trans">Diagonal Throw</span></li>
+            <li>8. Kiri-oroshi Kote-gaeshi <span class="trans">Downward Cut Reversal</span></li>
+            <li>9. Hiki-bari Ude-garami <span class="trans">Slash Entanglement</span></li>
+            <li>10. Tsuki-age Soto-waki-gatame <span class="trans">Rising Thrust Lock</span></li>
+          </ul>
+        </div>
+
+        <!-- Set 3 -->
+        <div class="set-panel">
+          <div class="set-tag">SET 03</div>
+          <h3>Keibō Taiho-waza</h3>
+          <div class="kanji-sub">警棒逮捕技 — Police Baton Tactics</div>
+          <p>Deploying the telescopic baton for reinforced blocks, controlled strikes to motor points, mechanical lever locks, and final handcuffing integration.</p>
+          <ul class="set-tech-list">
+            <li>11. Men-uchi Uke-dome <span class="trans">High Baton Block</span></li>
+            <li>12. Dō-uchi Tsuki-kaeshi <span class="trans">Flank Thrust Counter</span></li>
+            <li>13. Keibō Kansetsu-osae <span class="trans">Baton Lever Lock</span></li>
+            <li>14. Keibō Kubi-garami <span class="trans">Shoulder/Neck Frame</span></li>
+            <li>15. Sōgō Osaekomi-Tejō <span class="trans">Pin & Handcuff</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step-by-Step Technical Breakdown -->
+  <section id="techniques">
+    <div class="section-wrap">
+      <p class="sec-kicker">Step-by-Step</p>
+      <h2 class="sec-heading">Technique Breakdown</h2>
+      <p class="sec-sub">Detailed breakdown of subject attack momentum, officer evasion/interception, joint control mechanics, and transition into custody.</p>
+
+      <!-- Filter Controls -->
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterCategory('all')">All (15)</button>
+        <button class="filter-btn" onclick="filterCategory('toshu')">1. Toshu (Empty-Hand)</button>
+        <button class="filter-btn" onclick="filterCategory('tanto')">2. Tanto (Knife Defense)</button>
+        <button class="filter-btn" onclick="filterCategory('keibo')">3. Keibō (Baton Tactics)</button>
+      </div>
+
+      <!-- Techniques Container -->
+      <div id="tech-container">
+
+        <!-- 1 -->
+        <div class="technique-item" data-category="toshu">
+          <div class="tech-idx">01</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">片手取小手返</span>
+              <span class="tech-name-romaji">Katate-dori Kote-gaeshi</span>
+              <span class="tech-name-trans">"Single Wrist Seize countered by Wrist Outward Twist"</span>
+            </div>
+            <p class="tech-overview-p">The subject aggressively grabs the officer's right wrist. The officer applies circular Tai-sabaki, clamps the subject's seizing hand, twists the wrist outwardly, and drives the subject prone for control.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Subject advances and firmly grasps Officer's right wrist with their left hand.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Officer steps diagonally back-right, rotating the captured arm upward in a circular release arc.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Officer covers the back of Subject's grasping hand with the left palm, thumb applying pressure between the 4th and 5th metacarpals.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Officer torques the wrist in an outward spiral (Kote-gaeshi), bringing Subject face-down into a prone immobilization.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Tactical Key Point:</strong> Continuous wrist hyperflexion — Officer maintains downward pressure on the joint after the takedown to prevent rolling while issuing clear verbal commands.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Toshu-waza</span><span class="pill-tag">Wrist Release</span><span class="pill-tag">Kote-gaeshi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="technique-item" data-category="toshu">
+          <div class="tech-idx">02</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">両手取腕固</span>
+              <span class="tech-name-romaji">Ryōte-dori Ude-gatame</span>
+              <span class="tech-name-trans">"Both Wrists Seized countered by Straight Arm Lock"</span>
+            </div>
+            <p class="tech-overview-p">The subject grips both of the officer's wrists to impede movement. The officer spirals one arm free, steps inside, applies straight arm pressure across the subject's extended elbow, and secures a takedown.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Subject steps in aggressively, clutching both of Officer's wrists.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Officer rotates the right forearm inward in an outward spiral, peeling Subject's left thumb grip.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Officer clamps Subject's right wrist with the left hand and places both hands across the hyperextended elbow joint.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Officer drops the center of mass, directing downward force through the elbow axis (Ude-gatame) to force Subject prone.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Tactical Key Point:</strong> Hip-sinking leverage — the lock is executed by lowering the center of gravity rather than relying on shoulder muscular force.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Toshu-waza</span><span class="pill-tag">Joint Restraint</span><span class="pill-tag">Ude-gatame</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="technique-item" data-category="toshu">
+          <div class="tech-idx">03</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">胸取引倒</span>
+              <span class="tech-name-romaji">Mune-dori Hiki-taoshi</span>
+              <span class="tech-name-trans">"Lapel Grab countered by Pull-Down Control"</span>
+            </div>
+            <p class="tech-overview-p">The subject clenches the officer's uniform lapel or chest aggressively. The officer traps the grabbing hand, executes an off-balancing rear pivot, peels the wrist, and forces a chest-down grounding.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Subject advances and grabs Officer's uniform chest/lapel with the right hand to shove or pull.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Officer clamps Subject's grabbing hand firmly against the chest with the left hand to deny release.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Officer takes a deep rearward sliding step (Tai-sabaki) while applying downward rotational torque on the wrist.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Subject's posture breaks forward-diagonal, driving them directly into a controlled prone landing.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Tactical Key Point:</strong> Pinning before pivoting — firmly trapping the hand against the torso turns the officer's body rotation into an unescapable wrist lock.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Toshu-waza</span><span class="pill-tag">Lapel Defense</span><span class="pill-tag">Hiki-taoshi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="technique-item" data-category="toshu">
+          <div class="tech-idx">04</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">突込脇固</span>
+              <span class="tech-name-romaji">Tsuki-komi Waki-gatame</span>
+              <span class="tech-name-trans">"Straight Punch countered by Armpit Entanglement"</span>
+            </div>
+            <p class="tech-overview-p">The subject throws a straight punch to the officer's face. The officer slips outside the strike, entraps the extended arm beneath the armpit (Waki-gatame), and forces a rapid prone submission.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Subject lunges forward with a committed right straight punch aimed at Officer's head.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Officer executes a rapid lateral step off the centerline, guiding Subject's punching wrist with the left hand.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Officer traps Subject's outstretched arm under the right armpit, locking the elbow joint facing upward.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Officer rotates downward, driving Subject flat to the mat with immediate escort lock control.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Tactical Key Point:</strong> Controlled pressure — Waki-gatame must be applied smoothly to induce rapid submission without causing accidental compound joint rupture.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Toshu-waza</span><span class="pill-tag">Strike Interception</span><span class="pill-tag">Waki-gatame</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="technique-item" data-category="toshu">
+          <div class="tech-idx">05</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">後取抑</span>
+              <span class="tech-name-romaji">Ushiro-dori Osae</span>
+              <span class="tech-name-trans">"Rear Bear-Hug countered by Stance Drop and Pin"</span>
+            </div>
+            <p class="tech-overview-p">The subject ambushes the officer from behind with a bear-hug around the arms. The officer drops into a low base (Jigotai), breaks the grip, turns inside the hold, and grounds the subject into a shoulder pin.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Subject locks both arms tightly around Officer's torso and arms from behind.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Officer immediately sinks the hips in Jigotai and raises both elbows outward to loosen the clasp.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Officer stomps the instep, pivots 180 degrees inside the grip, and traps Subject's right wrist.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Officer guides Subject forward-downward into a definitive ground shoulder lock.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Tactical Key Point:</strong> Instant pelvic drop — lowering the center of mass prevents the subject from lifting or slamming the officer backward.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Toshu-waza</span><span class="pill-tag">Rear Ambush</span><span class="pill-tag">Grip Break</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="technique-item" data-category="tanto">
+          <div class="tech-idx">06</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">直突小手押</span>
+              <span class="tech-name-romaji">Choku-tsuki Kote-osae</span>
+              <span class="tech-name-trans">"Straight Knife Thrust countered by Forearm Press Lock"</span>
+            </div>
+            <p class="tech-overview-p">The subject lunges forward with a straight knife thrust to the midsection. The officer parries to the outside flank, establishes two-on-one wrist control, forces an elbow lock (Kote-osae / Ikkyo), and strips the weapon.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Subject drives a direct underhand knife thrust (Choku-tsuki) toward Officer's abdomen.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Officer steps diagonally forward-left (Tai-sabaki), clearing the blade path while checking Subject's wrist.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Officer secures Subject's armed wrist with both hands, driving downward leverage across the forearm and shoulder.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Subject is grounded prone; Officer places a knee pin on the tricep and peels the knife away cleanly.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Tactical Key Point:</strong> Weapon isolation — never attempt to strip the knife until Subject's shoulder and elbow joints are completely stabilized against the mat.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Tanto-waza</span><span class="pill-tag">Blade Defense</span><span class="pill-tag">Kote-osae</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="technique-item" data-category="tanto">
+          <div class="tech-idx">07</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">斜突四方投</span>
+              <span class="tech-name-romaji">Naname-tsuki Shihō-nage</span>
+              <span class="tech-name-trans">"Diagonal Knife Thrust countered by Four-Direction Throw"</span>
+            </div>
+            <p class="tech-overview-p">The subject lunges with a diagonal overhand knife stab. The officer steps under the attack vector, captures the knife wrist, rotates 180 degrees beneath the arm, and casts the subject down with Shihō-nage.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Subject attacks with an overhand diagonal stab (Naname-tsuki) aimed at Officer's neck/collarbone.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Officer enters under the weapon arm, intercepting the armed wrist with both hands.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Officer executes a 180-degree pivot (Tenkan) under Subject's arm, bending Subject's wrist back toward their own shoulder.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Officer cuts downward, casting Subject backwards flat onto the mat and peeling the weapon on impact.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Tactical Key Point:</strong> Clearing the blade radius — the body turn must position Officer completely outside the blade's sweep before beginning the downward cut.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Tanto-waza</span><span class="pill-tag">Diagonal Stab</span><span class="pill-tag">Shihō-nage</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="technique-item" data-category="tanto">
+          <div class="tech-idx">08</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">切下小手返</span>
+              <span class="tech-name-romaji">Kiri-oroshi Kote-gaeshi</span>
+              <span class="tech-name-trans">"Downward Knife Slash countered by Outward Wrist Reversal"</span>
+            </div>
+            <p class="tech-overview-p">The subject brings the knife straight down overhead in a violent slashing motion. The officer parries the wrist early, steps to the flank, torques the wrist in Kote-gaeshi, and disarms on the ground.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Subject raises the knife overhead and strikes downward toward Officer's head.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Officer steps off-line to the flank and parries the descending wrist before maximum velocity is reached.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Officer clamps both hands on Subject's right hand, applying an outward circular twist to the wrist.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Subject is flipped down; Officer immediately rolls them prone, secures the wrist, and recovers the weapon.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Tactical Key Point:</strong> Early wrist interception — checking high on the descending arm prevents the blade from reaching dangerous momentum at chest level.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Tanto-waza</span><span class="pill-tag">Overhead Slash</span><span class="pill-tag">Kote-gaeshi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="technique-item" data-category="tanto">
+          <div class="tech-idx">09</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">引払腕絡</span>
+              <span class="tech-name-romaji">Hiki-bari Ude-garami</span>
+              <span class="tech-name-trans">"Horizontal Knife Slash countered by Entangled Arm Lock"</span>
+            </div>
+            <p class="tech-overview-p">The subject swings a wide horizontal backhand knife slash. The officer ducks beneath the blade arc, weaves the weapon arm into a figure-four lock (Ude-garami), and forces a rapid submission.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Subject swings a wide horizontal backhand slash aimed at Officer's torso/throat.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Officer steps inside the sweep with a lowered center of mass, ducking beneath the cutting radius.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Officer threads the right arm over Subject's elbow and clasps the left wrist in a figure-four (Ude-garami).</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Officer applies rotational pressure to the shoulder, compelling Subject to drop the blade and submit flat on the mat.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Tactical Key Point:</strong> Inside entry timing — moving inside the arc deprives the knife of lever power and immediately isolates the arm.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Tanto-waza</span><span class="pill-tag">Horizontal Slash</span><span class="pill-tag">Ude-garami</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="technique-item" data-category="tanto">
+          <div class="tech-idx">10</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">突上外脇固</span>
+              <span class="tech-name-romaji">Tsuki-age Soto-waki-gatame</span>
+              <span class="tech-name-trans">"Rising Uppercut Thrust countered by Outer Armpit Lock"</span>
+            </div>
+            <p class="tech-overview-p">The subject lunges upward with a concealed uppercut knife thrust. The officer sweeps the blade across the centerline, traps the elbow against the ribs, and drives the subject prone with Soto-waki-gatame.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Subject drives a concealed upward stab (Tsuki-age) aimed at Officer's midsection.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Officer shifts the hips back, using a sweeping downward palm parry to redirect the thrust across the body.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Officer locks Subject's extended right wrist with both hands, clamping Subject's elbow against Officer's torso.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Officer applies downward rotational leverage, breaking Subject's base and pinning them prone for weapon recovery.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Tactical Key Point:</strong> Centerline deflection — guiding the thrust across the torso ensures that even under maximum pressure, the blade points away from vital organs.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Tanto-waza</span><span class="pill-tag">Uppercut Thrust</span><span class="pill-tag">Outer Arm Lock</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11 -->
+        <div class="technique-item" data-category="keibo">
+          <div class="tech-idx">11</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">面打受止</span>
+              <span class="tech-name-romaji">Men-uchi Uke-dome</span>
+              <span class="tech-name-trans">"Overhead Club Strike countered by Two-Hand Baton High Block"</span>
+            </div>
+            <p class="tech-overview-p">An armed subject swings a club overhead. The officer extends the Keibō in a reinforced two-handed high block, deflects the strike at a 45-degree angle, steps in, and executes a controlled takedown.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Subject raises a blunt weapon (pipe/club) and executes an overhead strike toward Officer's head.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Officer holds the Keibō horizontally with both hands (Jōdan Uke) and intercepts the blow at a 45-degree deflection angle.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Officer drives forward inside Subject's reach, checking Subject's striking arm.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Officer uses the baton tip as a frame against Subject's clavicle/shoulder, forcing a backward takedown.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Tactical Key Point:</strong> Angled deflection — holding the baton at a 45-degree angle prevents impact shock transfer to the wrists and redirects the weapon cleanly.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Keibō-waza</span><span class="pill-tag">Baton Block</span><span class="pill-tag">Blunt Weapon Defense</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12 -->
+        <div class="technique-item" data-category="keibo">
+          <div class="tech-idx">12</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">胴打突返</span>
+              <span class="tech-name-romaji">Dō-uchi Tsuki-kaeshi</span>
+              <span class="tech-name-trans">"Midsection Strike countered by Baton Thrust Counter"</span>
+            </div>
+            <p class="tech-overview-p">The subject swings a lateral strike at the officer's ribs. The officer retreats slightly, blocks downward with the baton shaft, and executes a sharp stop-thrust into the subject's torso to halt aggression.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Subject swings a wide horizontal blow aimed at Officer's midsection/ribs.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Officer slides the lead leg back in Tsugi-ashi, using the vertical Keibō shaft to absorb the impact.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Officer fires an immediate linear stop-thrust (Tsuki) with the baton tip into Subject's abdominal wall.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Subject stumbles back off-balance, breaking attack momentum and enabling officer containment.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Tactical Key Point:</strong> Target regulation — strikes are strictly restricted to large muscle groups (abdomen, thighs, arms), avoiding the head, neck, and spine.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Keibō-waza</span><span class="pill-tag">Lateral Block</span><span class="pill-tag">Stop Thrust</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 13 -->
+        <div class="technique-item" data-category="keibo">
+          <div class="tech-idx">13</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">警棒関節抑</span>
+              <span class="tech-name-romaji">Keibō Kansetsu-osae</span>
+              <span class="tech-name-trans">"Baton-Assisted Joint Lever Pin"</span>
+            </div>
+            <p class="tech-overview-p">The subject stiffens their arms and resists standing escort. The officer threads the baton behind the subject's elbow crook, creates a mechanical lever, and forces the subject prone without injury.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Subject locks their arms and violently resists standard empty-hand escort control.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Officer inserts the extended Keibō shaft behind Subject's elbow crook and over the forearm.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Officer levers the baton shaft downward while lifting Subject's wrist, applying a smooth fulcrum lock.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Subject is guided smoothly to the mat into a locked, non-injurious prone pinning position.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Tactical Key Point:</strong> Mechanical advantage — using the baton as a class-two lever enables smaller officers to control larger resisting subjects safely.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Keibō-waza</span><span class="pill-tag">Lever Lock</span><span class="pill-tag">Escort Control</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 14 -->
+        <div class="technique-item" data-category="keibo">
+          <div class="tech-idx">14</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">警棒首絡</span>
+              <span class="tech-name-romaji">Keibō Kubi-garami</span>
+              <span class="tech-name-trans">"Baton Shoulder/Neck Guiding Control"</span>
+            </div>
+            <p class="tech-overview-p">A charging subject attempts a tackle. The officer pivots off the assault line, places the padded baton shaft across the subject's shoulder girdle, and redirects momentum downward onto the mat.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Subject charges forward attempting to tackle or wrap Officer around the waist.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Officer executes a sharp evasive pivot (Tai-sabaki), allowing Subject's charge to overshoot.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Officer places the central section of the Keibō across Subject's shoulder and upper chest girdle.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Officer guides Subject in a downward circular arc directly onto the floor.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Tactical Key Point:</strong> No airway restriction — the baton acts as a structural frame against the shoulder and upper chest, strictly avoiding trachea compression.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Keibō-waza</span><span class="pill-tag">Tackle Defense</span><span class="pill-tag">Momentum Redirection</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 15 -->
+        <div class="technique-item" data-category="keibo">
+          <div class="tech-idx">15</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">総合抑込手錠</span>
+              <span class="tech-name-romaji">Sōgō Osaekomi-Tejō</span>
+              <span class="tech-name-trans">"Comprehensive Prone Pin and Handcuff Application"</span>
+            </div>
+            <p class="tech-overview-p">The culminating arrest sequence. Grounding the subject, securing a three-point knee pin across the shoulder and hip, drawing the handcuffs (Tejō), and applying double-locked cuffs safely.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Officer brings Subject fully prone (face-down) with one arm secured behind the back in an arrest lock.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Officer places the right knee lightly behind Subject's shoulder blade and the left knee stabilizing the hip base.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Officer maintains verbal commands, draws standard police handcuffs (Tejō) with the free hand.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Officer applies the cuffs bottom-up on both wrists, verifies double-lock engagement, and conducts a safety search.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Tactical Key Point:</strong> Positional safety — once handcuffed, the subject is immediately rolled into a recovery position or seated upright to ensure unrestricted breathing.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Keibō-waza</span><span class="pill-tag">Handcuffing</span><span class="pill-tag">Final Technique</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Principles & Legal Doctrine Section -->
+  <section id="principles" class="sets-bg">
+    <div class="section-wrap">
+      <p class="sec-kicker">Principles & Legal Doctrine</p>
+      <h2 class="sec-heading">Core Pillars of Police Taiho-jutsu</h2>
+      <p class="sec-sub">Japanese Police defensive tactics operate strictly within national legal standards governing proportional use of force.</p>
+
+      <div class="reiho-grid">
+        <div class="reiho-card">
+          <h4>Proportionality (適合性)</h4>
+          <p>Force must directly correspond to the threat level presented by the suspect. Officers transition dynamically between verbal commands, empty-hand control, baton leverage, and firearm readiness as situations evolve.</p>
+        </div>
+        <div class="reiho-card">
+          <h4>Minimum Harm (最小限の危害)</h4>
+          <p>Techniques are chosen to subdue and disarm without causing permanent orthopedic or neurological injury. Joint locks emphasize compliance pain and balance breaks rather than joint destruction.</p>
+        </div>
+        <div class="reiho-card">
+          <h4>Tejō-kake & Restraint (手錠施錠)</h4>
+          <p>Every defensive sequence culminates in safe, procedural handcuffing. Officers are trained to continuously monitor suspect consciousness, breathing, and circulation immediately following prone restraint.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz Section -->
+  <section id="quiz">
+    <div class="section-wrap">
+      <div style="text-align: center; margin-bottom: 2.5rem;">
+        <p class="sec-kicker">Self-Assessment</p>
+        <h2 class="sec-heading">Taiho-jutsu Knowledge Check</h2>
+        <p class="sec-sub" style="margin: 0 auto;">Evaluate your comprehension of the techniques, history, and tactical principles of Japanese Police Taiho-jutsu.</p>
+      </div>
+
+      <div class="quiz-card">
+        <form id="quiz-form">
+          <div class="question-block">
+            <div class="question-title">1. What is the primary operational objective of Japanese Police Taiho-jutsu?</div>
+            <label class="option-item"><input type="radio" name="q1" value="a"> Scoring a sporting point via throw</label>
+            <label class="option-item"><input type="radio" name="q1" value="b"> Subduing and restraining a suspect safely with minimum necessary harm</label>
+            <label class="option-item"><input type="radio" name="q1" value="c"> Striking the suspect until unconsciousness is achieved</label>
+          </div>
+
+          <div class="question-block">
+            <div class="question-title">2. In Tanto defense technique #6 (Choku-tsuki Kote-osae), what is the first priority of the officer?</div>
+            <label class="option-item"><input type="radio" name="q2" value="a"> Stepping off the line of attack (Tai-sabaki) to clear the blade trajectory</label>
+            <label class="option-item"><input type="radio" name="q2" value="b"> Kicking the weapon out of the hand</label>
+            <label class="option-item"><input type="radio" name="q2" value="c"> Pulling the suspect into a sacrifice throw</label>
+          </div>
+
+          <div class="question-block">
+            <div class="question-title">3. How is the telescopic police baton (Keibō) used in technique #13 (Keibō Kansetsu-osae)?</div>
+            <label class="option-item"><input type="radio" name="q3" value="a"> As a striking weapon against the head</label>
+            <label class="option-item"><input type="radio" name="q3" value="b"> As a mechanical lever inserted behind the elbow to safely guide the suspect prone</label>
+            <label class="option-item"><input type="radio" name="q3" value="c"> As a throwing projectile</label>
+          </div>
+
+          <div class="question-block">
+            <div class="question-title">4. What is required immediately after a suspect is grounded and handcuffed in Sōgō Osaekomi-Tejō (#15)?</div>
+            <label class="option-item"><input type="radio" name="q4" value="a"> Leaving the suspect face-down with full body weight on the back</label>
+            <label class="option-item"><input type="radio" name="q4" value="b"> Double-locking the cuffs, conducting a safety search, and monitoring breathing/posture</label>
+            <label class="option-item"><input type="radio" name="q4" value="c"> Applying a submission chokehold</label>
+          </div>
+
+          <button type="button" class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="evaluateQuiz()">Submit Answers</button>
+        </form>
+
+        <div id="quiz-feedback"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Japanese Police Taiho-jutsu (警察逮捕術形) e-Learning Module</p>
+    <p style="margin-top: 0.35rem;">Standard defensive tactics and subject control curriculum based on National Police Agency guidelines.</p>
+  </footer>
+
+  <!-- Filter & Quiz Logic -->
+  <script>
+    function filterCategory(category) {
+      const items = document.querySelectorAll('.technique-item');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      items.forEach(item => {
+        if (category === 'all' || item.getAttribute('data-category') === category) {
+          item.style.display = 'grid';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    function evaluateQuiz() {
+      const answers = { q1: 'b', q2: 'a', q3: 'b', q4: 'b' };
+      const form = document.forms['quiz-form'];
+      let score = 0;
+      let total = 4;
+
+      for (let q in answers) {
+        if (form[q] && form[q].value === answers[q]) {
+          score++;
+        }
+      }
+
+      const percentage = Math.round((score / total) * 100);
+      const feedback = document.getElementById('quiz-feedback');
+      feedback.style.display = 'block';
+
+      if (percentage >= 75) {
+        feedback.style.background = '#dcfce7';
+        feedback.style.color = '#15803d';
+        feedback.style.border = '1px solid #bbf7d0';
+        feedback.innerHTML = `Assessment Passed! Score: ${percentage}% (${score}/${total} correct). You have demonstrated solid comprehension of Keisatsu Taiho-jutsu.`;
+      } else {
+        feedback.style.background = '#fee2e2';
+        feedback.style.color = '#b91c1c';
+        feedback.style.border = '1px solid #fecaca';
+        feedback.innerHTML = `Score: ${percentage}% (${score}/${total} correct). Review the tactical modules above and try again.`;
+      }
+    }
+  </script>
+</body>
+</html>
