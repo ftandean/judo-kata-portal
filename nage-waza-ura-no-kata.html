@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>投技裏の形 — Nage-waza Ura-no-Kata e-Learning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;600;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #9b2c2c;
+      --primary-dark: #742a2a;
+      --primary-light: #fff5f5;
+      --accent: #d97706;
+      --accent-light: #fef3c7;
+      --ink: #1e293b;
+      --text: #334155;
+      --text-muted: #64748b;
+      --bg: #ffffff;
+      --bg-alt: #f8fafc;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.03);
+      --font-display: 'Cinzel', serif;
+      --font-jp: 'Noto Serif JP', serif;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Strip / Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--ink);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+
+    .nav-brand .kanji {
+      font-family: var(--font-jp);
+      color: var(--primary);
+      font-size: 1.25rem;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: color 0.2s ease;
+    }
+
+    .nav-menu a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: radial-gradient(circle at 80% 20%, rgba(155, 44, 44, 0.04) 0%, transparent 50%),
+                  radial-gradient(circle at 20% 80%, rgba(217, 119, 6, 0.04) 0%, transparent 50%),
+                  #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: 5.5rem 2rem 4.5rem;
+    }
+
+    .hero-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero h1 span.jp {
+      display: inline-block;
+      font-family: var(--font-jp);
+      font-size: 0.8em;
+      color: var(--primary);
+      margin-left: 0.6rem;
+      font-weight: 900;
+    }
+
+    .hero-lead {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin: 1.25rem 0 2rem;
+      font-weight: 400;
+      max-width: 600px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.6rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      border: 1px solid var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      border-color: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: var(--bg-alt);
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.75rem;
+    }
+
+    .stat-item .num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .stat-item .lbl {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+    }
+
+    /* Hero Emblem Badge */
+    .hero-emblem {
+      background: linear-gradient(135deg, var(--primary-light), #fff);
+      border: 1px solid #fed7d7;
+      border-radius: 8px;
+      padding: 3rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .hero-emblem::before {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 1px dashed rgba(155, 44, 44, 0.2);
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    .hero-emblem .big-kanji {
+      font-family: var(--font-jp);
+      font-size: 5rem;
+      font-weight: 900;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .hero-emblem .emblem-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-top: 1rem;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-emblem .emblem-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    /* Section Global Styles */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .section-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .sec-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .sec-heading {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+
+    .sec-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      max-width: 750px;
+    }
+
+    /* About Section */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      margin-bottom: 1.25rem;
+      color: #475569;
+    }
+
+    .about-sidebar {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sidebar-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+
+    .meta-row span:first-child {
+      color: var(--text-muted);
+    }
+
+    .meta-row span:last-child {
+      font-weight: 600;
+      color: var(--ink);
+      text-align: right;
+    }
+
+    /* Three Sets Overview */
+    .sets-bg {
+      background-color: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sets-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .set-panel {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .set-tag {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: var(--primary);
+      margin-bottom: 0.35rem;
+    }
+
+    .set-panel h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .set-panel .kanji-sub {
+      font-family: var(--font-jp);
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .set-panel p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .set-tech-list {
+      list-style: none;
+      margin-top: auto;
+      border-top: 1px solid var(--border);
+      padding-top: 0.75rem;
+    }
+
+    .set-tech-list li {
+      padding: 0.45rem 0;
+      font-size: 0.88rem;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed var(--border-light);
+    }
+
+    .set-tech-list li span.trans {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    /* Technique Breakdown Section */
+    .filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: none;
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      color: var(--ink);
+      background: var(--bg-alt);
+    }
+
+    .filter-btn.active {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .technique-item {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 1.75rem;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tech-idx {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #cbd5e1;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .tech-header-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .tech-name-jp {
+      font-family: var(--font-jp);
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--ink);
+    }
+
+    .tech-name-romaji {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .tech-name-trans {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .tech-overview-p {
+      color: var(--text);
+      font-size: 0.98rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .step-list {
+      background: var(--bg-alt);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .step-row {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 0.75rem;
+      font-size: 0.92rem;
+      color: #334155;
+    }
+
+    .step-num {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .principle-box {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      padding: 0.85rem 1.2rem;
+      border-radius: 0 4px 4px 0;
+      font-size: 0.88rem;
+      color: #92400e;
+      margin-bottom: 1.25rem;
+    }
+
+    .principle-box strong {
+      color: #78350f;
+    }
+
+    .tags-container {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .pill-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 50px;
+      background: #f1f5f9;
+      color: var(--text-muted);
+    }
+
+    /* Reihō & Principles Section */
+    .reiho-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .reiho-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+    }
+
+    .reiho-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .reiho-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    /* Quiz Section */
+    .quiz-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .question-block {
+      margin-bottom: 2rem;
+    }
+
+    .question-title {
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 1.05rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .option-item {
+      display: block;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      padding: 0.85rem 1.2rem;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      font-size: 0.92rem;
+      transition: all 0.2s ease;
+    }
+
+    .option-item:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .option-item input {
+      margin-right: 0.75rem;
+      accent-color: var(--primary);
+    }
+
+    #quiz-feedback {
+      display: none;
+      padding: 1.25rem;
+      border-radius: 4px;
+      margin-top: 1.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 3rem 2rem;
+      background: var(--bg-alt);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-container, .about-layout, .sets-grid-3, .reiho-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-menu { display: none; }
+      .technique-item { grid-template-columns: 1fr; }
+      .tech-idx { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav>
+    <a href="#" class="nav-brand">
+      <span class="kanji">投技裏の形</span>
+      <span>Nage-waza Ura-no-Kata</span>
+    </a>
+    <ul class="nav-menu">
+      <li><a href="#about">About</a></li>
+      <li><a href="#sets">Three Sets</a></li>
+      <li><a href="#techniques">Techniques</a></li>
+      <li><a href="#principles">Mastery & Timing</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container">
+      <div>
+        <p class="hero-kicker">Mifune 10th Dan Lineage — Classical Counter-Throw Kata</p>
+        <h1>Nage-waza Ura-no-Kata <span class="jp">投技裏の形</span></h1>
+        <p class="hero-lead">The Forms of Countering Throwing Techniques. Master the refined art of Go-no-Sen and Sen-no-Sen — neutralizing an attacker’s initial throw through seamless Tai-sabaki, weight redirection, and instantaneous counter-throws (Kaeshi-waza).</p>
+        
+        <div class="hero-cta-group">
+          <a href="#techniques" class="btn btn-primary">Study Counters</a>
+          <a href="#sets" class="btn btn-secondary">Three Groups</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="num">15</div>
+            <div class="lbl">Counter Techniques</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">3</div>
+            <div class="lbl">Classified Sets</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">10th Dan</div>
+            <div class="lbl">Kyuzo Mifune Origin</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-emblem">
+        <div class="big-kanji">裏</div>
+        <div class="emblem-title">URA</div>
+        <div class="emblem-sub">Counter · Reverse Side</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="section-wrap">
+      <div class="about-layout">
+        <div class="about-text">
+          <p class="sec-kicker">Introduction</p>
+          <h2 class="sec-heading">What is Nage-waza Ura-no-Kata?</h2>
+          <p><strong>Nage-waza Ura-no-Kata (投技裏の形)</strong>, meaning "Forms of Reversing Throwing Techniques," represents the tactical reverse side (<em>Ura</em>) of standard throwing mechanics. Formalized by the legendary 10th Dan master <strong>Kyūzō Mifune</strong>, it systematically examines how an initiated throw can be turned against the attacker.</p>
+          <p>In standard <em>Nage-no-Kata</em> (the <em>Omote</em> or surface form), Uke initiates an attack and Tori cleanly executes the primary throw. In <em>Nage-waza Ura-no-Kata</em>, Uke initiates a legitimate throwing attempt with full commitment, whereupon Tori yields slightly, prevents completion through subtle body movement (<em>Tai-sabaki</em>), and counters (<em>Kaeshi-waza</em>) at the exact moment of transition.</p>
+          <p>The kata demonstrates advanced principles of <em>Go-no-Sen</em> (countering after the attack begins) and <em>Sen-no-Sen</em> (countering at the exact inception of the attack), emphasizing non-resistance, soft balance shifts, and precise timing without brute-force blocking.</p>
+          <p>Comprising 15 paired techniques across hand (Te-waza), foot (Ashi-waza), and hip (Koshi-waza) categories, it remains one of the pinnacle studies of high-level intuitive judo (<em>Myōwaza</em>).</p>
+        </div>
+
+        <div class="about-sidebar">
+          <div class="sidebar-title">At a Glance</div>
+          <div class="meta-row"><span>Full Name</span><span>Nage-waza Ura-no-Kata 投技裏の形</span></div>
+          <div class="meta-row"><span>Translation</span><span>Forms of Reversing Throws</span></div>
+          <div class="meta-row"><span>Originator</span><span>Kyūzō Mifune (10th Dan)</span></div>
+          <div class="meta-row"><span>Classification</span><span>Classical Counter Kata</span></div>
+          <div class="meta-row"><span>Roles</span><span>Uke (Initiator) & Tori (Counterer)</span></div>
+          <div class="meta-row"><span>Structure</span><span>3 sets × 5 counter-throws</span></div>
+          <div class="meta-row"><span>Total Techniques</span><span>15 Kaeshi-waza</span></div>
+          <div class="meta-row"><span>Core Principle</span><span>Go-no-Sen / Kaeshi (Reversal)</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Structure / Three Sets -->
+  <section id="sets" class="sets-bg">
+    <div class="section-wrap">
+      <p class="sec-kicker">Structure</p>
+      <h2 class="sec-heading">The Three Classified Sets</h2>
+      <p class="sec-sub">The kata is structured into three groups of five counter-techniques, classified by the primary mechanism of the initiated attack and its corresponding reversal.</p>
+
+      <div class="sets-grid-3">
+        <!-- Set 1 -->
+        <div class="set-panel">
+          <div class="set-tag">SET 01</div>
+          <h3>Te-waza Counters</h3>
+          <div class="kanji-sub">手技裏 — Hand Throw Reversals</div>
+          <p>Focuses on countering shoulder, hand, and frontal drop attacks by unbalancing Uke around their own rotation axis or executing sacrifice throws.</p>
+          <ul class="set-tech-list">
+            <li>1. Uki-otoshi <span class="trans">→ Tai-otoshi</span></li>
+            <li>2. Seoi-nage <span class="trans">→ Yoko-guruma</span></li>
+            <li>3. Kata-guruma <span class="trans">→ Sumi-gaeshi</span></li>
+            <li>4. Tai-otoshi <span class="trans">→ Ko-tsuri-goshi</span></li>
+            <li>5. Obi-otoshi <span class="trans">→ O-guruma</span></li>
+          </ul>
+        </div>
+
+        <!-- Set 2 -->
+        <div class="set-panel">
+          <div class="set-tag">SET 02</div>
+          <h3>Ashi-waza Counters</h3>
+          <div class="kanji-sub">足技裏 — Foot Throw Reversals</div>
+          <p>Demands lightning timing and light footwork to evade sweeps, reapings, and leg entries, turning momentum into instant aerial throws.</p>
+          <ul class="set-tech-list">
+            <li>6. Okuri-ashi-harai <span class="trans">→ Tsubame-gaeshi</span></li>
+            <li>7. Ko-uchi-gari <span class="trans">→ Hiza-guruma</span></li>
+            <li>8. O-uchi-gari <span class="trans">→ O-uchi-gaeshi</span></li>
+            <li>9. Sasae-tsurikomi-ashi <span class="trans">→ Sumi-otoshi</span></li>
+            <li>10. Uchi-mata <span class="trans">→ Tai-otoshi</span></li>
+          </ul>
+        </div>
+
+        <!-- Set 3 -->
+        <div class="set-panel">
+          <div class="set-tag">SET 03</div>
+          <h3>Koshi-waza Counters</h3>
+          <div class="kanji-sub">腰技裏 — Hip Throw Reversals</div>
+          <p>Deals with heavy turning hip entries, using rear lifts, straddling shifts, and sutemi-waza drops to reverse close-quarter hip power.</p>
+          <ul class="set-tech-list">
+            <li>11. Hane-goshi <span class="trans">→ Kari-gaeshi</span></li>
+            <li>12. Harai-goshi <span class="trans">→ Ushiro-goshi</span></li>
+            <li>13. Hane-goshi <span class="trans">→ Utsuri-goshi</span></li>
+            <li>14. Uki-goshi <span class="trans">→ Yoko-wakare</span></li>
+            <li>15. O-goshi <span class="trans">→ Ippon-seoi-nage</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step-by-Step Technical Breakdown -->
+  <section id="techniques">
+    <div class="section-wrap">
+      <p class="sec-kicker">Step-by-Step</p>
+      <h2 class="sec-heading">Technique Breakdown</h2>
+      <p class="sec-sub">Detailed breakdown of attack initiation by Uke and execution of the counter-throw (Kaeshi-waza) by Tori.</p>
+
+      <!-- Filter Controls -->
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterCategory('all')">All (15)</button>
+        <button class="filter-btn" onclick="filterCategory('tewaza')">1. Te-waza Counters</button>
+        <button class="filter-btn" onclick="filterCategory('ashiwaza')">2. Ashi-waza Counters</button>
+        <button class="filter-btn" onclick="filterCategory('koshiwaza')">3. Koshi-waza Counters</button>
+      </div>
+
+      <!-- Techniques Container -->
+      <div id="tech-container">
+
+        <!-- 1 -->
+        <div class="technique-item" data-category="tewaza">
+          <div class="tech-idx">01</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">浮落 → 体落</span>
+              <span class="tech-name-romaji">Uki-otoshi → Tai-otoshi</span>
+              <span class="tech-name-trans">"Floating Drop countered by Body Drop"</span>
+            </div>
+            <p class="tech-overview-p">Uke steps back dynamically attempting a floating hand drop (Uki-otoshi). Tori resists being pulled downward, steps through with circular footwork, extends the leg across Uke's path, and executes Tai-otoshi.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Both partners engage in standard right grip (Migi-kumi). Uke retreats stepping back in Tsugi-ashi, pulling Tori into Uki-otoshi.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>As Uke drops to one knee to complete the hand drop, Tori keeps upright posture and avoids the downward vacuum.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori advances the right foot across Uke’s committed front stance, extending the right leg to block Uke's shin.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Tori pulls strongly with the tsurite and hikite, driving Uke cleanly over the outstretched leg in Tai-otoshi.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Mifune Key Point:</strong> Upright preservation — rather than collapsing into Uke's pulling arc, Tori floats over the drop and converts Uke's pulling momentum into rotational torque.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Te-waza</span><span class="pill-tag">Hand Counter</span><span class="pill-tag">Tai-otoshi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="technique-item" data-category="tewaza">
+          <div class="tech-idx">02</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">背負投 → 横車</span>
+              <span class="tech-name-romaji">Seoi-nage → Yoko-guruma</span>
+              <span class="tech-name-trans">"Shoulder Throw countered by Side Wheel"</span>
+            </div>
+            <p class="tech-overview-p">Uke turns in deeply for a right Seoi-nage. Tori leans over Uke’s right shoulder, inserts the left arm around Uke's waist, slides a leg between Uke's legs, and drops to execute Yoko-guruma.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke steps in and pivots deeply with low hips to execute a classical Seoi-nage.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori sinks their center of gravity, wrapping the left arm around Uke's chest or waist to suppress the lift.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori slides the right leg deep between Uke's legs, sliding down onto the left side/back in Sutemi-waza fashion.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Tori rotates their entire torso, wheeling Uke diagonally over their body in a large Yoko-guruma arc.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Mifune Key Point:</strong> Close attachment — Tori must weld their torso to Uke's back before sliding into the sacrifice drop, leaving no space for Uke's shoulder lever.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Te-waza</span><span class="pill-tag">Sutemi-waza Counter</span><span class="pill-tag">Yoko-guruma</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="technique-item" data-category="tewaza">
+          <div class="tech-idx">03</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">肩車 → 隅返</span>
+              <span class="tech-name-romaji">Kata-guruma → Sumi-gaeshi</span>
+              <span class="tech-name-trans">"Shoulder Wheel countered by Corner Reversal"</span>
+            </div>
+            <p class="tech-overview-p">Uke drops low and drives in to load Tori onto the shoulders for Kata-guruma. Tori wraps Uke's upper body with a deep overhook, falls backward, and flips Uke with Sumi-gaeshi.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke drops their stance deeply and shoots under Tori's center, grabbing Tori's inner right thigh for Kata-guruma.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Before Uke can stand and hoist, Tori locks an overhook around Uke's upper back and neck.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori hooks an instep inside Uke's thigh and commits their weight backward directly to the mat.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Tori elevates with the hooked foot, launching Uke over the top into a spectacular Sumi-gaeshi.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Mifune Key Point:</strong> Overcoming the duck-under — Tori utilizes Uke's downward head trajectory to accelerate the rearward sacrifice flip.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Te-waza</span><span class="pill-tag">Sutemi Counter</span><span class="pill-tag">Sumi-gaeshi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="technique-item" data-category="tewaza">
+          <div class="tech-idx">04</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">体落 → 小釣込腰</span>
+              <span class="tech-name-romaji">Tai-otoshi → Ko-tsuri-goshi</span>
+              <span class="tech-name-trans">"Body Drop countered by Minor Lifting Hip"</span>
+            </div>
+            <p class="tech-overview-p">Uke steps across to extend the leg for Tai-otoshi. Tori steps over the outstretched obstruction leg, attaches hip-to-hip, grips the back of the belt, and throws Uke over the hip with Ko-tsuri-goshi.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke enters rapidly, extending the right leg across Tori's right ankle to set the barrier for Tai-otoshi.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori steps lightly over Uke's outstretched leg with the right foot, neutralizing the obstruction.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori slides the right hand deep around Uke's back to grip the rear belt, inserting their hip directly under Uke's pelvis.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Tori hoists upward using the belt grip and pivots the hips to throw Uke forward-flat in Ko-tsuri-goshi.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Mifune Key Point:</strong> Step-over timing — evading the blocking leg without pausing, flowing directly into hip engagement.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Te-waza</span><span class="pill-tag">Obstruction Evasion</span><span class="pill-tag">Ko-tsuri-goshi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="technique-item" data-category="tewaza">
+          <div class="tech-idx">05</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">帯落 → 大輪</span>
+              <span class="tech-name-romaji">Obi-otoshi → O-guruma</span>
+              <span class="tech-name-trans">"Belt Drop countered by Large Wheel"</span>
+            </div>
+            <p class="tech-overview-p">Uke reaches across Tori’s front to seize the belt and drive into Obi-otoshi. Tori uses body evasion, reaches high over Uke’s back, extends the right leg across Uke’s thighs, and wheels Uke in O-guruma.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke steps in laterally with low hips, reaching around Tori's waist to secure the belt for Obi-otoshi.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori pivots back-right, denying Uke the close lever and maintaining shoulder elevation.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori establishes a dominant high back grip, pivoting on the left foot to extend the right leg horizontally across Uke's thigh/pelvis line.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Tori executes a powerful rotary fulcrum throw, sending Uke revolving over the leg in O-guruma.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Mifune Key Point:</strong> Rotary fulcrum — turning an incoming linear belt scoop into a wide circular wheeling throw.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Te-waza</span><span class="pill-tag">Large Wheel</span><span class="pill-tag">O-guruma</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="technique-item" data-category="ashiwaza">
+          <div class="tech-idx">06</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">送足払 → 燕返</span>
+              <span class="tech-name-romaji">Okuri-ashi-harai → Tsubame-gaeshi</span>
+              <span class="tech-name-trans">"Foot Sweep countered by Swallow's Flight Reversal"</span>
+            </div>
+            <p class="tech-overview-p">Uke moves sideways in Tsugi-ashi and sweeps both of Tori's feet with Okuri-ashi-harai. Tori lifts the targeted foot slightly to let the sweep pass beneath, then instantly sweeps Uke's supporting leg with Tsubame-gaeshi.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Both judoka move sideways in lateral sliding steps (Tsugi-ashi) across the mat.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Uke times the step and sweeps with the left sole toward Tori's ankles for Okuri-ashi-harai.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori senses the sweep, stepping/floating the leading foot lightly over Uke's sweeping foot without touching.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>As Uke overextends with the missed sweep, Tori immediately sweeps Uke's standing foot with a counter foot sweep (Tsubame-gaeshi).</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Mifune Key Point:</strong> Feather-light foot lift — Tori avoids jumping; rather, Tori unweights the foot just enough for Uke's sole to slide underneath cleanly.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Ashi-waza</span><span class="pill-tag">De-ashi Timing</span><span class="pill-tag">Tsubame-gaeshi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="technique-item" data-category="ashiwaza">
+          <div class="tech-idx">07</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">小内刈 → 膝車</span>
+              <span class="tech-name-romaji">Ko-uchi-gari → Hiza-guruma</span>
+              <span class="tech-name-trans">"Minor Inner Reap countered by Knee Wheel"</span>
+            </div>
+            <p class="tech-overview-p">Uke steps in to hook Tori’s right heel with Ko-uchi-gari. Tori withdraws the threatened foot in a light arc, draws Uke forward onto that side, and blocks Uke’s supporting knee with Hiza-guruma.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke steps forward driving the right foot to clip Tori's trailing right heel from the inside in Ko-uchi-gari.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori instantly pulls back the right foot in a subtle circular arc, evading the reaping foot.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori applies strong steering-wheel rotation with both hands, drawing Uke's weight forward over the advancing leg.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Tori places the left sole against Uke's right knee cap and wheels Uke cleanly to the mat in Hiza-guruma.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Mifune Key Point:</strong> Evasion into steering wheel — the pulling hands must activate simultaneously with the withdrawing foot to trap Uke's momentum.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Ashi-waza</span><span class="pill-tag">Inner Reap Evasion</span><span class="pill-tag">Hiza-guruma</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="technique-item" data-category="ashiwaza">
+          <div class="tech-idx">08</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">大内刈 → 大内返</span>
+              <span class="tech-name-romaji">O-uchi-gari → O-uchi-gaeshi</span>
+              <span class="tech-name-trans">"Major Inner Reap countered by Major Inner Counter"</span>
+            </div>
+            <p class="tech-overview-p">Uke drives deeply into Tori's center to reap the inner left leg with O-uchi-gari. Tori yields backwards slightly, braces the hip, clamps Uke’s upper torso, and re-reaps Uke to the rear in O-uchi-gaeshi.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke opens Tori's posture and drives a deep right leg reap between Tori's legs for O-uchi-gari.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori maintains balance on the non-targeted foot, flexing the knee and unweighting the reaped leg slightly.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori shifts their center forward against Uke’s chest, wrapping Uke tightly with the tsurite hand.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Tori reverses the leg hook leverage and drives Uke straight back down over Uke's supporting heel in O-uchi-gaeshi.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Mifune Key Point:</strong> Hip re-anchoring — Tori absorbs the initial chest-to-chest clash, then immediately uses superior body alignment to dominate the inner reap vector.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Ashi-waza</span><span class="pill-tag">Reap vs Reap</span><span class="pill-tag">O-uchi-gaeshi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="technique-item" data-category="ashiwaza">
+          <div class="tech-idx">09</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">支釣込足 → 隅落</span>
+              <span class="tech-name-romaji">Sasae-tsurikomi-ashi → Sumi-otoshi</span>
+              <span class="tech-name-trans">"Propping Foot countered by Corner Drop"</span>
+            </div>
+            <p class="tech-overview-p">Uke steps back and blocks Tori’s front ankle with Sasae-tsurikomi-ashi. Tori resists being drawn forward, steps past the propping foot, and applies a corner hand-drop (Sumi-otoshi) to Uke’s rear diagonal.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke retreats and sets the left sole against Tori's right ankle, pulling with a high lifting sleeve action.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori lifts the right foot over the prop, stepping firmly on the outside of Uke's stance.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>With Uke balanced on a single supporting foot, Tori drives the right hand backward diagonally while depressing the left.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Tori drops Uke to the rear corner without touching Uke with legs (pure Sumi-otoshi).</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Mifune Key Point:</strong> Air throw precision (Kuki-nage) — Tori executes the counter purely through hand coordination and unbalancing (Kuzushi) without leg contact.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Ashi-waza</span><span class="pill-tag">Corner Drop</span><span class="pill-tag">Sumi-otoshi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="technique-item" data-category="ashiwaza">
+          <div class="tech-idx">10</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">内股 → 体落</span>
+              <span class="tech-name-romaji">Uchi-mata → Tai-otoshi</span>
+              <span class="tech-name-trans">"Inner Thigh Throw countered by Body Drop"</span>
+            </div>
+            <p class="tech-overview-p">Uke turns in deep and kicks up between Tori’s thighs with a right Uchi-mata. Tori dodges the inner reaping leg by shifting the hips, steps around to the flank, and executes a sharp Tai-otoshi.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke enters explosively with deep hip penetration, lifting high between Tori's thighs for Uchi-mata.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori jumps/shifts the hips slightly to the left (Tai-sabaki), clearing the path of Uke's rising inner leg.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>As Uke's kicking leg misses and Uke stands on one foot, Tori swiftly pivots and extends the right leg across Uke's supporting post.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Tori twists both hands downward across the chest, driving Uke over the barrier leg in Tai-otoshi.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Mifune Key Point:</strong> Clearing the kick — slipping the groin away from Uke's thigh lift while instantly pinning Uke's single standing leg with Tai-otoshi.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Ashi-waza</span><span class="pill-tag">Flank Transition</span><span class="pill-tag">Tai-otoshi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11 -->
+        <div class="technique-item" data-category="koshiwaza">
+          <div class="tech-idx">11</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">跳腰 → 刈返</span>
+              <span class="tech-name-romaji">Hane-goshi → Kari-gaeshi</span>
+              <span class="tech-name-trans">"Springing Hip countered by Reaping Reversal"</span>
+            </div>
+            <p class="tech-overview-p">Uke springs upward with the hip and bent leg for Hane-goshi. Tori drops their weight, evades the spring, reaches around Uke’s supporting leg, and reaps Uke backward with Kari-gaeshi.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke turns in, placing the right hip and outer thigh against Tori's leg, springing upward for Hane-goshi.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori lowers the center of gravity, sinking their hips and leaning slightly around Uke's side to absorb the spring.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori reaches their right leg or arm behind Uke's single weight-bearing left leg.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Tori reaps out the supporting leg from behind, dumping Uke straight onto the back in Kari-gaeshi.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Mifune Key Point:</strong> Sinking under the spring — absorbing the upward lift by lowering the hips before reaping the exposed supporting base.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Koshi-waza</span><span class="pill-tag">Spring Counter</span><span class="pill-tag">Kari-gaeshi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12 -->
+        <div class="technique-item" data-category="koshiwaza">
+          <div class="tech-idx">12</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">払腰 → 後腰</span>
+              <span class="tech-name-romaji">Harai-goshi → Ushiro-goshi</span>
+              <span class="tech-name-trans">"Sweeping Hip countered by Rear Hip Throw"</span>
+            </div>
+            <p class="tech-overview-p">Uke pivots and sweeps the outer hip and leg for Harai-goshi. Tori drops their hips deeply, wraps both arms tightly around Uke’s waist from the rear, hoists Uke off the mat, and drops them back with Ushiro-goshi.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke turns in with strong forward pull, loading the hip and sweeping the right leg back for Harai-goshi.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori bends both knees deeply into a solid base (Jigotai), preventing Uke from completing the hip sweep.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori clasps both arms around Uke's abdomen, driving their hips upward into Uke's lower back to lift Uke completely.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Tori steps back with one leg, guiding Uke down firmly to the mat on Uke's back in Ushiro-goshi.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Mifune Key Point:</strong> Hip block and elevation — sinking below Uke's belt line is critical to generating the explosive upward lift required for Ushiro-goshi.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Koshi-waza</span><span class="pill-tag">Rear Lift</span><span class="pill-tag">Ushiro-goshi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 13 -->
+        <div class="technique-item" data-category="koshiwaza">
+          <div class="tech-idx">13</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">跳腰 → 移腰</span>
+              <span class="tech-name-romaji">Hane-goshi → Utsuri-goshi</span>
+              <span class="tech-name-trans">"Springing Hip countered by Shifting Hip Throw"</span>
+            </div>
+            <p class="tech-overview-p">Uke attacks with a second variation of Hane-goshi. Tori absorbs the spring, hoists Uke into the air with the belly/hips, switches their own hip across to the opposite side, and throws Uke forward with Utsuri-goshi.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke steps in and lifts with the right leg and hip in Hane-goshi.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori absorbs the impact by squatting, wraps the left arm around Uke's waist, and elevates Uke directly upward with the pelvic drive.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>While Uke is suspended in mid-air, Tori shifts (switches) their left hip underneath Uke's front.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Tori pivots forward, throwing Uke in a smooth forward hip throw (Utsuri-goshi).</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Mifune Key Point:</strong> Mid-air hip shift — the transition of Tori's hip from the rear to the front must take place at the apex of the lift without hesitation.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Koshi-waza</span><span class="pill-tag">Hip Transition</span><span class="pill-tag">Utsuri-goshi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 14 -->
+        <div class="technique-item" data-category="koshiwaza">
+          <div class="tech-idx">14</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">浮腰 → 横分</span>
+              <span class="tech-name-romaji">Uki-goshi → Yoko-wakare</span>
+              <span class="tech-name-trans">"Floating Hip countered by Side Separation"</span>
+            </div>
+            <p class="tech-overview-p">Uke wraps the waist for a half-hip throw (Uki-goshi). Tori steps around Uke's hip, wraps their arm over Uke's shoulder, and drops sideways to the mat in Yoko-wakare, pulling Uke straight down over them.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke steps across with a shallow hip entry and wraps the left arm around Tori's back for Uki-goshi.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori slides their hips slightly back and steps the left foot deep to Uke's left front flank.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori reaches high over Uke's back, pulls Uke's sleeve firmly, and extends both legs sideways while dropping flat to the floor.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Tori separates their body downward, hurling Uke over their side in a classic Yoko-wakare drop.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Mifune Key Point:</strong> Side sacrifice drop — Tori uses the downward pull of their own falling mass to flip Uke directly over the lateral plane.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Koshi-waza</span><span class="pill-tag">Sutemi Counter</span><span class="pill-tag">Yoko-wakare</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 15 -->
+        <div class="technique-item" data-category="koshiwaza">
+          <div class="tech-idx">15</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">大腰 → 一本背負投</span>
+              <span class="tech-name-romaji">O-goshi → Ippon-seoi-nage</span>
+              <span class="tech-name-trans">"Major Hip Throw countered by One-Arm Shoulder Throw"</span>
+            </div>
+            <p class="tech-overview-p">The grand finale. Uke steps deep and wraps the waist for a powerful O-goshi. Tori slides past Uke’s hip rotation, clamps Uke’s reaching right arm under the right armpit, and executes an explosive counter Ippon-seoi-nage.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke steps in deeply with the right foot, wrapping the right arm around Tori's waist to hoist with O-goshi.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori steps forward-left around Uke’s right hip, slipping inside the wrapping arm before the lift is engaged.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori traps Uke's right arm deeply in their right elbow crook/armpit, spinning 180 degrees beneath Uke's chest.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Tori extends their legs and bows forward, throwing Uke cleanly over the shoulder in a definitive Ippon-seoi-nage.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Mifune Key Point:</strong> Inside spin reversal — turning Uke's encircling arm into the exact lever for an instantaneous forward shoulder throw.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Koshi-waza</span><span class="pill-tag">Shoulder Reversal</span><span class="pill-tag">Final Technique</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Principles & Timing Section -->
+  <section id="principles" class="sets-bg">
+    <div class="section-wrap">
+      <p class="sec-kicker">Principles & Tactical Theory</p>
+      <h2 class="sec-heading">The Science of Kaeshi-waza</h2>
+      <p class="sec-sub">Kyūzō Mifune's counter-throw pedagogy rests on three foundational pillars of dynamic reaction.</p>
+
+      <div class="reiho-grid">
+        <div class="reiho-card">
+          <h4>Go-no-Sen (後の先)</h4>
+          <p>The principle of responding after the opponent initiates. Instead of opposing the attack with muscular resistance, Tori allows the attack to enter, yields just enough to escape the point of leverage, and counters as Uke is extended.</p>
+        </div>
+        <div class="reiho-card">
+          <h4>Sen-no-Sen (先の先)</h4>
+          <p>Taking the initiative simultaneously with Uke’s attack. Tori detects the inception of Uke's technique and enters the counter-throw at the exact instant Uke commits weight, overtaking Uke's momentum before balance is set.</p>
+        </div>
+        <div class="reiho-card">
+          <h4>Tai-sabaki & Myōwaza (妙技)</h4>
+          <p>Fluid, spherical body motion without stiffness. Reversing throws cannot be achieved by locking the joints; Tori must act like a spinning top or rubber sphere, redirecting vectors around an unmovable center of gravity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz Section -->
+  <section id="quiz">
+    <div class="section-wrap">
+      <div style="text-align: center; margin-bottom: 2.5rem;">
+        <p class="sec-kicker">Self-Assessment</p>
+        <h2 class="sec-heading">Nage-waza Ura-no-Kata Knowledge Check</h2>
+        <p class="sec-sub" style="margin: 0 auto;">Evaluate your grasp of the counter techniques, lineages, and mechanics in Nage-waza Ura-no-Kata.</p>
+      </div>
+
+      <div class="quiz-card">
+        <form id="quiz-form">
+          <div class="question-block">
+            <div class="question-title">1. Who developed the 15-technique Nage-waza Ura-no-Kata?</div>
+            <label class="option-item"><input type="radio" name="q1" value="a"> Jigoro Kano</label>
+            <label class="option-item"><input type="radio" name="q1" value="b"> Kyūzō Mifune (10th Dan)</label>
+            <label class="option-item"><input type="radio" name="q1" value="c"> Masahiko Kimura</label>
+          </div>
+
+          <div class="question-block">
+            <div class="question-title">2. In technique #6, when Uke attacks with Okuri-ashi-harai, what is Tori's counter-throw?</div>
+            <label class="option-item"><input type="radio" name="q2" value="a"> Tsubame-gaeshi (Swallow's Flight Reversal)</label>
+            <label class="option-item"><input type="radio" name="q2" value="b"> O-uchi-gaeshi</label>
+            <label class="option-item"><input type="radio" name="q2" value="c"> De-ashi-harai</label>
+          </div>
+
+          <div class="question-block">
+            <div class="question-title">3. When Uke turns in for Harai-goshi (#12), how does Tori counter with Ushiro-goshi?</div>
+            <label class="option-item"><input type="radio" name="q3" value="a"> By ducking under the arm for Seoi-nage</label>
+            <label class="option-item"><input type="radio" name="q3" value="b"> By dropping straight to the knees for Kata-guruma</label>
+            <label class="option-item"><input type="radio" name="q3" value="c"> By sinking hips into Jigotai, clasping Uke's waist from behind, and hoisting upward</label>
+          </div>
+
+          <div class="question-block">
+            <div class="question-title">4. Which throw serves as the 15th and concluding counter-technique against Uke's O-goshi?</div>
+            <label class="option-item"><input type="radio" name="q4" value="a"> Ippon-seoi-nage</label>
+            <label class="option-item"><input type="radio" name="q4" value="b"> Utsuri-goshi</label>
+            <label class="option-item"><input type="radio" name="q4" value="c"> Yoko-wakare</label>
+          </div>
+
+          <button type="button" class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="evaluateQuiz()">Submit Answers</button>
+        </form>
+
+        <div id="quiz-feedback"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Classical Judo Nage-waza Ura-no-Kata (投技裏の形) e-Learning Module</p>
+    <p style="margin-top: 0.35rem;">Systematic counter-throw syllabus derived from the teachings of Kyūzō Mifune (10th Dan).</p>
+  </footer>
+
+  <!-- Filter & Quiz Logic -->
+  <script>
+    function filterCategory(category) {
+      const items = document.querySelectorAll('.technique-item');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      items.forEach(item => {
+        if (category === 'all' || item.getAttribute('data-category') === category) {
+          item.style.display = 'grid';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    function evaluateQuiz() {
+      const answers = { q1: 'b', q2: 'a', q3: 'c', q4: 'a' };
+      const form = document.forms['quiz-form'];
+      let score = 0;
+      let total = 4;
+
+      for (let q in answers) {
+        if (form[q] && form[q].value === answers[q]) {
+          score++;
+        }
+      }
+
+      const percentage = Math.round((score / total) * 100);
+      const feedback = document.getElementById('quiz-feedback');
+      feedback.style.display = 'block';
+
+      if (percentage >= 75) {
+        feedback.style.background = '#dcfce7';
+        feedback.style.color = '#15803d';
+        feedback.style.border = '1px solid #bbf7d0';
+        feedback.innerHTML = `Assessment Passed! Score: ${percentage}% (${score}/${total} correct). You have demonstrated solid comprehension of Nage-waza Ura-no-Kata.`;
+      } else {
+        feedback.style.background = '#fee2e2';
+        feedback.style.color = '#b91c1c';
+        feedback.style.border = '1px solid #fecaca';
+        feedback.innerHTML = `Score: ${percentage}% (${score}/${total} correct). Review the counter breakdowns above and try again.`;
+      }
+    }
+  </script>
+</body>
+</html>
