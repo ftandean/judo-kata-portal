@@ -1,0 +1,1376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>女子護身法 — Joshi Goshin-hō e-Learning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;600;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #9b2c2c;
+      --primary-dark: #742a2a;
+      --primary-light: #fff5f5;
+      --accent: #d97706;
+      --accent-light: #fef3c7;
+      --ink: #1e293b;
+      --text: #334155;
+      --text-muted: #64748b;
+      --bg: #ffffff;
+      --bg-alt: #f8fafc;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.03);
+      --font-display: 'Cinzel', serif;
+      --font-jp: 'Noto Serif JP', serif;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--ink);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-brand .kanji {
+      font-family: var(--font-jp);
+      color: var(--primary);
+      font-size: 1.25rem;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: color 0.2s ease;
+    }
+
+    .nav-menu a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: radial-gradient(circle at 80% 20%, rgba(155, 44, 44, 0.04) 0%, transparent 50%),
+                  radial-gradient(circle at 20% 80%, rgba(217, 119, 6, 0.04) 0%, transparent 50%),
+                  #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: 5.5rem 2rem 4.5rem;
+    }
+
+    .hero-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero h1 span.jp {
+      display: inline-block;
+      font-family: var(--font-jp);
+      font-size: 0.85em;
+      color: var(--primary);
+      margin-left: 0.6rem;
+      font-weight: 900;
+    }
+
+    .hero-lead {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin: 1.25rem 0 2rem;
+      font-weight: 400;
+      max-width: 600px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.6rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      border: 1px solid var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      border-color: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: var(--bg-alt);
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.75rem;
+    }
+
+    .stat-item .num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .stat-item .lbl {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+    }
+
+    /* Hero Emblem Badge */
+    .hero-emblem {
+      background: linear-gradient(135deg, var(--primary-light), #fff);
+      border: 1px solid #fed7d7;
+      border-radius: 8px;
+      padding: 3rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .hero-emblem::before {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 1px dashed rgba(155, 44, 44, 0.2);
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    .hero-emblem .big-kanji {
+      font-family: var(--font-jp);
+      font-size: 5rem;
+      font-weight: 900;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .hero-emblem .emblem-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-top: 1rem;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-emblem .emblem-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    /* Section Global Styles */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .section-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .sec-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .sec-heading {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+
+    .sec-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      max-width: 750px;
+    }
+
+    /* About Section */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      margin-bottom: 1.25rem;
+      color: #475569;
+    }
+
+    .about-sidebar {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sidebar-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+
+    .meta-row span:first-child {
+      color: var(--text-muted);
+    }
+
+    .meta-row span:last-child {
+      font-weight: 600;
+      color: var(--ink);
+      text-align: right;
+    }
+
+    /* Three Sets Overview */
+    .sets-bg {
+      background-color: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sets-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .set-panel {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .set-tag {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: var(--primary);
+      margin-bottom: 0.35rem;
+    }
+
+    .set-panel h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .set-panel .kanji-sub {
+      font-family: var(--font-jp);
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .set-panel p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .set-tech-list {
+      list-style: none;
+      margin-top: auto;
+      border-top: 1px solid var(--border);
+      padding-top: 0.75rem;
+    }
+
+    .set-tech-list li {
+      padding: 0.45rem 0;
+      font-size: 0.88rem;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed var(--border-light);
+    }
+
+    .set-tech-list li span.trans {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    /* Technique Breakdown Section */
+    .filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: none;
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      color: var(--ink);
+      background: var(--bg-alt);
+    }
+
+    .filter-btn.active {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .technique-item {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 1.75rem;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tech-idx {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #cbd5e1;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .tech-header-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .tech-name-jp {
+      font-family: var(--font-jp);
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--ink);
+    }
+
+    .tech-name-romaji {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .tech-name-trans {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .tech-overview-p {
+      color: var(--text);
+      font-size: 0.98rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .step-list {
+      background: var(--bg-alt);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .step-row {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 0.75rem;
+      font-size: 0.92rem;
+      color: #334155;
+    }
+
+    .step-num {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .principle-box {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      padding: 0.85rem 1.2rem;
+      border-radius: 0 4px 4px 0;
+      font-size: 0.88rem;
+      color: #92400e;
+      margin-bottom: 1.25rem;
+    }
+
+    .principle-box strong {
+      color: #78350f;
+    }
+
+    .tags-container {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .pill-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 50px;
+      background: #f1f5f9;
+      color: var(--text-muted);
+    }
+
+    /* Reihō & Principles Section */
+    .reiho-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .reiho-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+    }
+
+    .reiho-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .reiho-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    /* Quiz Section */
+    .quiz-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .question-block {
+      margin-bottom: 2rem;
+    }
+
+    .question-title {
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 1.05rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .option-item {
+      display: block;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      padding: 0.85rem 1.2rem;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      font-size: 0.92rem;
+      transition: all 0.2s ease;
+    }
+
+    .option-item:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .option-item input {
+      margin-right: 0.75rem;
+      accent-color: var(--primary);
+    }
+
+    #quiz-feedback {
+      display: none;
+      padding: 1.25rem;
+      border-radius: 4px;
+      margin-top: 1.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 3rem 2rem;
+      background: var(--bg-alt);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-container, .about-layout, .sets-grid-3, .reiho-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-menu { display: none; }
+      .technique-item { grid-template-columns: 1fr; }
+      .tech-idx { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav>
+    <div class="nav-brand">
+      <span class="kanji">女子護身法</span>
+      <span>Joshi Goshin-hō</span>
+    </div>
+    <ul class="nav-menu">
+      <li><a href="#about">About</a></li>
+      <li><a href="#sets">Three Sets</a></li>
+      <li><a href="#techniques">Techniques</a></li>
+      <li><a href="#reiho">Principles & Leverage</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container">
+      <div>
+        <p class="hero-kicker">Kodokan Judo — Women's Self-Defense Kata</p>
+        <h1>Joshi Goshin-hō <span class="jp">女子護身法</span></h1>
+        <p class="hero-lead">The Women's Self-Defense Forms. Formulated in 1943 by the Kodokan Women's Section, providing practical, leverage-based defenses against grabs, hair pulls, bear hugs, chokes, and sudden physical assaults.</p>
+        
+        <div class="hero-cta-group">
+          <a href="#techniques" class="btn btn-primary">Start Learning</a>
+          <a href="#sets" class="btn btn-secondary">Overview</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="num">18</div>
+            <div class="lbl">Self-Defense Techniques</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">3</div>
+            <div class="lbl">Categorized Sets (6 Each)</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">1943</div>
+            <div class="lbl">Kodokan Formulated</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-emblem">
+        <div class="big-kanji">護</div>
+        <div class="emblem-title">JOSHI GOSHIN</div>
+        <div class="emblem-sub">Women's Protection · Leverage Defense</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="section-wrap">
+      <div class="about-layout">
+        <div class="about-text">
+          <p class="sec-kicker">Introduction</p>
+          <h2 class="sec-heading">What is Joshi Goshin-hō?</h2>
+          <p><strong>Joshi Goshin-hō (女子護身法)</strong>, meaning "Women's Self-Defense Forms," was established in 1943 by a specialized committee within the Kodokan Women's Section (including pioneer instructors such as Keiko Fukuda and Noritomi Masako) to address common physical assaults targeting women.</p>
+          <p>The kata is composed of <strong>18 techniques</strong> systematically organized into three pedagogical sets of six techniques each:
+            <br>1. <strong>Toshu no bu — Front Grabs & Seizures (1–6)</strong>: Defenses against wrist grabs, arm holds, lapel seizures, and frontal bear hugs.
+            <br>2. <strong>Ushiro no bu — Rear Attacks, Chokes & Hair Pulls (7–12)</strong>: Defenses against rear collar grabs, strangulations, hair seizures from behind, and rear bear hugs.
+            <br>3. <strong>Atemi & Buki no bu — Strikes, Kicks & Weapon Threats (13–18)</strong>: Defenses against incoming punches, slanting temple strikes, front kicks, club swings, and knife threats.</p>
+          <p>Rather than relying on brute muscular strength, Joshi Goshin-hō utilizes anatomical weak points, sharp vital point strikes (<em>Atemi-waza</em>), joint rotational leverage (<em>Kansetsu-waza</em>), and body shifting (<em>Tai-sabaki</em>) to allow smaller defenders to neutralize larger aggressors.</p>
+        </div>
+
+        <div class="about-sidebar">
+          <div class="sidebar-title">At a Glance</div>
+          <div class="meta-row"><span>Full Name</span><span>Kodokan Joshi Goshin-hō 女子護身法</span></div>
+          <div class="meta-row"><span>Translation</span><span>Women's Self-Defense Forms</span></div>
+          <div class="meta-row"><span>Established</span><span>1943 (Kodokan Women's Section)</span></div>
+          <div class="meta-row"><span>Structure</span><span>3 Sets × 6 Techniques</span></div>
+          <div class="meta-row"><span>Total Techniques</span><span>18 Self-Defense Techniques</span></div>
+          <div class="meta-row"><span>Core Mechanics</span><span>Leverage, Atemi & Wrist Locks</span></div>
+          <div class="meta-row"><span>Primary Focus</span><span>Escape, Counter & Neutralize</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Structure / Three Sets Overview -->
+  <section id="sets" class="sets-bg">
+    <div class="section-wrap">
+      <p class="sec-kicker">Structure</p>
+      <h2 class="sec-heading">The Three Self-Defense Sets (18 Techniques)</h2>
+      <p class="sec-sub">The curriculum progresses systematically from front grabs and rear chokes to strikes and weapon threats.</p>
+
+      <div class="sets-grid-3">
+        <!-- Set 1 -->
+        <div class="set-panel">
+          <div class="set-tag">SET 01 — FRONT GRABS</div>
+          <h3>Front Seizures & Holds</h3>
+          <div class="kanji-sub">前方の捕り — Toshu (Front Attacks)</div>
+          <p>Defenses against frontal wrist grabs, single arm seizures, lapel grabs, and bear hugs with trapped arms.</p>
+          <ul class="set-tech-list">
+            <li>1. Ryote-dori <span class="trans">Both Wrists Seized</span></li>
+            <li>2. Kataude-dori <span class="trans">Single Arm Seized</span></li>
+            <li>3. Katate-dori <span class="trans">Cross Wrist Seized</span></li>
+            <li>4. Obi-dori <span class="trans">Belt Seized from Front</span></li>
+            <li>5. Mune-dori <span class="trans">Lapel Seized</span></li>
+            <li>6. Kakae-dori <span class="trans">Front Bear Hug (Arms Trapped)</span></li>
+          </ul>
+        </div>
+
+        <!-- Set 2 -->
+        <div class="set-panel">
+          <div class="set-tag">SET 02 — REAR ATTACKS</div>
+          <h3>Rear Chokes & Hair Pulls</h3>
+          <div class="kanji-sub">後方の捕り — Ushiro (Rear Attacks)</div>
+          <p>Defenses against rear collar grabs, hair seizures, naked chokes, and rear bear hugs over the arms.</p>
+          <ul class="set-tech-list">
+            <li>7. Ushiro-eri-dori <span class="trans">Collar Seized from Behind</span></li>
+            <li>8. Ushiro-jime <span class="trans">Rear Choke / Strangle</span></li>
+            <li>9. Kami-tsukareta baai <span class="trans">Hair Pull from Behind</span></li>
+            <li>10. Ushiro-kakae-dori <span class="trans">Rear Bear Hug (Arms Free)</span></li>
+            <li>11. Ushiro-kataude-dori <span class="trans">Single Arm Seized from Behind</span></li>
+            <li>12. Ushiro-oshi <span class="trans">Push from Behind</span></li>
+          </ul>
+        </div>
+
+        <!-- Set 3 -->
+        <div class="set-panel">
+          <div class="set-tag">SET 03 — STRIKES & WEAPONS</div>
+          <h3>Strikes & Weapon Threats</h3>
+          <div class="kanji-sub">打撃・武器の捕り — Atemi & Buki</div>
+          <p>Defenses against incoming punches, slanting temple chops, front kicks, club swings, and knife threats.</p>
+          <ul class="set-tech-list">
+            <li>13. Naname-uchi <span class="trans">Slanting Temple Strike</span></li>
+            <li>14. Gammen-tsuki <span class="trans">Face Punch Defense</span></li>
+            <li>15. Mae-geri <span class="trans">Front Kick Defense</span></li>
+            <li>16. Bo-furioroshi <span class="trans">Club / Stick Overhead Swing</span></li>
+            <li>17. Tanto-tsukkake <span class="trans">Knife Thrust Defense</span></li>
+            <li>18. Haimen-zuke <span class="trans">Pistol / Threat from Behind</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step-by-Step Technical Breakdown -->
+  <section id="techniques">
+    <div class="section-wrap">
+      <p class="sec-kicker">Step-by-Step</p>
+      <h2 class="sec-heading">Technique Breakdown</h2>
+      <p class="sec-sub">Filter by category to explore the anatomical levers, vital point strikes, and escape mechanics for all 18 techniques.</p>
+
+      <!-- Filter Controls -->
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterCategory('all')">All (18 Techniques)</button>
+        <button class="filter-btn" onclick="filterCategory('set1')">1. Front Grabs (1–6)</button>
+        <button class="filter-btn" onclick="filterCategory('set2')">2. Rear Attacks (7–12)</button>
+        <button class="filter-btn" onclick="filterCategory('set3')">3. Strikes & Weapons (13–18)</button>
+      </div>
+
+      <!-- Techniques Container -->
+      <div id="tech-container">
+
+        <!-- ================= SET 1 ================= -->
+        <!-- 1 -->
+        <div class="technique-item" data-category="set1">
+          <div class="tech-idx">01</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">両手取</span>
+              <span class="tech-name-romaji">Ryote-dori</span>
+              <span class="tech-name-trans">"Both Wrists Seized"</span>
+            </div>
+            <p class="tech-overview-p">Uke grabs both of Tori's wrists from the front. Tori steps back, drops the center of mass, rotates both wrists outward against Uke's thumbs where the grip is weakest, delivers a front kick to the groin, and escapes.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke steps forward and grips both of Tori's wrists firmly from the front.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori drops the hips in a stable stance and circles both wrists outward against Uke's thumbs to break the lock.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori delivers a sharp right front snap kick (Mae-geri) to Uke's groin (Kinteki) and steps back to safety.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Weakest point of the grip — rotate outward against Uke's thumbs to pop the wrists free instantly before kicking.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Set 1</span><span class="pill-tag">Front Grabs</span><span class="pill-tag">Thumb Weakness</span><span class="pill-tag">Groin Kick</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="technique-item" data-category="set1">
+          <div class="tech-idx">02</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">片腕取</span>
+              <span class="tech-name-romaji">Kataude-dori</span>
+              <span class="tech-name-trans">"Single Arm Seized"</span>
+            </div>
+            <p class="tech-overview-p">Uke seizes Tori's right wrist with the left hand. Tori raises the right arm, steps inside, delivers a palm-heel strike to Uke's chin, and applies an armlock to take Uke to the tatami.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke seizes Tori's right wrist with the left hand.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori raises the right arm, steps forward-left inside Uke's guard, and strikes Uke's chin with a right palm heel (Teisho).</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori traps Uke's right arm under the armpit in Waki-gatame and presses Uke to the mat.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Stepping inside — do not pull backward; step inside the attacker's reach to deliver the palm strike.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Set 1</span><span class="pill-tag">Front Grabs</span><span class="pill-tag">Teisho Strike</span><span class="pill-tag">Waki-gatame</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="technique-item" data-category="set1">
+          <div class="tech-idx">03</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">交差手取</span>
+              <span class="tech-name-romaji">Katate-dori (Kosa-dori)</span>
+              <span class="tech-name-trans">"Cross Wrist Seized"</span>
+            </div>
+            <p class="tech-overview-p">Uke grabs Tori's right wrist with the right hand (same-side or cross-wrist grab). Tori grasps her own right fist with the left hand, steps in, and wrenches the wrist downward to break the grip.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke grabs Tori's right wrist with the right hand in a cross-grab.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori clasps her own right fist with her left hand, reinforcing the pulling power.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori drops the bodyweight and wrenches the arms downward across Uke's thumb joint to strip the grip.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Two-handed reinforcement — reinforce the trapped wrist with both hands to overpower a single-hand grab.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Set 1</span><span class="pill-tag">Front Grabs</span><span class="pill-tag">Cross Grab</span><span class="pill-tag">Two-Handed Break</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="technique-item" data-category="set1">
+          <div class="tech-idx">04</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">帯取</span>
+              <span class="tech-name-romaji">Obi-dori</span>
+              <span class="tech-name-trans">"Belt Seized from Front"</span>
+            </div>
+            <p class="tech-overview-p">Uke grabs Tori's jacket or belt from the front to pull her close. Tori strikes Uke's eyes with open fingertips, steps back, and kicks Uke's groin.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke reaches forward and grabs Tori's belt/jacket from the front.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori thrusts open fingertips sharply into Uke's eyes (Me-tsubushi) to blind and disorient.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>As Uke recoils, Tori delivers a front kick to the groin and steps away.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Eye strike distraction — use a sudden finger jab to the eyes to break Uke's focus and grip instantly.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Set 1</span><span class="pill-tag">Front Grabs</span><span class="pill-tag">Eye Jab</span><span class="pill-tag">Groin Counter</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="technique-item" data-category="set1">
+          <div class="tech-idx">05</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">胸取</span>
+              <span class="tech-name-romaji">Mune-dori</span>
+              <span class="tech-name-trans">"Lapel Seized"</span>
+            </div>
+            <p class="tech-overview-p">Uke seizes Tori's lapel with both hands. Tori covers Uke's hands, stamps heavily on Uke's instep, and executes an outward wrist lock (Kote-gaeshi) to take Uke down.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke seizes both of Tori's lapels with two hands.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori covers Uke's hands with her own and stomps the heel firmly onto Uke's instep (Kori).</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori grips Uke's right wrist, wrenches it outward in Kote-gaeshi, and throws Uke to the mat.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Instep stamp distraction — stomp the foot to make Uke flinch downward, loosening the lapel grip for the wrist lock.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Set 1</span><span class="pill-tag">Front Grabs</span><span class="pill-tag">Lapel Grab</span><span class="pill-tag">Kote-gaeshi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="technique-item" data-category="set1">
+          <div class="tech-idx">06</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">抱取</span>
+              <span class="tech-name-romaji">Kakae-dori</span>
+              <span class="tech-name-trans">"Front Bear Hug (Arms Trapped)"</span>
+            </div>
+            <p class="tech-overview-p">Uke hugs Tori from the front, trapping Tori's arms against her torso. Tori drops the center of gravity, delivers a sharp knee strike (Hiza-geri) to Uke's groin/abdomen, and pushes Uke away.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke wraps both arms around Tori's torso from the front, pinning Tori's arms.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori drops the hips in a wide base, leans the upper body back slightly to create clearance.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori drives a powerful right knee upward into Uke's groin or solar plexus (Hiza-geri), breaking the bear hug.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Knee strike (Hiza-geri) — use close-range knee strikes to the groin when arms are pinned and punches are impossible.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Set 1</span><span class="pill-tag">Front Grabs</span><span class="pill-tag">Bear Hug Escape</span><span class="pill-tag">Knee Strike</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= SET 2 ================= -->
+        <!-- 7 -->
+        <div class="technique-item" data-category="set2">
+          <div class="tech-idx">07</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">後襟取</span>
+              <span class="tech-name-romaji">Ushiro-eri-dori</span>
+              <span class="tech-name-trans">"Collar Seized from Behind"</span>
+            </div>
+            <p class="tech-overview-p">Uke grabs Tori's collar from behind and pulls. Tori turns 180 degrees under the arm, delivers an elbow strike to Uke's ribs, and applies an armlock over the shoulder.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke grabs Tori's collar from behind and pulls backward.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori raises the arm, spins 180 degrees beneath Uke's arm, and drives a rear elbow strike (Ushiro-ate) into Uke's ribs.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori locks Uke's arm across the shoulder and forces Uke down to the mat.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Spinning under the collar grab — ducking cleanly beneath Uke's arm while countering with the elbow strike.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Set 2</span><span class="pill-tag">Rear Attacks</span><span class="pill-tag">Collar Grab</span><span class="pill-tag">Elbow Counter</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="technique-item" data-category="set2">
+          <div class="tech-idx">08</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">後絞</span>
+              <span class="tech-name-romaji">Ushiro-jime</span>
+              <span class="tech-name-trans">"Rear Choke / Strangle"</span>
+            </div>
+            <p class="tech-overview-p">Uke applies a rear naked choke (Hadaka-jime). Tori pulls down on Uke's forearm to relieve airway pressure, steps back, delivers a rear foot stomp, and throws Uke over the shoulder.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke applies a rear choke around Tori's neck.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori immediately pulls down on Uke's forearm with both hands to breathe, stomps hard on Uke's foot, and bends forward.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori drops hips and throws Uke forward over the shoulder in a shoulder throw.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Immediate airway relief — pull down on the choking arm before attempting any foot stomp or throw.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Set 2</span><span class="pill-tag">Rear Attacks</span><span class="pill-tag">Choke Defense</span><span class="pill-tag">Shoulder Throw</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="technique-item" data-category="set2">
+          <div class="tech-idx">09</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">髪取</span>
+              <span class="tech-name-romaji">Kami-tsukareta baai</span>
+              <span class="tech-name-trans">"Hair Pull from Behind"</span>
+            </div>
+            <p class="tech-overview-p">Uke grabs Tori's hair from behind. Tori places both hands firmly over Uke's hand to lock the hair against her head (preventing scalp tearing), steps back, and executes a rear armlock or throw.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke seizes Tori's hair from behind, pulling upward.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori instantly places both hands over Uke's hand, pressing it firmly against her own head to lock the hair roots in place and prevent tearing.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori steps back, pivots under Uke's arm, and applies a wrist/arm lock to bring Uke down.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Locking the hair against the head — never pull away from a hair grab; press Uke's hand to your head first to protect the scalp.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Set 2</span><span class="pill-tag">Rear Attacks</span><span class="pill-tag">Hair Pull Defense</span><span class="pill-tag">Scalp Protection</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="technique-item" data-category="set2">
+          <div class="tech-idx">10</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">後抱取</span>
+              <span class="tech-name-romaji">Ushiro-kakae-dori</span>
+              <span class="tech-name-trans">"Rear Bear Hug (Arms Free)"</span>
+            </div>
+            <p class="tech-overview-p">Uke hugs Tori from behind with arms free. Tori drops the center of mass heavily, strikes backward with the elbow to Uke's solar plexus, and throws Uke with a major outer reap (Osoto-gari).</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke wraps arms around Tori's torso from behind (arms free).</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori drops the hips heavily to anchor the base, and drives a sharp rear elbow strike (Ushiro-ate) into Uke's ribs.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori steps deep behind Uke's leg and executes Osoto-gari to throw Uke backward.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Dropping base & elbow strike — sink the hips instantly to prevent being lifted, and strike backward with the elbow.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Set 2</span><span class="pill-tag">Rear Attacks</span><span class="pill-tag">Rear Bear Hug</span><span class="pill-tag">Osoto-gari</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11 -->
+        <div class="technique-item" data-category="set2">
+          <div class="tech-idx">11</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">後片腕取</span>
+              <span class="tech-name-romaji">Ushiro-kataude-dori</span>
+              <span class="tech-name-trans">"Single Arm Seized from Behind"</span>
+            </div>
+            <p class="tech-overview-p">Uke grabs Tori's right wrist from behind. Tori pivots 180 degrees, delivers a palm-heel strike to Uke's chin, and applies an armlock over the shoulder.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke grabs Tori's right wrist from behind and pulls.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori pivots 180 degrees clockwise, closing distance, and strikes Uke's chin with a right palm heel (Teisho).</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori locks Uke's arm across the shoulder and forces Uke down to the tatami.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Inward pivot — pivot directly toward the trapped arm to neutralize the pull and strike the chin.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Set 2</span><span class="pill-tag">Rear Attacks</span><span class="pill-tag">Wrist Grab Behind</span><span class="pill-tag">Teisho Counter</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12 -->
+        <div class="technique-item" data-category="set2">
+          <div class="tech-idx">12</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">後押</span>
+              <span class="tech-name-romaji">Ushiro-oshi</span>
+              <span class="tech-name-trans">"Push from Behind"</span>
+            </div>
+            <p class="tech-overview-p">Uke pushes Tori aggressively from behind. Tori steps back to match the push, pivots as Uke overextends, and applies a corner drop (Sumi-otoshi) or leg sweep to throw Uke forward.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke shoves Tori aggressively forward from behind.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori steps forward with the shove, pivots 180 degrees to face Uke, and catches Uke's advancing arms.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori redirects Uke's forward momentum into a corner drop (Sumi-otoshi), projecting Uke face-down onto the mat.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Riding the push — step forward with the push to maintain balance, then pivot to redirect the forward momentum.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Set 2</span><span class="pill-tag">Rear Attacks</span><span class="pill-tag">Push Defense</span><span class="pill-tag">Sumi-otoshi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= SET 3 ================= -->
+        <!-- 13 -->
+        <div class="technique-item" data-category="set3">
+          <div class="tech-idx">13</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">斜打</span>
+              <span class="tech-name-romaji">Naname-uchi</span>
+              <span class="tech-name-trans">"Slanting Temple Strike"</span>
+            </div>
+            <p class="tech-overview-p">Uke delivers a diagonal downward hammer-fist strike to Tori's temple. Tori steps inside, blocks Uke's forearm, strikes Uke's chin with a palm heel, and throws Uke with Osoto-gari.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke steps forward delivering a diagonal hammer-fist strike toward Tori's left temple.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori steps forward-left inside the blow, blocks Uke's forearm with the left hand, and drives a right palm heel (Teisho) to Uke's chin.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori steps deep behind Uke's right leg and executes Osoto-gari to take Uke down.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Inside entry & Osoto-gari — step inside the striking arc and execute the reap immediately.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Set 3</span><span class="pill-tag">Strikes & Weapons</span><span class="pill-tag">Temple Strike</span><span class="pill-tag">Osoto-gari</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 14 -->
+        <div class="technique-item" data-category="set3">
+          <div class="tech-idx">14</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">顔面突</span>
+              <span class="tech-name-romaji">Gammen-tsuki</span>
+              <span class="tech-name-trans">"Face Punch Defense"</span>
+            </div>
+            <p class="tech-overview-p">Uke throws a straight punch to Tori's face. Tori steps back-left (Tai-sabaki), parries the punch, delivers a right palm strike to Uke's chin, and applies Kote-gaeshi.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke advances with a straight right punch to Tori's face.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori steps back-left off the attack line, parries Uke's wrist, and strikes Uke's chin with a right palm heel.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori grips Uke's wrist, twists it outward in Kote-gaeshi, and brings Uke down to the tatami.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Off-line parry & Kote-gaeshi — step off the centerline and convert the parry into an outward wrist lock.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Set 3</span><span class="pill-tag">Strikes & Weapons</span><span class="pill-tag">Punch Defense</span><span class="pill-tag">Kote-gaeshi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 15 -->
+        <div class="technique-item" data-category="set3">
+          <div class="tech-idx">15</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">前蹴</span>
+              <span class="tech-name-romaji">Mae-geri</span>
+              <span class="tech-name-trans">"Front Kick Defense"</span>
+            </div>
+            <p class="tech-overview-p">Uke delivers a front kick toward Tori's abdomen. Tori steps back, scoops Uke's kicking heel from underneath with the forearm, elevates the leg, and pushes Uke's shoulder to drop him.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke steps forward delivering a right front snap kick toward Tori's midsection.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori steps back with the right foot, turning slightly sideways, and scoops Uke's right heel upward with the left forearm.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori elevates the leg while pushing Uke's chest/shoulder with the right palm (Sukui-nage takedown).</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Scooping the heel — catch the kicking leg underneath the heel to break Uke's standing balance.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Set 3</span><span class="pill-tag">Strikes & Weapons</span><span class="pill-tag">Front Kick Catch</span><span class="pill-tag">Leg Scoop</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 16 -->
+        <div class="technique-item" data-category="set3">
+          <div class="tech-idx">16</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">棒振下</span>
+              <span class="tech-name-romaji">Bo-furioroshi</span>
+              <span class="tech-name-trans">"Club / Stick Overhead Swing Defense"</span>
+            </div>
+            <p class="tech-overview-p">Uke raises a wooden club or stick overhead and swings it down at Tori's head. Tori steps diagonally forward-left off the path of the club, strikes Uke's chin, and executes Osoto-gari to disarm the club.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke raises a club high overhead and swings it downward toward Tori's head.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori steps diagonally forward-left (Tai-sabaki) outside the club's path, blocking Uke's right arm.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori strikes Uke's chin with a palm heel, steps behind Uke's leg, and executes Osoto-gari to throw Uke and disarm the club.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Stepping outside the swing — clear the head completely from the descending arc of the club before countering.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Set 3</span><span class="pill-tag">Strikes & Weapons</span><span class="pill-tag">Club Defense</span><span class="pill-tag">Osoto-gari Disarm</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 17 -->
+        <div class="technique-item" data-category="set3">
+          <div class="tech-idx">17</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">短刀突掛</span>
+              <span class="tech-name-romaji">Tanto-tsukkake</span>
+              <span class="tech-name-trans">"Knife Thrust Defense"</span>
+            </div>
+            <p class="tech-overview-p">Uke thrusts a knife (Tantō) directly toward Tori's abdomen. Tori pivots off the line of the blade, parries Uke's wrist, locks the elbow into Waki-gatame, forces Uke down, and disarms the knife.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke draws a knife and thrusts straight toward Tori's abdomen.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori shifts the hips back-left off the blade's line, parries Uke's right wrist with the left hand, and strikes Uke's face with the right hand.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori applies Waki-gatame across Uke's right elbow, brings Uke prone to the tatami, and strips the knife.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Body off the blade path — turn the torso completely away from the knife's line before locking the arm.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Set 3</span><span class="pill-tag">Strikes & Weapons</span><span class="pill-tag">Knife Defense</span><span class="pill-tag">Waki-gatame Disarm</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 18 -->
+        <div class="technique-item" data-category="set3">
+          <div class="tech-idx">18</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">背面付</span>
+              <span class="tech-name-romaji">Haimen-zuke</span>
+              <span class="tech-name-trans">"Threat from Behind / Finale"</span>
+            </div>
+            <p class="tech-overview-p">The 18th and concluding technique of Joshi Goshin-hō. Uke threatens Tori from behind. Tori raises hands, pivots 180 degrees swiftly, knocks the weapon/arm away, locks Uke's arm, and takes control to conclude the kata.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke threatens Tori from behind with a weapon or grab.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori raises both hands in surrender, then swiftly pivots 180 degrees clockwise on the left foot, deflecting Uke's arm outward with the right elbow.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori traps Uke's arm, applies an armlock, takes Uke to the mat, and maintains Zanshin control to conclude the kata.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Explosive 180-degree pivot — rotate the body smoothly on the ball of the foot to clear the threat trajectory instantly.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Set 3</span><span class="pill-tag">Strikes & Weapons</span><span class="pill-tag">Rear Threat</span><span class="pill-tag">Kata Finale</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Principles & Reihō Section -->
+  <section id="reiho" class="sets-bg">
+    <div class="section-wrap">
+      <p class="sec-kicker">Principles & Leverage</p>
+      <h2 class="sec-heading">Joshi Goshin-hō Leverage & Atemi Principles</h2>
+      <p class="sec-sub">Mastery of women's self-defense relies on biomechanical advantage rather than muscular confrontation.</p>
+
+      <div class="reiho-grid">
+        <div class="reiho-card">
+          <h4>Anatomical Weak Points</h4>
+          <p>Joshi Goshin-hō targets vulnerable points (Kyusho) such as the eyes, chin, ribs, groin, and joints, allowing a smaller defender to generate immediate flinch reflexes in a larger aggressor.</p>
+        </div>
+        <div class="reiho-card">
+          <h4>Leverage Over Muscle</h4>
+          <p>Techniques like Kote-gaeshi and Waki-gatame use two-handed rotational torque against single finger joints or elbows, maximizing mechanical advantage.</p>
+        </div>
+        <div class="reiho-card">
+          <h4>Opening & Closing Reihō</h4>
+          <p>Partners stand 5.5m apart. They perform standing bow (Ritsurei) to Joseki, face each other, drop to Seiza for seated bow (Zarei), rise, and step forward with the left foot into Shizentai.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz Section -->
+  <section id="quiz">
+    <div class="section-wrap">
+      <div style="text-align: center; margin-bottom: 2.5rem;">
+        <p class="sec-kicker">Self-Assessment</p>
+        <h2 class="sec-heading">Joshi Goshin-hō Knowledge Check</h2>
+        <p class="sec-sub" style="margin: 0 auto;">Test your understanding of the official Kodokan women's self-defense syllabus.</p>
+      </div>
+
+      <div class="quiz-card">
+        <form id="quiz-form">
+          <div class="question-block">
+            <div class="question-title">1. In what year was Joshi Goshin-hō formulated by the Kodokan Women's Section?</div>
+            <label class="option-item"><input type="radio" name="q1" value="a"> 1888</label>
+            <label class="option-item"><input type="radio" name="q1" value="b"> 1943</label>
+            <label class="option-item"><input type="radio" name="q1" value="c"> 1956</label>
+          </div>
+
+          <div class="question-block">
+            <div class="question-title">2. How many total self-defense techniques comprise Kodokan Joshi Goshin-hō?</div>
+            <label class="option-item"><input type="radio" name="q2" value="a"> 15 techniques across 3 sets</label>
+            <label class="option-item"><input type="radio" name="q2" value="b"> 18 techniques across 3 sets (6 in each set)</label>
+            <label class="option-item"><input type="radio" name="q2" value="c"> 21 techniques across 5 sets</label>
+          </div>
+
+          <div class="question-block">
+            <div class="question-title">3. What is the correct immediate response when grabbed by the hair from behind (Technique 09)?</div>
+            <label class="option-item"><input type="radio" name="q3" value="a"> Pull your head backward as hard as possible</label>
+            <label class="option-item"><input type="radio" name="q3" value="b"> Place both hands over Uke's hand, pressing it firmly against your head to lock the hair roots and prevent scalp tearing</label>
+            <label class="option-item"><input type="radio" name="q3" value="c"> Drop to your knees and close your eyes</label>
+          </div>
+
+          <div class="question-block">
+            <div class="question-title">4. Which technique is the 18th and concluding technique of Joshi Goshin-hō?</div>
+            <label class="option-item"><input type="radio" name="q4" value="a"> Haimen-zuke (Threat from Behind / Finale)</label>
+            <label class="option-item"><input type="radio" name="q4" value="b"> Tanto-tsukkake (Knife Thrust Defense)</label>
+            <label class="option-item"><input type="radio" name="q4" value="c"> Ryote-dori (Both Wrists Seized)</label>
+          </div>
+
+          <button type="button" class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="evaluateQuiz()">Submit Answers</button>
+        </form>
+
+        <div id="quiz-feedback"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Kodokan Judo Joshi Goshin-hō (女子護身法) e-Learning Module</p>
+    <p style="margin-top: 0.35rem;">Standardized 18-technique syllabus based on the official Kodokan Judo textbook.</p>
+  </footer>
+
+  <!-- Filter & Quiz Logic -->
+  <script>
+    function filterCategory(category) {
+      const items = document.querySelectorAll('.technique-item');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      items.forEach(item => {
+        if (category === 'all' || item.getAttribute('data-category') === category) {
+          item.style.display = 'grid';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    function evaluateQuiz() {
+      const answers = { q1: 'b', q2: 'b', q3: 'b', q4: 'a' };
+      const form = document.forms['quiz-form'];
+      let score = 0;
+      let total = 4;
+
+      for (let q in answers) {
+        if (form[q] && form[q].value === answers[q]) {
+          score++;
+        }
+      }
+
+      const percentage = Math.round((score / total) * 100);
+      const feedback = document.getElementById('quiz-feedback');
+      feedback.style.display = 'block';
+
+      if (percentage >= 75) {
+        feedback.style.background = '#dcfce7';
+        feedback.style.color = '#15803d';
+        feedback.style.border = '1px solid #bbf7d0';
+        feedback.innerHTML = `Assessment Passed! Score: ${percentage}% (${score}/${total} correct). You have demonstrated solid comprehension of Kodokan Joshi Goshin-hō!`;
+      } else {
+        feedback.style.background = '#fee2e2';
+        feedback.style.color = '#b91c1c';
+        feedback.style.border = '1px solid #fecaca';
+        feedback.innerHTML = `Score: ${percentage}% (${score}/${total} correct). Review the self-defense breakdowns above and try again.`;
+      }
+    }
+  </script>
+</body>
+</html>

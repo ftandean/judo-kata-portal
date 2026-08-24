@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>剛の形 — Go-no-Kata e-Learning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;600;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #9b2c2c;
+      --primary-dark: #742a2a;
+      --primary-light: #fff5f5;
+      --accent: #d97706;
+      --accent-light: #fef3c7;
+      --ink: #1e293b;
+      --text: #334155;
+      --text-muted: #64748b;
+      --bg: #ffffff;
+      --bg-alt: #f8fafc;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.03);
+      --font-display: 'Cinzel', serif;
+      --font-jp: 'Noto Serif JP', serif;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--ink);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-brand .kanji {
+      font-family: var(--font-jp);
+      color: var(--primary);
+      font-size: 1.25rem;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: color 0.2s ease;
+    }
+
+    .nav-menu a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: radial-gradient(circle at 80% 20%, rgba(155, 44, 44, 0.04) 0%, transparent 50%),
+                  radial-gradient(circle at 20% 80%, rgba(217, 119, 6, 0.04) 0%, transparent 50%),
+                  #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: 5.5rem 2rem 4.5rem;
+    }
+
+    .hero-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero h1 span.jp {
+      display: inline-block;
+      font-family: var(--font-jp);
+      font-size: 0.85em;
+      color: var(--primary);
+      margin-left: 0.6rem;
+      font-weight: 900;
+    }
+
+    .hero-lead {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin: 1.25rem 0 2rem;
+      font-weight: 400;
+      max-width: 600px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.6rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      border: 1px solid var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      border-color: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: var(--bg-alt);
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.75rem;
+    }
+
+    .stat-item .num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .stat-item .lbl {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+    }
+
+    /* Hero Emblem Badge */
+    .hero-emblem {
+      background: linear-gradient(135deg, var(--primary-light), #fff);
+      border: 1px solid #fed7d7;
+      border-radius: 8px;
+      padding: 3rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .hero-emblem::before {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 1px dashed rgba(155, 44, 44, 0.2);
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    .hero-emblem .big-kanji {
+      font-family: var(--font-jp);
+      font-size: 5rem;
+      font-weight: 900;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .hero-emblem .emblem-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-top: 1rem;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-emblem .emblem-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    /* Section Global Styles */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .section-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .sec-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .sec-heading {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+
+    .sec-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      max-width: 750px;
+    }
+
+    /* About Section */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      margin-bottom: 1.25rem;
+      color: #475569;
+    }
+
+    .about-sidebar {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sidebar-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+
+    .meta-row span:first-child {
+      color: var(--text-muted);
+    }
+
+    .meta-row span:last-child {
+      font-weight: 600;
+      color: var(--ink);
+      text-align: right;
+    }
+
+    /* Two Sets Overview */
+    .sets-bg {
+      background-color: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sets-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .set-panel {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .set-tag {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: var(--primary);
+      margin-bottom: 0.35rem;
+    }
+
+    .set-panel h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .set-panel .kanji-sub {
+      font-family: var(--font-jp);
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .set-panel p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .set-tech-list {
+      list-style: none;
+      margin-top: auto;
+      border-top: 1px solid var(--border);
+      padding-top: 0.75rem;
+    }
+
+    .set-tech-list li {
+      padding: 0.45rem 0;
+      font-size: 0.88rem;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed var(--border-light);
+    }
+
+    .set-tech-list li span.trans {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    /* Technique Breakdown Section */
+    .filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: none;
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      color: var(--ink);
+      background: var(--bg-alt);
+    }
+
+    .filter-btn.active {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .technique-item {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 1.75rem;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tech-idx {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #cbd5e1;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .tech-header-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .tech-name-jp {
+      font-family: var(--font-jp);
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--ink);
+    }
+
+    .tech-name-romaji {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .tech-name-trans {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .tech-overview-p {
+      color: var(--text);
+      font-size: 0.98rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .step-list {
+      background: var(--bg-alt);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .step-row {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 0.75rem;
+      font-size: 0.92rem;
+      color: #334155;
+    }
+
+    .step-num {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .principle-box {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      padding: 0.85rem 1.2rem;
+      border-radius: 0 4px 4px 0;
+      font-size: 0.88rem;
+      color: #92400e;
+      margin-bottom: 1.25rem;
+    }
+
+    .principle-box strong {
+      color: #78350f;
+    }
+
+    .tags-container {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .pill-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 50px;
+      background: #f1f5f9;
+      color: var(--text-muted);
+    }
+
+    /* Reihō & Principles Section */
+    .reiho-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .reiho-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+    }
+
+    .reiho-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .reiho-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    /* Quiz Section */
+    .quiz-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .question-block {
+      margin-bottom: 2rem;
+    }
+
+    .question-title {
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 1.05rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .option-item {
+      display: block;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      padding: 0.85rem 1.2rem;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      font-size: 0.92rem;
+      transition: all 0.2s ease;
+    }
+
+    .option-item:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .option-item input {
+      margin-right: 0.75rem;
+      accent-color: var(--primary);
+    }
+
+    #quiz-feedback {
+      display: none;
+      padding: 1.25rem;
+      border-radius: 4px;
+      margin-top: 1.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 3rem 2rem;
+      background: var(--bg-alt);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-container, .about-layout, .sets-grid-2, .reiho-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-menu { display: none; }
+      .technique-item { grid-template-columns: 1fr; }
+      .tech-idx { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav>
+    <div class="nav-brand">
+      <span class="kanji">剛の形</span>
+      <span>Go-no-Kata</span>
+    </div>
+    <ul class="nav-menu">
+      <li><a href="#about">About</a></li>
+      <li><a href="#sets">Two Sets</a></li>
+      <li><a href="#techniques">Techniques</a></li>
+      <li><a href="#reiho">Theory & History</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container">
+      <div>
+        <p class="hero-kicker">Kodokan Judo — The Forms of Hardness & Strength</p>
+        <h1>Go-no-Kata <span class="jp">剛の形</span></h1>
+        <p class="hero-lead">The Forms of Hardness / Strength. Created by Jigoro Kano around 1887 as the direct combative counterpart to Ju-no-Kata, demonstrating how direct power meets direct power, collision mechanics, isometric resistance, and decisive physical superiority.</p>
+        
+        <div class="hero-cta-group">
+          <a href="#techniques" class="btn btn-primary">Start Learning</a>
+          <a href="#sets" class="btn btn-secondary">Overview</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="num">10</div>
+            <div class="lbl">Techniques (2 Sets)</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">Go / 剛</div>
+            <div class="lbl">Hardness vs. Ju / 柔</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">1887</div>
+            <div class="lbl">Kodokan Formulated</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-emblem">
+        <div class="big-kanji">剛</div>
+        <div class="emblem-title">GO</div>
+        <div class="emblem-sub">Hardness · Direct Strength</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="section-wrap">
+      <div class="about-layout">
+        <div class="about-text">
+          <p class="sec-kicker">Introduction</p>
+          <h2 class="sec-heading">What is Go-no-Kata?</h2>
+          <p><strong>Go-no-Kata (剛の形)</strong>, meaning "Forms of Hardness" or "Forms of Strength," was formulated by Jigoro Kano in the late 1880s alongside <em>Ju-no-Kata</em>. While Ju-no-Kata explores the yielding principle (<em>Ju</em>) to redirect force without direct resistance, Go-no-Kata explores the principle of <strong>Go (剛 — direct firmness, hardness, and maximum physical power)</strong>.</p>
+          <p>The kata consists of <strong>10 paired exercises arranged into two sets of five techniques</strong>. In each technique, Uke attacks with full direct muscular force, and Tori meets the attack head-on with equal or superior strength, locking the opposing force before breaking through with decisive mechanical superiority.</p>
+          <p>Unlike fluid non-contact kata, Go-no-Kata requires powerful physical engagement, heavy stance stability (<em>Jigotai</em>), isometric tension, and direct collision control. It served historically as the physical conditioning and strength-testing engine of the early Kodokan.</p>
+          <p>Though rarely demonstrated in modern public venues compared to Ju-no-Kata, Go-no-Kata remains documented in Kodokan historical archives as the indispensable complementary half of Kano's "Go-Ju" (Hard & Soft) unified martial theory.</p>
+        </div>
+
+        <div class="about-sidebar">
+          <div class="sidebar-title">At a Glance</div>
+          <div class="meta-row"><span>Full Name</span><span>Go-no-Kata 剛の形</span></div>
+          <div class="meta-row"><span>Translation</span><span>Forms of Hardness / Strength</span></div>
+          <div class="meta-row"><span>Complement</span><span>Counterpart to Ju-no-Kata</span></div>
+          <div class="meta-row"><span>Creator</span><span>Jigoro Kano (Kodokan)</span></div>
+          <div class="meta-row"><span>Composition</span><span>2 Sets × 5 Techniques</span></div>
+          <div class="meta-row"><span>Total Techniques</span><span>10 Techniques</span></div>
+          <div class="meta-row"><span>Core Theme</span><span>Direct Force Meeting Force (Go)</span></div>
+          <div class="meta-row"><span>Status</span><span>Classical Kodokan Archive</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Structure / Two Sets -->
+  <section id="sets" class="sets-bg">
+    <div class="section-wrap">
+      <p class="sec-kicker">Structure</p>
+      <h2 class="sec-heading">The Two Sets (10 Techniques)</h2>
+      <p class="sec-sub">Go-no-Kata is organized into two distinct sets of five techniques exploring linear force collisions and rotational power grappling.</p>
+
+      <div class="sets-grid-2">
+        <!-- Set 1 -->
+        <div class="set-panel">
+          <div class="set-tag">SET 01 — 5 TECHNIQUES</div>
+          <h3>Dai-ikkyo (First Group)</h3>
+          <div class="kanji-sub">第一教 — Linear Power & Direct Collisions</div>
+          <p>Direct head-on clashes against heavy linear pushes, chest thrusts, two-handed collar grips, and direct isometric clashes.</p>
+          <ul class="set-tech-list">
+            <li>1. Seiryoku-shobu <span class="trans">Direct Power Contest</span></li>
+            <li>2. Tsuki-dashi <span class="trans">Direct Thrust Clash</span></li>
+            <li>3. Kata-oshi <span class="trans">Heavy Shoulder Push</span></li>
+            <li>4. Ryote-dori <span class="trans">Both Wrists Seized</span></li>
+            <li>5. Mune-oshi <span class="trans">Chest Push & Counter</span></li>
+          </ul>
+        </div>
+
+        <!-- Set 2 -->
+        <div class="set-panel">
+          <div class="set-tag">SET 02 — 5 TECHNIQUES</div>
+          <h3>Dai-nikyo (Second Group)</h3>
+          <div class="kanji-sub">第二教 — Rotational Force & Power Throws</div>
+          <p>Heavy rotational torque, neck/head clamps, powerful hip locks, and forceful takedowns overcoming raw resistance.</p>
+          <ul class="set-tech-list">
+            <li>6. Kata-mawashi <span class="trans">Shoulder Turn Clash</span></li>
+            <li>7. Ago-oshi <span class="trans">Upward Chin Drive</span></li>
+            <li>8. Kubi-dori <span class="trans">Neck Lock & Power Break</span></li>
+            <li>9. Koshi-kudaki <span class="trans">Hip Smash & Collapse</span></li>
+            <li>10. Tsuki-age <span class="trans">Rising Uppercut Clash</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step-by-Step Technical Breakdown -->
+  <section id="techniques">
+    <div class="section-wrap">
+      <p class="sec-kicker">Step-by-Step</p>
+      <h2 class="sec-heading">Technique Breakdown</h2>
+      <p class="sec-sub">The 10 techniques detailed step-by-step according to the historical Kodokan syllabus and technical archives.</p>
+
+      <!-- Filter Controls -->
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterCategory('all')">All (10 Techniques)</button>
+        <button class="filter-btn" onclick="filterCategory('go1')">1. Dai-ikkyo (Linear 1–5)</button>
+        <button class="filter-btn" onclick="filterCategory('go2')">2. Dai-nikyo (Rotational 6–10)</button>
+      </div>
+
+      <!-- Techniques Container -->
+      <div id="tech-container">
+
+        <!-- ================= SET 1 ================= -->
+        <!-- 1 -->
+        <div class="technique-item" data-category="go1">
+          <div class="tech-idx">01</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">勢力勝負</span>
+              <span class="tech-name-romaji">Seiryoku-shobu</span>
+              <span class="tech-name-trans">"Direct Power Contest / Clash of Strengths"</span>
+            </div>
+            <p class="tech-overview-p">Tori and Uke step forward into a heavy head-on collar-and-sleeve grip. Uke drives forward with maximum muscular force; Tori braces in Jigotai, arrests Uke's momentum completely, and overpowers Uke straight backward.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Both partners advance aggressively into right natural grip, lowering hips into firm defensive posture (Jigotai).</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Uke drives forward with full physical power attempting to push Tori off balance.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori anchors the center of mass, meets the force with equal firmness, locks Uke's drive, and surges forward through Uke's center to drive Uke backward.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Direct force meeting force — anchoring the tanden to absorb the full collision before executing direct forward drive.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Dai-ikkyo</span><span class="pill-tag">Power Clash</span><span class="pill-tag">Jigotai Anchor</span><span class="pill-tag">Direct Drive</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="technique-item" data-category="go1">
+          <div class="tech-idx">02</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">突出</span>
+              <span class="tech-name-romaji">Tsuki-dashi</span>
+              <span class="tech-name-trans">"Direct Thrust Clash"</span>
+            </div>
+            <p class="tech-overview-p">Uke steps in driving both hands forcefully into Tori's chest. Unlike Ju-no-Kata where Tori yields in a circle, in Go-no-Kata Tori steps forward into the thrust, traps Uke's forearms with crushing force, and drives Uke down.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke steps forward driving both open palms into Tori's chest at solar plexus height.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori steps the right foot forward, meeting the thrust head-on with rigid forearm blocks.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori clamps down over Uke's arms with heavy downward bodyweight, crushing Uke's posture and driving Uke to the mat.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Stepping into the thrust — meeting the forward thrust by stepping forward with grounded downward pressure rather than yielding back.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Dai-ikkyo</span><span class="pill-tag">Thrust Collision</span><span class="pill-tag">Forearm Trap</span><span class="pill-tag">Hard Takedown</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="technique-item" data-category="go1">
+          <div class="tech-idx">03</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">肩押</span>
+              <span class="tech-name-romaji">Kata-oshi</span>
+              <span class="tech-name-trans">"Heavy Shoulder Push"</span>
+            </div>
+            <p class="tech-overview-p">Uke drives the right palm heavily against Tori's left shoulder. Tori tenses the neck and shoulder to resist, clamps Uke's pushing wrist with crushing power, steps in, and forces Uke backward over the heels.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke advances and presses hard against Tori's left shoulder with locked elbow.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori braces the shoulder without retreating, absorbing the load into the core.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori clamps Uke's right wrist, steps deeply inside Uke's base, and drives Uke straight back with upper torso drive.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Isometric lock — resisting the shoulder drive until the opposing arm is fully extended, then overpowering the joint.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Dai-ikkyo</span><span class="pill-tag">Shoulder Resistance</span><span class="pill-tag">Wrist Clamp</span><span class="pill-tag">Power Step</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="technique-item" data-category="go1">
+          <div class="tech-idx">04</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">両手取</span>
+              <span class="tech-name-romaji">Ryote-dori</span>
+              <span class="tech-name-trans">"Both Wrists Seized (Power Break)"</span>
+            </div>
+            <p class="tech-overview-p">Uke grips both of Tori's wrists and pulls with heavy backward traction. Tori plants both feet firmly, resists the pull, flexes both arms powerfully, and breaks the grip by direct outward explosive force.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke grips both of Tori's wrists tightly and pulls backward with full bodyweight.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori drops the center of mass in Jigotai, resisting the traction with rigid base.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori flexes the biceps, tears the hands outward with explosive power, and steps in to drive both hands into Uke's chest.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Explosive grip tear — breaking two-handed grip by direct isometric contraction followed by explosive outward expansion.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Dai-ikkyo</span><span class="pill-tag">Wrist Lock Resistance</span><span class="pill-tag">Power Tear</span><span class="pill-tag">Chest Drive</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="technique-item" data-category="go1">
+          <div class="tech-idx">05</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">胸押</span>
+              <span class="tech-name-romaji">Mune-oshi</span>
+              <span class="tech-name-trans">"Chest Push & Direct Counter"</span>
+            </div>
+            <p class="tech-overview-p">Uke drives both open hands into Tori's chest with explosive shoving force. Tori receives the impact squarely with a tensed chest, clamps Uke's wrists, and executes a direct forward leg reap (Osoto-gari variation).</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke steps forward aggressively with a two-handed chest shove.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori braces the chest with abdominal tension (Kime), absorbing the impact squarely without stepping back.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori traps both of Uke's wrists, steps the left foot deep beside Uke, and reaps Uke's right leg down with powerful Osoto-gari.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Solid chest absorption — absorbing the shove with tensed core and immediate forward counter-attack.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Dai-ikkyo</span><span class="pill-tag">Chest Impact</span><span class="pill-tag">Direct Counter</span><span class="pill-tag">Osoto-gari</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= SET 2 ================= -->
+        <!-- 6 -->
+        <div class="technique-item" data-category="go2">
+          <div class="tech-idx">06</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">肩廻</span>
+              <span class="tech-name-romaji">Kata-mawashi</span>
+              <span class="tech-name-trans">"Shoulder Turn Clash"</span>
+            </div>
+            <p class="tech-overview-p">Uke places hands on Tori's shoulders to forcefully wrench Tori in a spin. Tori resists the rotation rigidly, arrests the torque, and overpowers Uke's shoulders by reversing the spin with overwhelming strength.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke grips both of Tori's shoulders and applies heavy rotational force to turn Tori.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori locks the hips and neck, stopping Uke's rotation dead in its tracks.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori applies superior counter-rotational force, twisting Uke around and slamming Uke to the mat.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Torque stoppage & reversal — stopping the rotational momentum through core firmness before reversing with greater force.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Dai-nikyo</span><span class="pill-tag">Rotational Clash</span><span class="pill-tag">Shoulder Torque</span><span class="pill-tag">Power Reversal</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="technique-item" data-category="go2">
+          <div class="tech-idx">07</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">顎押</span>
+              <span class="tech-name-romaji">Ago-oshi</span>
+              <span class="tech-name-trans">"Upward Chin Drive"</span>
+            </div>
+            <p class="tech-overview-p">Uke drives an upward palm beneath Tori's chin. Tori tenses the neck muscles to prevent the head from snapping back, grips Uke's pushing hand with both hands, twists the wrist over, and pins Uke down.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke steps in pushing hard upward against Tori's chin with the right palm.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori flexes the neck and upper back muscles to hold the head firm against the pressure.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori seizes Uke's right wrist with both hands, applies a standing wrist wrench (Kote-gaeshi), and forces Uke to the tatami.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Neck isometric strength — resisting the upward chin drive without tilting the spine backward.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Dai-nikyo</span><span class="pill-tag">Chin Push Resistance</span><span class="pill-tag">Neck Strength</span><span class="pill-tag">Wrist Wrench</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="technique-item" data-category="go2">
+          <div class="tech-idx">08</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">首取</span>
+              <span class="tech-name-romaji">Kubi-dori</span>
+              <span class="tech-name-trans">"Neck Lock & Power Break"</span>
+            </div>
+            <p class="tech-overview-p">Uke reaches around Tori's neck with the right arm in a headlock. Tori plants both feet, resists the headlock clamp, wraps both arms around Uke's waist, and lifts Uke bodily to slam Uke backward.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke wraps the right arm tightly around Tori's neck in a headlock.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori anchors the hips in deep stance, preventing the head from being bent downward.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori wraps both arms around Uke's waist, hoists Uke straight off the mat (Ura-nage / Ushiro-goshi lift), and slams Uke down.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Headlock counter-hoist — resist the neck bend with posture, then hoist Uke directly off the floor using hip power.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Dai-nikyo</span><span class="pill-tag">Headlock Resistance</span><span class="pill-tag">Body Hoist</span><span class="pill-tag">Power Slam</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="technique-item" data-category="go2">
+          <div class="tech-idx">09</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">腰砕</span>
+              <span class="tech-name-romaji">Koshi-kudaki</span>
+              <span class="tech-name-trans">"Hip Smash & Collapse"</span>
+            </div>
+            <p class="tech-overview-p">Uke enters with a powerful hip throw attempt (O-goshi / Harai-goshi). Tori refuses to be moved, blocks the hip entry with an immovable pelvic check, hoists Uke, and smashes Uke down.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke turns in aggressively for a heavy hip throw.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori lowers the hips and drives the pelvis forward, blocking Uke's hip entry solidly.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori wraps the waist, lifts Uke off the ground, and drives Uke down flat on the mat (Utsuri-goshi / Koshi-kudaki).</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Pelvic block — stopping a full hip throw with an immovable pelvic check and immediate counter-hoist.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Dai-nikyo</span><span class="pill-tag">Hip Block</span><span class="pill-tag">Pelvic Check</span><span class="pill-tag">Counter Smash</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="technique-item" data-category="go2">
+          <div class="tech-idx">10</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">突上</span>
+              <span class="tech-name-romaji">Tsuki-age</span>
+              <span class="tech-name-trans">"Rising Uppercut Clash"</span>
+            </div>
+            <p class="tech-overview-p">The 10th and concluding technique of Go-no-Kata. Uke delivers a heavy rising fist thrust toward Tori's chin. Tori meets the forearm with a crushing downward block, drives forward through Uke's center, and slams Uke to conclude the kata.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke steps in driving a forceful rising punch (Tsuki-age) aimed at Tori's jaw.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori steps forward with the right foot, smashing the left forearm down across Uke's rising forearm with heavy downward force.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori steps through with the right foot, driving a decisive fist/palm into Uke's chest, throwing Uke flat to the mat with complete martial focus (Zanshin).</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Hard forearm smash — meeting the rising punch with an explosive downward forearm strike and forward body drive.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Dai-nikyo</span><span class="pill-tag">Punch Smash</span><span class="pill-tag">Hard Block</span><span class="pill-tag">Kata Finale</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Principles & History Section -->
+  <section id="reiho" class="sets-bg">
+    <div class="section-wrap">
+      <p class="sec-kicker">Theory & Lineage</p>
+      <h2 class="sec-heading">The Unified Go-Ju Theory of Kodokan Judo</h2>
+      <p class="sec-sub">Go-no-Kata and Ju-no-Kata form the two complementary philosophical pillars of Kodokan Judo.</p>
+
+      <div class="reiho-grid">
+        <div class="reiho-card">
+          <h4>Go (剛) vs. Ju (柔)</h4>
+          <p>Jigoro Kano taught that while Judo emphasizes yielding (Ju), a complete martial artist must also understand direct strength (Go). Without understanding direct physical hardness, true yielding cannot be properly calibrated.</p>
+        </div>
+        <div class="reiho-card">
+          <h4>Physical Conditioning Role</h4>
+          <p>Historically, Go-no-Kata served as high-intensity isometric conditioning. It built bone density, core stiffness, grip strength, and stability under heavy physical collisions.</p>
+        </div>
+        <div class="reiho-card">
+          <h4>Reihō & Protocol</h4>
+          <p>Tori and Uke stand 5.5m apart. They perform standing bow (Ritsurei) to Joseki, face each other, perform Ritsurei, and advance with heavy, grounded steps into the opening power clash.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz Section -->
+  <section id="quiz">
+    <div class="section-wrap">
+      <div style="text-align: center; margin-bottom: 2.5rem;">
+        <p class="sec-kicker">Self-Assessment</p>
+        <h2 class="sec-heading">Go-no-Kata Knowledge Check</h2>
+        <p class="sec-sub" style="margin: 0 auto;">Test your understanding of the classical Kodokan Go-no-Kata syllabus.</p>
+      </div>
+
+      <div class="quiz-card">
+        <form id="quiz-form">
+          <div class="question-block">
+            <div class="question-title">1. What is the fundamental philosophical theme of Go-no-Kata compared to Ju-no-Kata?</div>
+            <label class="option-item"><input type="radio" name="q1" value="a"> Go-no-Kata explores yielding and circular evasion</label>
+            <label class="option-item"><input type="radio" name="q1" value="b"> Go-no-Kata explores direct hardness (Go), isometric power collisions, and strength superiority</label>
+            <label class="option-item"><input type="radio" name="q1" value="c"> Go-no-Kata is performed exclusively with swords</label>
+          </div>
+
+          <div class="question-block">
+            <div class="question-title">2. How many total techniques comprise the classical Kodokan Go-no-Kata?</div>
+            <label class="option-item"><input type="radio" name="q2" value="a"> 10 techniques arranged into 2 sets of 5</label>
+            <label class="option-item"><input type="radio" name="q2" value="b"> 15 techniques arranged into 3 sets of 5</label>
+            <label class="option-item"><input type="radio" name="q2" value="c"> 21 techniques across 4 sets</label>
+          </div>
+
+          <div class="question-block">
+            <div class="question-title">3. In technique 02 (Tsuki-dashi), how does Tori respond to Uke's direct chest push?</div>
+            <label class="option-item"><input type="radio" name="q3" value="a"> Tori steps back in a circle to guide Uke forward</label>
+            <label class="option-item"><input type="radio" name="q3" value="b"> Tori steps forward into the thrust, traps Uke's forearms with crushing force, and drives Uke down</label>
+            <label class="option-item"><input type="radio" name="q3" value="c"> Tori drops to the knees to perform Seoi-nage</label>
+          </div>
+
+          <div class="question-block">
+            <div class="question-title">4. Which technique is the 10th and concluding technique of Go-no-Kata?</div>
+            <label class="option-item"><input type="radio" name="q4" value="a"> Koshi-kudaki (Hip Smash)</label>
+            <label class="option-item"><input type="radio" name="q4" value="b"> Tsuki-age (Rising Uppercut Smash & Drive)</label>
+            <label class="option-item"><input type="radio" name="q4" value="c"> Kubi-dori (Neck Lock)</label>
+          </div>
+
+          <button type="button" class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="evaluateQuiz()">Submit Answers</button>
+        </form>
+
+        <div id="quiz-feedback"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Kodokan Judo Go-no-Kata (剛の形) e-Learning Module</p>
+    <p style="margin-top: 0.35rem;">Standardized syllabus based on Kodokan historical archives and classical textbook records.</p>
+  </footer>
+
+  <!-- Filter & Quiz Logic -->
+  <script>
+    function filterCategory(category) {
+      const items = document.querySelectorAll('.technique-item');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      items.forEach(item => {
+        if (category === 'all' || item.getAttribute('data-category') === category) {
+          item.style.display = 'grid';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    function evaluateQuiz() {
+      const answers = { q1: 'b', q2: 'a', q3: 'b', q4: 'b' };
+      const form = document.forms['quiz-form'];
+      let score = 0;
+      let total = 4;
+
+      for (let q in answers) {
+        if (form[q] && form[q].value === answers[q]) {
+          score++;
+        }
+      }
+
+      const percentage = Math.round((score / total) * 100);
+      const feedback = document.getElementById('quiz-feedback');
+      feedback.style.display = 'block';
+
+      if (percentage >= 75) {
+        feedback.style.background = '#dcfce7';
+        feedback.style.color = '#15803d';
+        feedback.style.border = '1px solid #bbf7d0';
+        feedback.innerHTML = `Assessment Passed! Score: ${percentage}% (${score}/${total} correct). You have demonstrated solid comprehension of Kodokan Go-no-Kata!`;
+      } else {
+        feedback.style.background = '#fee2e2';
+        feedback.style.color = '#b91c1c';
+        feedback.style.border = '1px solid #fecaca';
+        feedback.innerHTML = `Score: ${percentage}% (${score}/${total} correct). Review the technique breakdowns above and try again.`;
+      }
+    }
+  </script>
+</body>
+</html>

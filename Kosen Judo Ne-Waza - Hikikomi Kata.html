@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>高専柔道 引込技 — Kosen Judo Ne-Waza & Hikikomi e-Learning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;600;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #9b2c2c;
+      --primary-dark: #742a2a;
+      --primary-light: #fff5f5;
+      --accent: #d97706;
+      --accent-light: #fef3c7;
+      --ink: #1e293b;
+      --text: #334155;
+      --text-muted: #64748b;
+      --bg: #ffffff;
+      --bg-alt: #f8fafc;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.03);
+      --font-display: 'Cinzel', serif;
+      --font-jp: 'Noto Serif JP', serif;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--ink);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-brand .kanji {
+      font-family: var(--font-jp);
+      color: var(--primary);
+      font-size: 1.25rem;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: color 0.2s ease;
+    }
+
+    .nav-menu a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: radial-gradient(circle at 80% 20%, rgba(155, 44, 44, 0.04) 0%, transparent 50%),
+                  radial-gradient(circle at 20% 80%, rgba(217, 119, 6, 0.04) 0%, transparent 50%),
+                  #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: 5.5rem 2rem 4.5rem;
+    }
+
+    .hero-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero h1 span.jp {
+      display: inline-block;
+      font-family: var(--font-jp);
+      font-size: 0.85em;
+      color: var(--primary);
+      margin-left: 0.6rem;
+      font-weight: 900;
+    }
+
+    .hero-lead {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin: 1.25rem 0 2rem;
+      font-weight: 400;
+      max-width: 600px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.6rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      border: 1px solid var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      border-color: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: var(--bg-alt);
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.75rem;
+    }
+
+    .stat-item .num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .stat-item .lbl {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+    }
+
+    /* Hero Emblem Badge */
+    .hero-emblem {
+      background: linear-gradient(135deg, var(--primary-light), #fff);
+      border: 1px solid #fed7d7;
+      border-radius: 8px;
+      padding: 3rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .hero-emblem::before {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 1px dashed rgba(155, 44, 44, 0.2);
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    .hero-emblem .big-kanji {
+      font-family: var(--font-jp);
+      font-size: 5rem;
+      font-weight: 900;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .hero-emblem .emblem-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-top: 1rem;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-emblem .emblem-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    /* Section Global Styles */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .section-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .sec-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .sec-heading {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+
+    .sec-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      max-width: 750px;
+    }
+
+    /* About Section */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      margin-bottom: 1.25rem;
+      color: #475569;
+    }
+
+    .about-sidebar {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sidebar-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+
+    .meta-row span:first-child {
+      color: var(--text-muted);
+    }
+
+    .meta-row span:last-child {
+      font-weight: 600;
+      color: var(--ink);
+      text-align: right;
+    }
+
+    /* Three Pillars Overview */
+    .sets-bg {
+      background-color: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sets-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .set-panel {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .set-tag {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: var(--primary);
+      margin-bottom: 0.35rem;
+    }
+
+    .set-panel h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .set-panel .kanji-sub {
+      font-family: var(--font-jp);
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .set-panel p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .set-tech-list {
+      list-style: none;
+      margin-top: auto;
+      border-top: 1px solid var(--border);
+      padding-top: 0.75rem;
+    }
+
+    .set-tech-list li {
+      padding: 0.45rem 0;
+      font-size: 0.88rem;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed var(--border-light);
+    }
+
+    .set-tech-list li span.trans {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    /* Technique Breakdown Section */
+    .filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: none;
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      color: var(--ink);
+      background: var(--bg-alt);
+    }
+
+    .filter-btn.active {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .technique-item {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 1.75rem;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tech-idx {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #cbd5e1;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .tech-header-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .tech-name-jp {
+      font-family: var(--font-jp);
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--ink);
+    }
+
+    .tech-name-romaji {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .tech-name-trans {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .tech-overview-p {
+      color: var(--text);
+      font-size: 0.98rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .step-list {
+      background: var(--bg-alt);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .step-row {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 0.75rem;
+      font-size: 0.92rem;
+      color: #334155;
+    }
+
+    .step-num {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .principle-box {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      padding: 0.85rem 1.2rem;
+      border-radius: 0 4px 4px 0;
+      font-size: 0.88rem;
+      color: #92400e;
+      margin-bottom: 1.25rem;
+    }
+
+    .principle-box strong {
+      color: #78350f;
+    }
+
+    .tags-container {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .pill-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 50px;
+      background: #f1f5f9;
+      color: var(--text-muted);
+    }
+
+    /* Principles & Tactics Section */
+    .reiho-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .reiho-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+    }
+
+    .reiho-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .reiho-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    /* Quiz Section */
+    .quiz-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .question-block {
+      margin-bottom: 2rem;
+    }
+
+    .question-title {
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 1.05rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .option-item {
+      display: block;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      padding: 0.85rem 1.2rem;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      font-size: 0.92rem;
+      transition: all 0.2s ease;
+    }
+
+    .option-item:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .option-item input {
+      margin-right: 0.75rem;
+      accent-color: var(--primary);
+    }
+
+    #quiz-feedback {
+      display: none;
+      padding: 1.25rem;
+      border-radius: 4px;
+      margin-top: 1.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 3rem 2rem;
+      background: var(--bg-alt);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-container, .about-layout, .sets-grid-3, .reiho-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-menu { display: none; }
+      .technique-item { grid-template-columns: 1fr; }
+      .tech-idx { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav>
+    <div class="nav-brand">
+      <span class="kanji">高専柔道 引込技</span>
+      <span>Kosen Judo Ne-Waza</span>
+    </div>
+    <ul class="nav-menu">
+      <li><a href="#about">About</a></li>
+      <li><a href="#pillars">Three Pillars</a></li>
+      <li><a href="#techniques">Techniques</a></li>
+      <li><a href="#principles">Tactics & Doctrine</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container">
+      <div>
+        <p class="hero-kicker">Seven Imperial Universities — Groundwork & Pull-in Mastery</p>
+        <h1>Hikikomi & Ne-Waza <span class="jp">引込技・寝技</span></h1>
+        <p class="hero-lead">The Technical Doctrine of Kosen Judo. Developed within the Higher Technical Schools and Nanatei university leagues, this rigorous groundwork discipline perfected direct guard pulls (<em>Hikikomi</em>), relentless guard passing, and turnover submission sequences without relying on standing throws.</p>
+        
+        <div class="hero-cta-group">
+          <a href="#techniques" class="btn btn-primary">Start Technical Study</a>
+          <a href="#pillars" class="btn btn-secondary">Three Pillars</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="num">09</div>
+            <div class="lbl">Foundational Sequences</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">3</div>
+            <div class="lbl">Combat Phases</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">1898</div>
+            <div class="lbl">Kosen Tradition Origin</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-emblem">
+        <div class="big-kanji">高</div>
+        <div class="emblem-title">KOSEN NE-WAZA</div>
+        <div class="emblem-sub">Imperial University Groundwork · Hikikomi</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="section-wrap">
+      <div class="about-layout">
+        <div class="about-text">
+          <p class="sec-kicker">Introduction</p>
+          <h2 class="sec-heading">What is Kosen Judo Hikikomi & Ne-Waza?</h2>
+          <p><strong>Kosen Judo (高専柔道)</strong> was codified in the late 19th and early 20th centuries across the Japanese Higher Technical Schools (<em>Koto Senmon Gakko</em>) and preserved in the Seven Imperial Universities (<em>Nanatei Judo</em>). Under Kosen rules, competitors are permitted to pull their opponent directly into ground combat (<strong>Hikikomi</strong>) without attempting a sacrifice throw first.</p>
+          <p>This ruleset fostered an extraordinary evolution of ground fighting techniques (<em>Ne-waza</em>) that directly influenced modern Brazilian Jiu-Jitsu and submission grappling. The curriculum is built upon three continuous strategic phases:
+            <br>1. <strong>Hikikomi-waza (Pull-in Entries 1–3)</strong>: Direct guard pulls, hip-clamp entries, and sleeve-drag anchors that bring standing opponents down into controlled guard configurations.
+            <br>2. <strong>Gaeshi & Torikaeshi (Sweeps & Turnovers 4–6)</strong>: Classical bottom attacks including butterfly sweeps, Tomoe-roll transitions, and the iconic Sankaku (triangle) entrapments.
+            <br>3. <strong>Fusegi-yaburi & Osae (Turtle Breakdown & Pins 7–9)</strong>: Methodical methods to crack the defensive turtle (<em>Kame</em>), roll opponents into pins, and secure immediate strangles or locks.</p>
+          <p>Kosen doctrine prioritizes relentless pressure, hip connection, and positional patience, encapsulated in the motto <em>"Never Stand Up Once Down."</em></p>
+        </div>
+
+        <div class="about-sidebar">
+          <div class="sidebar-title">At a Glance</div>
+          <div class="meta-row"><span>Full Tradition</span><span>Kosen / Nanatei Judo 高専・七帝柔道</span></div>
+          <div class="meta-row"><span>Primary Doctrine</span><span>Hikikomi (Pull-in) & Extensive Ne-waza</span></div>
+          <div class="meta-row"><span>Established</span><span>1898 (First Higher School / Tokyo)</span></div>
+          <div class="meta-row"><span>Core Structure</span><span>3 Operational Pillars × 3 Core Holds</span></div>
+          <div class="meta-row"><span>Signature Mechanics</span><span>Sankaku-jime, Guard Pulls, Turtle Cracks</span></div>
+          <div class="meta-row"><span>Lineage Impact</span><span>Nanatei Judo, BJJ, Modern Grappling</span></div>
+          <div class="meta-row"><span>Match Philosophy</span><span>Hikiwake (Draws) & Submissions</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Three Pillars Overview -->
+  <section id="pillars" class="sets-bg">
+    <div class="section-wrap">
+      <p class="sec-kicker">Structure</p>
+      <h2 class="sec-heading">The Three Pillars of Kosen Ne-Waza</h2>
+      <p class="sec-sub">The systematic progression from standing contact to bottom dominance and turtle neutralization.</p>
+
+      <div class="sets-grid-3">
+        <!-- Set 1 -->
+        <div class="set-panel">
+          <div class="set-tag">PILLAR 01 — TRANSITION</div>
+          <h3>Hikikomi Entries</h3>
+          <div class="kanji-sub">引込技 — Direct Guard Pulls</div>
+          <p>Strategic entries that neutralize superior standing throwers by immediately initiating grounded combat.</p>
+          <ul class="set-tech-list">
+            <li>1. Dō-jime Hikikomi <span class="trans">Closed Guard Pull</span></li>
+            <li>2. Kosa-dori Hikikomi <span class="trans">Cross-Sleeve Drag Entry</span></li>
+            <li>3. Ashi-kake Hikikomi <span class="trans">Leg-Clamp / Open Guard Pull</span></li>
+          </ul>
+        </div>
+
+        <!-- Set 2 -->
+        <div class="set-panel">
+          <div class="set-tag">PILLAR 02 — REVERSALS</div>
+          <h3>Sweeps & Sankaku</h3>
+          <div class="kanji-sub">返し・三角 — Bottom Inversions</div>
+          <p>High-leverage sweeps, leg-hook elevations, and figure-four triangle (Sankaku) entanglements from underneath.</p>
+          <ul class="set-tech-list">
+            <li>4. Sumi-gaeshi Hikikomi <span class="trans">Butterfly / Corner Hook Sweep</span></li>
+            <li>5. Sankaku-jime Gaeshi <span class="trans">Bottom Triangle Turnover</span></li>
+            <li>6. Tomoe-gaeshi Transition <span class="trans">Circular Guard Turnover</span></li>
+          </ul>
+        </div>
+
+        <!-- Set 3 -->
+        <div class="set-panel">
+          <div class="set-tag">PILLAR 03 — TURTLE BREAKDOWN</div>
+          <h3>Turtle Cracks & Pins</h3>
+          <div class="kanji-sub">亀崩し・抑込 — Neutralizing Defensive Shells</div>
+          <p>Systematic tools to pry open rigid defensive turtles (Kame) into unyielding pins and immediate strangles.</p>
+          <ul class="set-tech-list">
+            <li>7. Seno-gaeshi <span class="trans">Seno Roll Turtle Turnover</span></li>
+            <li>8. Kata-te-jime Kuzushi <span class="trans">Lapel Thread Strangle & Roll</span></li>
+            <li>9. Yoko-sankaku Osaekomi <span class="trans">Side Triangle Immobilization</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step-by-Step Technical Breakdown -->
+  <section id="techniques">
+    <div class="section-wrap">
+      <p class="sec-kicker">Step-by-Step</p>
+      <h2 class="sec-heading">Technique Breakdown</h2>
+      <p class="sec-sub">Filter by phase to analyze the grips, unbalancing leverage, and execution mechanics of Kosen groundwork.</p>
+
+      <!-- Filter Controls -->
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterCategory('all')">All (9 Core Sequences)</button>
+        <button class="filter-btn" onclick="filterCategory('pillar1')">1. Guard Pulls (1–3)</button>
+        <button class="filter-btn" onclick="filterCategory('pillar2')">2. Sweeps & Sankaku (4–6)</button>
+        <button class="filter-btn" onclick="filterCategory('pillar3')">3. Turtle Cracks (7–9)</button>
+      </div>
+
+      <!-- Techniques Container -->
+      <div id="tech-container">
+
+        <!-- ================= PILLAR 1 ================= -->
+        <!-- 1 -->
+        <div class="technique-item" data-category="pillar1">
+          <div class="tech-idx">01</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">胴締引込</span>
+              <span class="tech-name-romaji">Dō-jime Hikikomi</span>
+              <span class="tech-name-trans">"Direct Closed Guard Pull"</span>
+            </div>
+            <p class="tech-overview-p">The foundational entry of Kosen Judo. Tori secures deep lapel and sleeve control, steps close between Uke's feet, jumps or drops the hips directly to the tatami, and crosses both ankles behind Uke's lower back into closed guard (Dō-osae).</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Tori establishes a dominant collar grip with the right hand and controls Uke's right triceps sleeve with the left hand.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori steps the lead foot deep between Uke's legs, lowering the hips suddenly beneath Uke's center of gravity.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori pulls Uke's chest forward while locking both legs tightly around Uke's waist, closing the guard instantly.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kosen Key Point:</strong> Break the standing posture simultaneously with the drop — never hang on Uke without pulling the collar down.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Pillar 1</span><span class="pill-tag">Hikikomi</span><span class="pill-tag">Closed Guard</span><span class="pill-tag">Posture Break</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="technique-item" data-category="pillar1">
+          <div class="tech-idx">02</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">交差手引込</span>
+              <span class="tech-name-romaji">Kosa-dori Hikikomi</span>
+              <span class="tech-name-trans">"Cross-Sleeve Drag Guard Pull"</span>
+            </div>
+            <p class="tech-overview-p">Tori grabs Uke's opposite sleeve in a cross-grip (Kosa-dori), drags Uke's arm across the centerline to expose the back flank, and drops the hips to slide under into an immediate back take or open guard entanglement.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Tori grips Uke's right sleeve with two hands (cross-grip) and steps to the left angle.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori snaps the arm across Uke's centerline (Arm Drag) to expose Uke's lat and shoulder.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori drops to the ground behind Uke's hip, inserting the far hook to initiate a back climb or side-guard control.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kosen Key Point:</strong> Clear the arm across the body to eliminate Uke's posting hand before your hips touch the ground.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Pillar 1</span><span class="pill-tag">Hikikomi</span><span class="pill-tag">Arm Drag</span><span class="pill-tag">Back Attack</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="technique-item" data-category="pillar1">
+          <div class="tech-idx">03</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">足掛引込</span>
+              <span class="tech-name-romaji">Ashi-kake Hikikomi</span>
+              <span class="tech-name-trans">"Hip-Clamp / Open Guard Pull"</span>
+            </div>
+            <p class="tech-overview-p">Tori places the sole of one foot directly on Uke's hip or inner thigh while dropping to the tatami, creating an unyielding distance frame and immediately establishing open guard (spider or De la Riva clamp).</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Tori grips both of Uke's sleeves at the cuffs and steps back to create tension.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori places the right foot firmly on Uke's left hip crest and sits back with full control.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>The second foot hooks behind Uke's opposite knee, controlling distance and neutralizing all standing throw attempts.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kosen Key Point:</strong> Hip frame anchor — keep continuous pushing pressure on the hip to prevent Uke from blitzing past the guard on the drop.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Pillar 1</span><span class="pill-tag">Hikikomi</span><span class="pill-tag">Hip Anchor</span><span class="pill-tag">Open Guard</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= PILLAR 2 ================= -->
+        <!-- 4 -->
+        <div class="technique-item" data-category="pillar2">
+          <div class="tech-idx">04</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">隅返引込</span>
+              <span class="tech-name-romaji">Sumi-gaeshi Hikikomi</span>
+              <span class="tech-name-trans">"Butterfly / Corner Hook Reversal"</span>
+            </div>
+            <p class="tech-overview-p">As Uke pressures forward into Tori's open guard, Tori inserts an instep hook under Uke's thigh (Butterfly hook), grips the back belt or overhook, falls backward, and elevates Uke directly overhead into mount.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>From seated guard, Tori reaches deep over Uke's back to secure the belt while controlling the opposite triceps.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori inserts the right instep under Uke's left inner thigh and slides hips tight to Uke's base.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori rolls straight back, lifting with the instep hook to project Uke overhead and landing in Tate-shiho-gatame.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kosen Key Point:</strong> Head in the armpit — bury your head tight to Uke's chest so your torso acts as a single fulcrum during the roll.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Pillar 2</span><span class="pill-tag">Gaeshi</span><span class="pill-tag">Butterfly Sweep</span><span class="pill-tag">Mount Turnover</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="technique-item" data-category="pillar2">
+          <div class="tech-idx">05</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">三角絞返し</span>
+              <span class="tech-name-romaji">Sankaku-jime Gaeshi</span>
+              <span class="tech-name-trans">"Bottom Triangle Turnover (Kosen Sankaku)"</span>
+            </div>
+            <p class="tech-overview-p">The hallmark invention of Kosen Judo. When Uke attempts to pass with one arm inside the legs, Tori shoots the hips upward, locks the legs in a figure-four around Uke's neck and arm, and either finishes the strangle or rolls Uke over into a pin.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>As Uke pushes one hand into Tori's guard, Tori pulls the trapped sleeve and shoots hips high into Uke's armpit.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori clamps the right knee over Uke's neck and locks the instep under the left knee (Sankaku figure-four).</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori drags Uke's trapped arm across the neck, squeezes the knees for Sankaku-jime, or sweeps Uke over into Yoko-sankaku-gatame.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kosen Key Point:</strong> Cut the 45-degree angle — never stay straight in front of Uke; turn perpendicular to secure a bone-deep knee lock.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Pillar 2</span><span class="pill-tag">Sankaku</span><span class="pill-tag">Triangle Choke</span><span class="pill-tag">Signature Kosen</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="technique-item" data-category="pillar2">
+          <div class="tech-idx">06</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">巴返展開</span>
+              <span class="tech-name-romaji">Tomoe-gaeshi Tenkai</span>
+              <span class="tech-name-trans">"Circular Foot-in-Stomach Transition"</span>
+            </div>
+            <p class="tech-overview-p">Tori feigns a classic Tomoe-nage sacrifice. When Uke braces low to resist the throw, Tori uses the foot on the lower abdomen as a pivot, spins beneath Uke's balance, and transitions to an unescapable Juji-gatame or back mount.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Tori places the foot on Uke's lower abdomen and drops back as if executing Tomoe-nage.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>As Uke drops weight forward to block the throw, Tori pulls Uke's upper body sideways across the hips.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori swings the free leg over Uke's head, locking in a lightning-fast Ude-hishigi-juji-gatame (Armbar).</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kosen Key Point:</strong> Exploiting resistance — use Uke's downward resistance against the throw to funnel their arm directly into the armbar.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Pillar 2</span><span class="pill-tag">Gaeshi</span><span class="pill-tag">Tomoe Transition</span><span class="pill-tag">Juji-gatame</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= PILLAR 3 ================= -->
+        <!-- 7 -->
+        <div class="technique-item" data-category="pillar3">
+          <div class="tech-idx">07</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">妹尾返し</span>
+              <span class="tech-name-romaji">Seno-gaeshi</span>
+              <span class="tech-name-trans">"Seno Roll (Rolling Turtle Turnover)"</span>
+            </div>
+            <p class="tech-overview-p">Developed by Kosen legend Kyuzo Seno. When Uke forms a tight defensive turtle, Tori threads an arm through Uke's armpit to the opposite collar, front-somersaults over Uke's shoulder, and turns Uke directly into Kami-shiho-gatame.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke adopts a compact defensive turtle (Kame-fusegi). Tori positions alongside Uke's chest.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori weaves the near arm under Uke's armpit and grips the far collar while trapping Uke's far knee.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori dives forward into a front roll across Uke's back, peeling Uke onto the shoulders into Kuzure-kami-shiho-gatame.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kosen Key Point:</strong> Deep collar feed — secure the collar grip deep beneath the throat before rolling to lock Uke's head to your chest.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Pillar 3</span><span class="pill-tag">Turtle Crack</span><span class="pill-tag">Seno-gaeshi</span><span class="pill-tag">Rolling Turnover</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="technique-item" data-category="pillar3">
+          <div class="tech-idx">08</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">片手絞崩</span>
+              <span class="tech-name-romaji">Kata-te-jime Kuzushi</span>
+              <span class="tech-name-trans">"One-Hand Lapel Strangle & Clock Turnover"</span>
+            </div>
+            <p class="tech-overview-p">Tori attacks a turtled Uke by inserting a deep thumb-in collar grip under the chin, stepping the legs around Uke's head in a clock-like rotation, and driving bodyweight down to force a tap or roll.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Tori inserts the right hand deep into Uke's right lapel with four fingers outside and thumb inside.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori drops the right shoulder across Uke's cervical spine and controls Uke's far wrist or pants.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori walks the legs forward in a circular clock motion, strangling Uke or rolling them over into Osaekomi.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kosen Key Point:</strong> Heavy shoulder pressure — never strangle with arms alone; drop the entirety of your chest weight onto the back of Uke's neck.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Pillar 3</span><span class="pill-tag">Turtle Crack</span><span class="pill-tag">Clock Choke</span><span class="pill-tag">Lapel Strangle</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="technique-item" data-category="pillar3">
+          <div class="tech-idx">09</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">横三角固</span>
+              <span class="tech-name-romaji">Yoko-sankaku-gatame</span>
+              <span class="tech-name-trans">"Side Triangle Turtle Pin"</span>
+            </div>
+            <p class="tech-overview-p">Tori attacks Uke's turtle from the side, shooting the legs between Uke's elbow and knee to lock a side triangle around the neck and shoulder, rolling Uke over into a completely inescapable pin.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Tori inserts the top knee through the space between Uke's triceps and thigh from the flank.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori locks the figure-four Sankaku across Uke's neck and trapped arm from the top side.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori rolls Uke over onto their back, holding Uke's legs and controlling the upper torso for an ippon pin.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kosen Key Point:</strong> Hip wedge penetration — slide the knee through the exact moment Uke shifts weight or lifts an elbow.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Pillar 3</span><span class="pill-tag">Turtle Crack</span><span class="pill-tag">Yoko-sankaku</span><span class="pill-tag">Total Pin</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Principles & Tactics Section -->
+  <section id="principles" class="sets-bg">
+    <div class="section-wrap">
+      <p class="sec-kicker">Principles & Doctrine</p>
+      <h2 class="sec-heading">The Strategic Tenets of Kosen Groundwork</h2>
+      <p class="sec-sub">The tactical philosophy that governed inter-university rivalry and forged legendary groundwork endurance.</p>
+
+      <div class="reiho-grid">
+        <div class="reiho-card">
+          <h4>"Never Stand Up Once Down"</h4>
+          <p>Kosen doctrine dictates that once combat transitions to the mat, the player must commit 100% to progressing through guard or turtle breakdowns until a submission or pin is achieved.</p>
+        </div>
+        <div class="reiho-card">
+          <h4>The Invention of Sankaku</h4>
+          <p>The entire family of triangle locks (Sankaku-jime, Yoko-sankaku, Ushiro-sankaku) was invented and perfected by Kosen judoka (notably Tsunetane Oda and his peers) in the 1910s and 1920s.</p>
+        </div>
+        <div class="reiho-card">
+          <h4>Hikiwake Strategy & Team Depth</h4>
+          <p>In Nanatei team tournaments, securing a draw (Hikiwake) from the guard against a stronger thrower is a vital team victory, eliminating dangerous aces through relentless ne-waza stalemate.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz Section -->
+  <section id="quiz">
+    <div class="section-wrap">
+      <div style="text-align: center; margin-bottom: 2.5rem;">
+        <p class="sec-kicker">Self-Assessment</p>
+        <h2 class="sec-heading">Kosen Judo Ne-Waza Knowledge Check</h2>
+        <p class="sec-sub" style="margin: 0 auto;">Test your understanding of Hikikomi rules, turtle breakdowns, and Kosen tactical doctrines.</p>
+      </div>
+
+      <div class="quiz-card">
+        <form id="quiz-form">
+          <div class="question-block">
+            <div class="question-title">1. What unique rule distinction allows Kosen Judo practitioners to bypass standing throws?</div>
+            <label class="option-item"><input type="radio" name="q1" value="a"> Competitors may strike the opponent's legs</label>
+            <label class="option-item"><input type="radio" name="q1" value="b"> Competitors may pull the opponent directly into ground combat (Hikikomi) without a sacrifice throw attempt</label>
+            <label class="option-item"><input type="radio" name="q1" value="c"> Matches are contested entirely on the knees</label>
+          </div>
+
+          <div class="question-block">
+            <div class="question-title">2. Which major family of groundwork submissions was famously developed and codified by Kosen Judoka?</div>
+            <label class="option-item"><input type="radio" name="q2" value="a"> Sankaku-waza (Triangle locks and strangulations)</label>
+            <label class="option-item"><input type="radio" name="q2" value="b"> Heel hooks</label>
+            <label class="option-item"><input type="radio" name="q2" value="c"> Wrist locks (Kote-gaeshi)</label>
+          </div>
+
+          <div class="question-block">
+            <div class="question-title">3. What is the signature mechanic of Seno-gaeshi (Technique 07) against a turtled opponent?</div>
+            <label class="option-item"><input type="radio" name="q3" value="a"> Threading the arm through the armpit to the far collar and executing a rolling somersault over the shoulder</label>
+            <label class="option-item"><input type="radio" name="q3" value="b"> Standing up and kicking the opponent's legs</label>
+            <label class="option-item"><input type="radio" name="q3" value="c"> Pushing the opponent backwards with both hands</label>
+          </div>
+
+          <div class="question-block">
+            <div class="question-title">4. Which modern university tournament league continues to preserve historical Kosen rules today?</div>
+            <label class="option-item"><input type="radio" name="q4" value="a"> Nanatei Judo (The Seven Imperial Universities League)</label>
+            <label class="option-item"><input type="radio" name="q4" value="b"> The Olympic Judo Championships</label>
+            <label class="option-item"><input type="radio" name="q4" value="c"> The All-Japan High School Championships</label>
+          </div>
+
+          <button type="button" class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="evaluateQuiz()">Submit Answers</button>
+        </form>
+
+        <div id="quiz-feedback"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Kosen & Nanatei Judo Ne-Waza / Hikikomi (高専柔道 寝技・引込) e-Learning Module</p>
+    <p style="margin-top: 0.35rem;">Technical curriculum based on classical Kosen and Seven Imperial Universities groundwork doctrine.</p>
+  </footer>
+
+  <!-- Filter & Quiz Logic -->
+  <script>
+    function filterCategory(category) {
+      const items = document.querySelectorAll('.technique-item');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      items.forEach(item => {
+        if (category === 'all' || item.getAttribute('data-category') === category) {
+          item.style.display = 'grid';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    function evaluateQuiz() {
+      const answers = { q1: 'b', q2: 'a', q3: 'a', q4: 'a' };
+      const form = document.forms['quiz-form'];
+      let score = 0;
+      let total = 4;
+
+      for (let q in answers) {
+        if (form[q] && form[q].value === answers[q]) {
+          score++;
+        }
+      }
+
+      const percentage = Math.round((score / total) * 100);
+      const feedback = document.getElementById('quiz-feedback');
+      feedback.style.display = 'block';
+
+      if (percentage >= 75) {
+        feedback.style.background = '#dcfce7';
+        feedback.style.color = '#15803d';
+        feedback.style.border = '1px solid #bbf7d0';
+        feedback.innerHTML = `Assessment Passed! Score: ${percentage}% (${score}/${total} correct). You have demonstrated solid comprehension of Kosen Judo Hikikomi and Ne-Waza principles!`;
+      } else {
+        feedback.style.background = '#fee2e2';
+        feedback.style.color = '#b91c1c';
+        feedback.style.border = '1px solid #fecaca';
+        feedback.innerHTML = `Score: ${percentage}% (${score}/${total} correct). Review the technical breakdowns above and try again.`;
+      }
+    }
+  </script>
+</body>
+</html>

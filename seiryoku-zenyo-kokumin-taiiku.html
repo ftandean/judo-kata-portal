@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>精力善用国民体育 — Seiryoku Zen'yo Kokumin Taiiku e-Learning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;600;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #9b2c2c;
+      --primary-dark: #742a2a;
+      --primary-light: #fff5f5;
+      --accent: #d97706;
+      --accent-light: #fef3c7;
+      --ink: #1e293b;
+      --text: #334155;
+      --text-muted: #64748b;
+      --bg: #ffffff;
+      --bg-alt: #f8fafc;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.03);
+      --font-display: 'Cinzel', serif;
+      --font-jp: 'Noto Serif JP', serif;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--ink);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-brand .kanji {
+      font-family: var(--font-jp);
+      color: var(--primary);
+      font-size: 1.25rem;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: color 0.2s ease;
+    }
+
+    .nav-menu a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: radial-gradient(circle at 80% 20%, rgba(155, 44, 44, 0.04) 0%, transparent 50%),
+                  radial-gradient(circle at 20% 80%, rgba(217, 119, 6, 0.04) 0%, transparent 50%),
+                  #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: 5.5rem 2rem 4.5rem;
+    }
+
+    .hero-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero h1 span.jp {
+      display: inline-block;
+      font-family: var(--font-jp);
+      font-size: 0.8em;
+      color: var(--primary);
+      margin-left: 0.6rem;
+      font-weight: 900;
+    }
+
+    .hero-lead {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin: 1.25rem 0 2rem;
+      font-weight: 400;
+      max-width: 600px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.6rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      border: 1px solid var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      border-color: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: var(--bg-alt);
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.75rem;
+    }
+
+    .stat-item .num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .stat-item .lbl {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+    }
+
+    /* Hero Emblem Badge */
+    .hero-emblem {
+      background: linear-gradient(135deg, var(--primary-light), #fff);
+      border: 1px solid #fed7d7;
+      border-radius: 8px;
+      padding: 3rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .hero-emblem::before {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 1px dashed rgba(155, 44, 44, 0.2);
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    .hero-emblem .big-kanji {
+      font-family: var(--font-jp);
+      font-size: 4.5rem;
+      font-weight: 900;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .hero-emblem .emblem-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-top: 1rem;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-emblem .emblem-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    /* Section Global Styles */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .section-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .sec-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .sec-heading {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+
+    .sec-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      max-width: 750px;
+    }
+
+    /* About Section */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      margin-bottom: 1.25rem;
+      color: #475569;
+    }
+
+    .about-sidebar {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sidebar-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+
+    .meta-row span:first-child {
+      color: var(--text-muted);
+    }
+
+    .meta-row span:last-child {
+      font-weight: 600;
+      color: var(--ink);
+      text-align: right;
+    }
+
+    /* Two Main Divisions Grid */
+    .sets-bg {
+      background-color: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sets-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .set-panel {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .set-tag {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: var(--primary);
+      margin-bottom: 0.35rem;
+    }
+
+    .set-panel h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .set-panel .kanji-sub {
+      font-family: var(--font-jp);
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .set-panel p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .set-tech-list {
+      list-style: none;
+      margin-top: auto;
+      border-top: 1px solid var(--border);
+      padding-top: 0.75rem;
+    }
+
+    .set-tech-list li {
+      padding: 0.45rem 0;
+      font-size: 0.88rem;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed var(--border-light);
+    }
+
+    .set-tech-list li span.trans {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    /* Technique Breakdown Section */
+    .filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: none;
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      color: var(--ink);
+      background: var(--bg-alt);
+    }
+
+    .filter-btn.active {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .technique-item {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 1.75rem;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tech-idx {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #cbd5e1;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .tech-header-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .tech-name-jp {
+      font-family: var(--font-jp);
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--ink);
+    }
+
+    .tech-name-romaji {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .tech-name-trans {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .tech-overview-p {
+      color: var(--text);
+      font-size: 0.98rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .step-list {
+      background: var(--bg-alt);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .step-row {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 0.75rem;
+      font-size: 0.92rem;
+      color: #334155;
+    }
+
+    .step-num {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .principle-box {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      padding: 0.85rem 1.2rem;
+      border-radius: 0 4px 4px 0;
+      font-size: 0.88rem;
+      color: #92400e;
+      margin-bottom: 1.25rem;
+    }
+
+    .principle-box strong {
+      color: #78350f;
+    }
+
+    .tags-container {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .pill-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 50px;
+      background: #f1f5f9;
+      color: var(--text-muted);
+    }
+
+    /* Reihō & Principles Section */
+    .reiho-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .reiho-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+    }
+
+    .reiho-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .reiho-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    /* Quiz Section */
+    .quiz-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .question-block {
+      margin-bottom: 2rem;
+    }
+
+    .question-title {
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 1.05rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .option-item {
+      display: block;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      padding: 0.85rem 1.2rem;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      font-size: 0.92rem;
+      transition: all 0.2s ease;
+    }
+
+    .option-item:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .option-item input {
+      margin-right: 0.75rem;
+      accent-color: var(--primary);
+    }
+
+    #quiz-feedback {
+      display: none;
+      padding: 1.25rem;
+      border-radius: 4px;
+      margin-top: 1.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 3rem 2rem;
+      background: var(--bg-alt);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-container, .about-layout, .sets-grid-2, .reiho-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-menu { display: none; }
+      .technique-item { grid-template-columns: 1fr; }
+      .tech-idx { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav>
+    <div class="nav-brand">
+      <span class="kanji">精力善用国民体育</span>
+      <span>Kokumin Taiiku</span>
+    </div>
+    <ul class="nav-menu">
+      <li><a href="#about">About</a></li>
+      <li><a href="#divisions">Two Divisions</a></li>
+      <li><a href="#techniques">Techniques</a></li>
+      <li><a href="#reiho">Philosophy & Health</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container">
+      <div>
+        <p class="hero-kicker">Kodokan Judo — Official National Physical Education Kata</p>
+        <h1>Seiryoku Zen'yo <span class="jp">国民体育</span></h1>
+        <p class="hero-lead">Maximum Efficiency National Physical Education. Formulated in 1924 by Jigoro Kano, integrating systematic solo striking exercises (Tandoku-dōsa) and paired martial self-defense forms (Sotai-dōsa) into a complete physical culture and health system.</p>
+        
+        <div class="hero-cta-group">
+          <a href="#techniques" class="btn btn-primary">Start Learning</a>
+          <a href="#divisions" class="btn btn-secondary">Overview</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="num">50</div>
+            <div class="lbl">Total Movements</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">2</div>
+            <div class="lbl">Divisions (Solo & Paired)</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">1924</div>
+            <div class="lbl">Kodokan Established</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-emblem">
+        <div class="big-kanji">善</div>
+        <div class="emblem-title">SEIRYOKU ZEN'YO</div>
+        <div class="emblem-sub">Maximum Efficiency · Physical Culture</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="section-wrap">
+      <div class="about-layout">
+        <div class="about-text">
+          <p class="sec-kicker">Introduction</p>
+          <h2 class="sec-heading">What is Seiryoku Zen'yo Kokumin Taiiku?</h2>
+          <p><strong>Seiryoku Zen'yo Kokumin Taiiku (精力善用国民体育)</strong> was created by Jigoro Kano in 1924 as a comprehensive physical education, self-defense, and wellness system designed for the entire nation (all ages and genders), whether practicing on tatami or on wooden floors.</p>
+          <p>The kata is composed of <strong>50 total movement sequences</strong> structured across two primary divisions:
+            <br>1. <strong>Tandoku-dōsa (単独動作 — Solo Practice, 29 movements)</strong>: Systematic practice of striking techniques (<em>Atemi-waza</em>) — fists, chops, elbow strikes, and kicks executed while stationary (<em>Dai-ikkyo</em>) and with stepping footwork (<em>Dai-nikyo</em>).
+            <br>2. <strong>Sotai-dōsa (相対動作 — Paired Practice, 21 movements)</strong>: Divided into <strong>Kime-shiki (極式 — 10 decisive self-defense forms)</strong> against grabs and strikes, and <strong>Ju-shiki (柔式 — 11 yielding forms)</strong> emphasizing fluid, circular momentum control.</p>
+          <p>This kata represents the physical realization of Kano’s foundational doctrine: <em>Seiryoku Zen'yo</em> (Maximum Efficiency of Mind and Body) for personal health, combative readiness, and moral development.</p>
+        </div>
+
+        <div class="about-sidebar">
+          <div class="sidebar-title">At a Glance</div>
+          <div class="meta-row"><span>Full Name</span><span>Seiryoku Zen'yo Kokumin Taiiku</span></div>
+          <div class="meta-row"><span>Translation</span><span>Max Efficiency National PE</span></div>
+          <div class="meta-row"><span>Created</span><span>1924 by Jigoro Kano</span></div>
+          <div class="meta-row"><span>Tandoku-dōsa</span><span>29 Solo Atemi Movements</span></div>
+          <div class="meta-row"><span>Sotai-dōsa</span><span>21 Paired Forms (10 Kime + 11 Ju)</span></div>
+          <div class="meta-row"><span>Total Movements</span><span>50 Sequences</span></div>
+          <div class="meta-row"><span>Primary Striking</span><span>Fist, Palm, Elbow, Foot Atemi</span></div>
+          <div class="meta-row"><span>Training Scope</span><span>Health, Fitness & Self-Defense</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Structure / Two Divisions -->
+  <section id="divisions" class="sets-bg">
+    <div class="section-wrap">
+      <p class="sec-kicker">Structure</p>
+      <h2 class="sec-heading">The Two Master Divisions (50 Movements)</h2>
+      <p class="sec-sub">The curriculum bridges solo calisthenic striking discipline with dynamic paired combative applications.</p>
+
+      <div class="sets-grid-2">
+        <!-- Division 1 -->
+        <div class="set-panel">
+          <div class="set-tag">DIVISION 01 — 29 MOVEMENTS</div>
+          <h3>Tandoku-dōsa (Solo Practice)</h3>
+          <div class="kanji-sub">単独動作 — Solo Calisthenics & Atemi-waza</div>
+          <p>Practiced individually to develop muscle tone, cardio endurance, balance, spatial awareness, and crisp striking mechanics.</p>
+          <ul class="set-tech-list">
+            <li>Dai-ikkyo: Stationary Striking <span class="trans">15 Strikes (Fist, Palm, Kick)</span></li>
+            <li>Dai-nikyo: Moving Striking <span class="trans">14 Footwork & Evasion Strikes</span></li>
+            <li>Kagami-migaki <span class="trans">Mirror Polishing Movement</span></li>
+            <li>Sayu-kogo-tsuki <span class="trans">Alternating Left/Right Punches</span></li>
+          </ul>
+        </div>
+
+        <!-- Division 2 -->
+        <div class="set-panel">
+          <div class="set-tag">DIVISION 02 — 21 MOVEMENTS</div>
+          <h3>Sotai-dōsa (Paired Practice)</h3>
+          <div class="kanji-sub">相対動作 — Paired Self-Defense Applications</div>
+          <p>Practiced with a partner to apply decisive counter-strikes and fluid yielding controls against realistic attacks.</p>
+          <ul class="set-tech-list">
+            <li>Kime-shiki (Decisive Forms) <span class="trans">10 Self-Defense Techniques</span></li>
+            <li>Ju-shiki (Yielding Forms) <span class="trans">11 Flowing Control Exercises</span></li>
+            <li>Ryote-dori & Mune-oshi <span class="trans">Grip & Shove Defense</span></li>
+            <li>Naname-uchi & Tsuki-kake <span class="trans">Strike & Stab Neutralization</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step-by-Step Technical Breakdown -->
+  <section id="techniques">
+    <div class="section-wrap">
+      <p class="sec-kicker">Step-by-Step</p>
+      <h2 class="sec-heading">Technique Breakdown</h2>
+      <p class="sec-sub">Explore the complete Kodokan curriculum across Tandoku-dōsa, Kime-shiki, and Ju-shiki.</p>
+
+      <!-- Filter Controls -->
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterCategory('all')">All Sections</button>
+        <button class="filter-btn" onclick="filterCategory('tandoku1')">1. Tandoku: Stationary (Dai-ikkyo)</button>
+        <button class="filter-btn" onclick="filterCategory('tandoku2')">2. Tandoku: Moving (Dai-nikyo)</button>
+        <button class="filter-btn" onclick="filterCategory('kimeshiki')">3. Sotai: Kime-shiki (10 Forms)</button>
+        <button class="filter-btn" onclick="filterCategory('jushiki')">4. Sotai: Ju-shiki (11 Forms)</button>
+      </div>
+
+      <!-- Techniques Container -->
+      <div id="tech-container">
+
+        <!-- ================= TANDOKU 1: STATIONARY ================= -->
+        <div class="technique-item" data-category="tandoku1">
+          <div class="tech-idx">01</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">五方向突</span>
+              <span class="tech-name-romaji">Goho-ate</span>
+              <span class="tech-name-trans">"Five Direction Strikes (Stationary)"</span>
+            </div>
+            <p class="tech-overview-p">Standing in Shizen-hontai, the practitioner executes five distinct fist strikes to primary target directions: Front (Mae-ate), Right (Migi-ate), Left (Hidari-ate), Rear (Ushiro-ate), and Overhead/Sky (Ue-ate).</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span><strong>Mae-ate (Forward):</strong> Thrust the right fist straight forward to solar plexus height, rotating the fist palm-down at impact.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span><strong>Migi-ate & Hidari-ate (Sides):</strong> Thrust the fist sharply to the right and left flanks, turning the head toward the target.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span><strong>Ushiro-ate & Ue-ate (Rear & Overhead):</strong> Drive a rear elbow/fist directly backward, followed by a straight vertical upward punch toward the sky.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Core alignment — maintain an upright spine and breathe out with crisp focus (Kime) on each extension.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Tandoku-dōsa</span><span class="pill-tag">Stationary</span><span class="pill-tag">Fist Atemi</span><span class="pill-tag">Five Directions</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="technique-item" data-category="tandoku1">
+          <div class="tech-idx">02</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">大刀打・小刀打</span>
+              <span class="tech-name-romaji">Daito-uchi & Shoto-uchi</span>
+              <span class="tech-name-trans">"Long Sword Chop & Short Sword Chop"</span>
+            </div>
+            <p class="tech-overview-p">Executing powerful outer hand-blade strikes (Tegatana). Daito-uchi uses a wide, sweeping outer sword-edge chop; Shoto-uchi uses a compact, rapid chopping strike.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Raise the right hand open with fingers pressed together and thumb tucked (Tegatana).</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Execute a wide diagonal downward chop across the front (Daito-uchi) engaging hip rotation.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Snap the wrist outward in a fast horizontal chop (Shoto-uchi) aimed at the opponent's temple/neck.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Tegatana blade — strike with the little-finger edge (radial/ulnar border) of the palm, tensing at the point of contact.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Tandoku-dōsa</span><span class="pill-tag">Stationary</span><span class="pill-tag">Hand Chop (Tegatana)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="technique-item" data-category="tandoku1">
+          <div class="tech-idx">03</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">蹴上・後蹴</span>
+              <span class="tech-name-romaji">Ke-age & Ushiro-geri</span>
+              <span class="tech-name-trans">"Front Snap Kick & Rear Thrust Kick"</span>
+            </div>
+            <p class="tech-overview-p">Solo kicking exercises developing balance on one leg, hip extension, and accuracy. Ke-age snaps upward to groin/solar plexus height; Ushiro-geri thrusts the heel straight backward.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span><strong>Ke-age:</strong> Raise the knee and snap the right instep/ball of the foot straight upward to groin height, returning smoothly to stance.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span><strong>Ushiro-geri:</strong> Look over the shoulder, drive the right heel straight backward into an imaginary attacker's abdomen, and recover without stumbling.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Standing base — keep the supporting knee slightly flexed with toes gripping the mat for balance.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Tandoku-dōsa</span><span class="pill-tag">Stationary</span><span class="pill-tag">Leg Kicking Atemi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= TANDOKU 2: MOVING ================= -->
+        <div class="technique-item" data-category="tandoku2">
+          <div class="tech-idx">04</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">鏡磨</span>
+              <span class="tech-name-romaji">Kagami-migaki</span>
+              <span class="tech-name-trans">"Mirror Polishing Exercise"</span>
+            </div>
+            <p class="tech-overview-p">The famous mirror-polishing movement. The practitioner steps forward and backward while moving both open palms in large, overlapping circular orbits, cultivating fluid shoulder mobility, core breathing, and circular deflection.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Step forward with the right foot, making large outward circular sweeping motions with both open palms as if polishing a large round mirror.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Synchronize the expansion and contraction of the chest with natural deep abdominal breathing (Kokyu).</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Step backward in Suri-ashi, reversing the circular direction of the palms smoothly without interruption.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Circular fluidity — relax the shoulders and let the circular palm paths flow continuously from the hips and breath.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Tandoku-dōsa</span><span class="pill-tag">Moving</span><span class="pill-tag">Circular Mobility</span><span class="pill-tag">Health & Breathing</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="technique-item" data-category="tandoku2">
+          <div class="tech-idx">05</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">左右交互突</span>
+              <span class="tech-name-romaji">Sayu-kogo-tsuki</span>
+              <span class="tech-name-trans">"Alternating Left & Right Moving Punches"</span>
+            </div>
+            <p class="tech-overview-p">Advancing and retreating across the tatami in natural walking steps (Ayumi-ashi), delivering alternating straight punches with hip rotation and crisp recoil.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Step the right foot forward, driving a crisp right straight punch (Mae-tsuki) with left hand chambered at the hip.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Step the left foot forward, switching the hips and driving a left straight punch.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Retreat backward in Ayumi-ashi, executing matching straight punches on each retreating step.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Stepping synchronization — impact occurs precisely at the moment the stepping foot touches the tatami.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Tandoku-dōsa</span><span class="pill-tag">Moving</span><span class="pill-tag">Moving Punches</span><span class="pill-tag">Ayumi-ashi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= SOTAI: KIME-SHIKI ================= -->
+        <div class="technique-item" data-category="kimeshiki">
+          <div class="tech-idx">06</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">両手取</span>
+              <span class="tech-name-romaji">Ryote-dori</span>
+              <span class="tech-name-trans">"Both Wrists Seized (Kime-shiki)"</span>
+            </div>
+            <p class="tech-overview-p">Uke grabs both of Tori's wrists from the front. Tori opens the arms outward, delivers an instant right front kick (Mae-geri) to Uke's groin, steps back, and applies a double-wrist twist (Kote-gaeshi) to force Uke down.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke steps in and firmly seizes both of Tori's wrists.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori spreads both hands outward, unbalancing Uke forward, and delivers a right front snap kick to Uke's groin (Kinteki).</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori steps back with the left foot, twists Uke's right wrist outward, and forces Uke to submit on the mat.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Immediate kick atemi — kick immediately upon contact to break Uke's posture before applying the wrist lock.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Sotai-dōsa</span><span class="pill-tag">Kime-shiki</span><span class="pill-tag">Wrist Escape</span><span class="pill-tag">Kote-gaeshi</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="technique-item" data-category="kimeshiki">
+          <div class="tech-idx">07</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">胸押</span>
+              <span class="tech-name-romaji">Mune-oshi</span>
+              <span class="tech-name-trans">"Chest Push Defense (Kime-shiki)"</span>
+            </div>
+            <p class="tech-overview-p">Uke steps forward pushing Tori's chest. Tori covers Uke's hand, delivers a rising palm-heel strike (Teisho) to Uke's chin, wraps Uke's arm, and forces Uke down in an armlock (Waki-gatame).</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke steps forward placing the right palm firmly against Tori's chest to push.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori traps Uke's right hand with the left palm, strikes Uke's chin with a right palm heel (Teisho), and steps back-left.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori clamps Uke's extended right elbow under the armpit, forcing Uke prone onto the tatami.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Chin strike & armlock — snap Uke's head back with Teisho before transitioning into Waki-gatame.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Sotai-dōsa</span><span class="pill-tag">Kime-shiki</span><span class="pill-tag">Chin Strike</span><span class="pill-tag">Waki-gatame</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="technique-item" data-category="kimeshiki">
+          <div class="tech-idx">08</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">突掛</span>
+              <span class="tech-name-romaji">Tsuki-kake</span>
+              <span class="tech-name-trans">"Straight Punch Defense (Kime-shiki)"</span>
+            </div>
+            <p class="tech-overview-p">Uke steps in with a straight right punch to Tori's face. Tori steps back-left (Tai-sabaki), parries Uke's punch, drives a right elbow strike into Uke's ribs/solar plexus, and throws Uke with Osoto-gari.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke advances with the right foot, throwing a straight punch at Tori's face.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori steps diagonally off the attack line, parries Uke's wrist with the left hand, and strikes Uke's ribs with the right elbow (Hiji-ate).</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori steps deep behind Uke's right leg and sweeps Uke down with Osoto-gari.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Off-line parry & elbow strike — step off the centerline while simultaneously countering with the elbow strike.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Sotai-dōsa</span><span class="pill-tag">Kime-shiki</span><span class="pill-tag">Punch Defense</span><span class="pill-tag">Osoto-gari</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= SOTAI: JU-SHIKI ================= -->
+        <div class="technique-item" data-category="jushiki">
+          <div class="tech-idx">09</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">突出</span>
+              <span class="tech-name-romaji">Tsuki-dashi</span>
+              <span class="tech-name-trans">"Thrust Out (Ju-shiki)"</span>
+            </div>
+            <p class="tech-overview-p">Uke advances pushing both hands into Tori's chest. Tori yields by stepping back, guides Uke's hands in a smooth downward circular arc, and unbalances Uke forward onto the toes (identical principle to Ju-no-Kata).</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke steps forward driving both open hands toward Tori's chest.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori steps back with the left foot, placing hands lightly on Uke's forearms without resisting.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori leads Uke's arms in a circular downward arc, pulling Uke forward into deep Kuzushi.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Harmonious yield — do not block; guide Uke's momentum along a circular path to create effortless off-balancing.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Sotai-dōsa</span><span class="pill-tag">Ju-shiki</span><span class="pill-tag">Circular Yield</span><span class="pill-tag">Kuzushi</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="technique-item" data-category="jushiki">
+          <div class="tech-idx">10</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">肩廻</span>
+              <span class="tech-name-romaji">Kata-mawashi</span>
+              <span class="tech-name-trans">"Shoulder Turn (Ju-shiki)"</span>
+            </div>
+            <p class="tech-overview-p">The final concluding paired exercise. Uke places hands on Tori's shoulders to rotate Tori. Tori pivots with the turn, absorbs the rotational force, and reverses the pivot to draw Uke into rearward unbalance.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke steps in and places both hands on Tori's shoulders, applying rotational torque to turn Tori.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori pivots smoothly on the left foot, turning with Uke's force through a quarter turn.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori reverses the pivot smoothly to the left, taking control of Uke's balance and drawing Uke backward into final Kuzushi.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Rotational redirection — flow seamlessly with Uke's turn and reverse direction at the moment of momentum transition.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Sotai-dōsa</span><span class="pill-tag">Ju-shiki</span><span class="pill-tag">Rotational Pivot</span><span class="pill-tag">Kata Finale</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Principles & Reihō Section -->
+  <section id="reiho" class="sets-bg">
+    <div class="section-wrap">
+      <p class="sec-kicker">Philosophy & Wellness</p>
+      <h2 class="sec-heading">Seiryoku Zen'yo & National Physical Culture</h2>
+      <p class="sec-sub">Jigoro Kano's grand vision for lifelong health, physical vigor, and moral development through judo principles.</p>
+
+      <div class="reiho-grid">
+        <div class="reiho-card">
+          <h4>Lifelong Health & Hygiene</h4>
+          <p>Tandoku-dōsa was designed so that any person, regardless of age, gender, or mat availability, can train daily to maintain cardiovascular fitness, joint flexibility, and mental focus.</p>
+        </div>
+        <div class="reiho-card">
+          <h4>Integration of Atemi-waza</h4>
+          <p>While striking is excluded from sporting Randori for safety, Seiryoku Zen'yo preserves the complete historical striking arsenal of classical Jujutsu within a safe, structured educational format.</p>
+        </div>
+        <div class="reiho-card">
+          <h4>Reihō & Protocol</h4>
+          <p>All sessions begin and end with formal bows (Ritsurei at 30 degrees). Solo practice maintains a disciplined martial posture (Shizentai) with upright spine and controlled abdominal breathing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz Section -->
+  <section id="quiz">
+    <div class="section-wrap">
+      <div style="text-align: center; margin-bottom: 2.5rem;">
+        <p class="sec-kicker">Self-Assessment</p>
+        <h2 class="sec-heading">Seiryoku Zen'yo Kokumin Taiiku Knowledge Check</h2>
+        <p class="sec-sub" style="margin: 0 auto;">Test your understanding of the official Kodokan Seiryoku Zen'yo Kokumin Taiiku syllabus.</p>
+      </div>
+
+      <div class="quiz-card">
+        <form id="quiz-form">
+          <div class="question-block">
+            <div class="question-title">1. In what year did Jigoro Kano establish Seiryoku Zen'yo Kokumin Taiiku?</div>
+            <label class="option-item"><input type="radio" name="q1" value="a"> 1887</label>
+            <label class="option-item"><input type="radio" name="q1" value="b"> 1924</label>
+            <label class="option-item"><input type="radio" name="q1" value="c"> 1956</label>
+          </div>
+
+          <div class="question-block">
+            <div class="question-title">2. What are the two primary divisions of this kata, and how many total movements comprise it?</div>
+            <label class="option-item"><input type="radio" name="q2" value="a"> Tandoku-dōsa (Solo — 29 movements) and Sotai-dōsa (Paired — 21 movements), totaling 50 movements</label>
+            <label class="option-item"><input type="radio" name="q2" value="b"> Idori (8 movements) and Tachiai (12 movements), totaling 20 movements</label>
+            <label class="option-item"><input type="radio" name="q2" value="c"> Nage-waza (15 movements) and Katame-waza (15 movements), totaling 30 movements</label>
+          </div>
+
+          <div class="question-block">
+            <div class="question-title">3. What is the two-part division of the paired section (Sotai-dōsa)?</div>
+            <label class="option-item"><input type="radio" name="q3" value="a"> Omote (Armored) and Ura (Unarmored)</label>
+            <label class="option-item"><input type="radio" name="q3" value="b"> Kime-shiki (10 Decisive Self-Defense Forms) and Ju-shiki (11 Yielding Forms)</label>
+            <label class="option-item"><input type="radio" name="q3" value="c"> Te-waza and Koshi-waza</label>
+          </div>
+
+          <div class="question-block">
+            <div class="question-title">4. What movement is practiced in Kagami-migaki (Mirror Polishing)?</div>
+            <label class="option-item"><input type="radio" name="q4" value="a"> Stepping forward and backward while moving both open palms in large, overlapping circular orbits synchronized with breathing</label>
+            <label class="option-item"><input type="radio" name="q4" value="b"> Kneeling on both knees and striking the mat with fists</label>
+            <label class="option-item"><input type="radio" name="q4" value="c"> Drawing a samurai sword from the waist</label>
+          </div>
+
+          <button type="button" class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="evaluateQuiz()">Submit Answers</button>
+        </form>
+
+        <div id="quiz-feedback"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Kodokan Judo Seiryoku Zen'yo Kokumin Taiiku (精力善用国民体育) e-Learning Module</p>
+    <p style="margin-top: 0.35rem;">Standardized 50-movement syllabus based on the official Kodokan Judo textbook.</p>
+  </footer>
+
+  <!-- Filter & Quiz Logic -->
+  <script>
+    function filterCategory(category) {
+      const items = document.querySelectorAll('.technique-item');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      items.forEach(item => {
+        if (category === 'all' || item.getAttribute('data-category') === category) {
+          item.style.display = 'grid';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    function evaluateQuiz() {
+      const answers = { q1: 'b', q2: 'a', q3: 'b', q4: 'a' };
+      const form = document.forms['quiz-form'];
+      let score = 0;
+      let total = 4;
+
+      for (let q in answers) {
+        if (form[q] && form[q].value === answers[q]) {
+          score++;
+        }
+      }
+
+      const percentage = Math.round((score / total) * 100);
+      const feedback = document.getElementById('quiz-feedback');
+      feedback.style.display = 'block';
+
+      if (percentage >= 75) {
+        feedback.style.background = '#dcfce7';
+        feedback.style.color = '#15803d';
+        feedback.style.border = '1px solid #bbf7d0';
+        feedback.innerHTML = `Assessment Passed! Score: ${percentage}% (${score}/${total} correct). You have demonstrated solid comprehension of Kodokan Seiryoku Zen'yo Kokumin Taiiku!`;
+      } else {
+        feedback.style.background = '#fee2e2';
+        feedback.style.color = '#b91c1c';
+        feedback.style.border = '1px solid #fecaca';
+        feedback.innerHTML = `Score: ${percentage}% (${score}/${total} correct). Review the solo and paired breakdowns above and try again.`;
+      }
+    }
+  </script>
+</body>
+</html>

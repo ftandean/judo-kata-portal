@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>講道館柔道 形・教大全 — Complete Kodokan & Lineage Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;600;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #9b2c2c;
+      --primary-dark: #742a2a;
+      --primary-light: #fff5f5;
+      --accent: #d97706;
+      --accent-light: #fef3c7;
+      --ink: #1e293b;
+      --text: #334155;
+      --text-muted: #64748b;
+      --bg: #ffffff;
+      --bg-alt: #f8fafc;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.03);
+      --font-display: 'Cinzel', serif;
+      --font-jp: 'Noto Serif JP', serif;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--ink);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+
+    .nav-brand .kanji {
+      font-family: var(--font-jp);
+      color: var(--primary);
+      font-size: 1.25rem;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: color 0.2s ease;
+    }
+
+    .nav-menu a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      background: radial-gradient(circle at 80% 20%, rgba(155, 44, 44, 0.05) 0%, transparent 50%),
+                  radial-gradient(circle at 20% 80%, rgba(217, 119, 6, 0.05) 0%, transparent 50%),
+                  #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: 5.5rem 2rem 4.5rem;
+    }
+
+    .hero-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero h1 span.jp {
+      display: inline-block;
+      font-family: var(--font-jp);
+      font-size: 0.85em;
+      color: var(--primary);
+      margin-left: 0.6rem;
+      font-weight: 900;
+    }
+
+    .hero-lead {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin: 1.25rem 0 2rem;
+      font-weight: 400;
+      max-width: 620px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.6rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      border: 1px solid var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      border-color: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: var(--bg-alt);
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.2rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.75rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-item .num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .stat-item .lbl {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+    }
+
+    .hero-emblem {
+      background: linear-gradient(135deg, var(--primary-light), #fff);
+      border: 1px solid #fed7d7;
+      border-radius: 8px;
+      padding: 3rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .hero-emblem::before {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 1px dashed rgba(155, 44, 44, 0.2);
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    .hero-emblem .big-kanji {
+      font-family: var(--font-jp);
+      font-size: 5rem;
+      font-weight: 900;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .hero-emblem .emblem-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-top: 1rem;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-emblem .emblem-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    section {
+      padding: 4.5rem 2rem;
+    }
+
+    .section-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .sec-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .sec-heading {
+      font-family: var(--font-display);
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .sec-sub {
+      font-size: 1rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      max-width: 800px;
+    }
+
+    .alt-bg {
+      background-color: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .kata-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .kata-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .kata-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: #fed7d7;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-tag {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: var(--primary);
+      text-transform: uppercase;
+    }
+
+    .card-kanji-glyph {
+      font-family: var(--font-jp);
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #e2e8f0;
+      line-height: 1;
+    }
+
+    .kata-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 0.15rem;
+    }
+
+    .kata-card .kanji-sub {
+      font-family: var(--font-jp);
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 0.85rem;
+    }
+
+    .kata-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .card-meta-list {
+      border-top: 1px solid var(--border-light);
+      padding-top: 1rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      font-size: 0.83rem;
+    }
+
+    .card-meta-row {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .card-meta-row span:first-child {
+      color: var(--text-muted);
+    }
+
+    .card-meta-row span:last-child {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.75rem;
+      border-top: 1px dashed var(--border);
+    }
+
+    .pill-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 50px;
+      background: var(--bg-alt);
+      color: var(--text-muted);
+      border: 1px solid var(--border-light);
+    }
+
+    .card-link-text {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 3.5rem 2rem;
+      background: var(--bg-alt);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* Seamless In-Page Viewer & Return Bar */
+    #module-viewer-container {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #ffffff;
+      z-index: 99999;
+      flex-direction: column;
+    }
+
+    .viewer-top-bar {
+      background: #1e293b;
+      color: #ffffff;
+      padding: 0.65rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      z-index: 10;
+    }
+
+    .viewer-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .viewer-title .k-tag {
+      background: var(--primary);
+      padding: 0.15rem 0.5rem;
+      border-radius: 3px;
+      font-size: 0.75rem;
+    }
+
+    .viewer-back-btn {
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      padding: 0.45rem 1.15rem;
+      border-radius: 4px;
+      font-family: var(--font-sans);
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: background 0.2s ease;
+    }
+
+    .viewer-back-btn:hover {
+      background: #742a2a;
+    }
+
+    #module-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+      flex-grow: 1;
+    }
+
+    @media (max-width: 900px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+      }
+      .nav-menu { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Full-Screen In-Page Sub-Module Viewer with Return Bar -->
+  <div id="module-viewer-container">
+    <div class="viewer-top-bar">
+      <div class="viewer-title">
+        <span class="k-tag">KATA MODULE</span>
+        <span id="active-module-name">Module Viewer</span>
+      </div>
+      <button class="viewer-back-btn" onclick="closeModuleViewer()">
+        &larr; Back to Main Portal (メインポータルに戻る)
+      </button>
+    </div>
+    <iframe id="module-frame" src="about:blank"></iframe>
+  </div>
+
+  <!-- Top Navigation -->
+  <nav id="main-nav">
+    <a href="#" class="nav-brand">
+      <span class="kanji">柔道形・教</span>
+      <span>Judo Kata Portal</span>
+    </a>
+    <ul class="nav-menu">
+      <li><a href="#official">Official Canon (7)</a></li>
+      <li><a href="#gokyo">Gokyo Curriculum</a></li>
+      <li><a href="#pedagogical">Pedagogical & Youth (3)</a></li>
+      <li><a href="#counter">Counters & Custody (5)</a></li>
+      <li><a href="#lineage">Lineage & University (4)</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="main-hero">
+    <div class="hero-container">
+      <div>
+        <p class="hero-kicker">Unified Technical Syllabus & Kata Encyclopedia</p>
+        <h1>Kodokan & Lineage Kata <span class="jp">柔道形・教大全</span></h1>
+        <p class="hero-lead">The unified technical directory of Kodokan Judo's 7 official canonical kata, the 40-throw Gokyo-no-Waza curriculum, physical culture systems, combat counter-methods, police custody tactics, and ancestral university traditions[cite: 3].</p>
+        
+        <div class="hero-cta-group">
+          <a href="#official" class="btn btn-primary">Official 7 Canonical Kata</a>
+          <a href="#gokyo" class="btn btn-secondary">Gokyo-no-Waza (40 Throws)</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="num">20</div>
+            <div class="lbl">Total Modules</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">290+</div>
+            <div class="lbl">Documented Forms</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">5</div>
+            <div class="lbl">Technical Divisions</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-emblem">
+        <div class="big-kanji">全</div>
+        <div class="emblem-title">KATA & GOKYO</div>
+        <div class="emblem-sub">Forms · Throws · Lineage</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1. Official Canonical Kodokan Kata (7) -->
+  <section id="official">
+    <div class="section-wrap">
+      <p class="sec-kicker">Division 01 — Official Canonical Kata</p>
+      <h2 class="sec-heading">The Seven Official Kodokan Kata</h2>
+      <p class="sec-sub">The formal kata recognized and maintained by the Kodokan Judo Institute, spanning Randori foundations, classical combative decision, modern self-defense, Kito-ryu armored battlefield antiquity, and the philosophical forms of nature.</p>
+
+      <div class="kata-grid">
+        <!-- 1. Nage-no-Kata -->
+        <div class="kata-card" onclick="openModuleViewer('Nage-no-Kata.html', 'Nage-no-Kata (投の形)')">
+          <div class="card-top">
+            <span class="card-tag">01. Randori-no-Kata</span>
+            <span class="card-kanji-glyph">投</span>
+          </div>
+          <h3>Nage-no-Kata</h3>
+          <div class="kanji-sub">投の形 — Forms of Throwing</div>
+          <p>The foundational throwing syllabus illustrating hand, hip, foot, rear-sacrifice, and side-sacrifice mechanics executed symmetrically on both right and left sides[cite: 9].</p>
+          <div class="card-meta-list">
+            <div class="card-meta-row"><span>Structure</span><span>5 Sets × 3 Tech. (30 Projections)[cite: 10]</span></div>
+            <div class="card-meta-row"><span>Core Cycle</span><span>Kuzushi &rarr; Tsukuri &rarr; Kake[cite: 10]</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="pill-tag">15 Techniques</span>
+            <span class="card-link-text">Open Module &rarr;</span>
+          </div>
+        </div>
+
+        <!-- 2. Katame-no-Kata -->
+        <div class="kata-card" onclick="openModuleViewer('Katame-no-Kata.html', 'Katame-no-Kata (固の形)')">
+          <div class="card-top">
+            <span class="card-tag">02. Randori-no-Kata</span>
+            <span class="card-kanji-glyph">固</span>
+          </div>
+          <h3>Katame-no-Kata</h3>
+          <div class="kanji-sub">固の形 — Forms of Grappling</div>
+          <p>The ground-control masterclass teaching pin immobilization against three escape attempts (Kaisō), carotid strangulations, and elbow joint locks[cite: 3, 4].</p>
+          <div class="card-meta-list">
+            <div class="card-meta-row"><span>Structure</span><span>3 Sets × 5 Tech. (Pins, Chokes, Locks)[cite: 4]</span></div>
+            <div class="card-meta-row"><span>Posture</span><span>Kyoshi & Shikko Floorwork[cite: 4]</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="pill-tag">15 Techniques</span>
+            <span class="card-link-text">Open Module &rarr;</span>
+          </div>
+        </div>
+
+        <!-- 3. Ju-no-Kata -->
+        <div class="kata-card" onclick="openModuleViewer('Ju-no-Kata.html', 'Ju-no-Kata (柔の形)')">
+          <div class="card-top">
+            <span class="card-tag">03. Principle & Yielding</span>
+            <span class="card-kanji-glyph">柔</span>
+          </div>
+          <h3>Ju-no-Kata</h3>
+          <div class="kanji-sub">柔の形 — Forms of Gentleness</div>
+          <p>A continuous study of yielding to force, natural upright posture (Shizentai), and circular body shifting (Tai-sabaki), performed without throws or submissions[cite: 1].</p>
+          <div class="card-meta-list">
+            <div class="card-meta-row"><span>Structure</span><span>3 Sets (Ikkyo, Nikyo, Sankyo)[cite: 2]</span></div>
+            <div class="card-meta-row"><span>Focus</span><span>Pure Principle of Ju[cite: 2]</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="pill-tag">15 Techniques</span>
+            <span class="card-link-text">Open Module &rarr;</span>
+          </div>
+        </div>
+
+        <!-- 4. Kodokan Goshin-jutsu -->
+        <div class="kata-card" onclick="openModuleViewer('goshin-jutsu.html', 'Kodokan Goshin-jutsu (講道館護身術)')">
+          <div class="card-top">
+            <span class="card-tag">04. Modern Self-Defense</span>
+            <span class="card-kanji-glyph">護</span>
+          </div>
+          <h3>Kodokan Goshin-jutsu</h3>
+          <div class="kanji-sub">講道館護身術 — Modern Self-Defense Forms</div>
+          <p>Established in 1956 to modernize practical self-defense against unarmed holds and strikes, as well as weapon threats including knives, sticks, and pistols.</p>
+          <div class="card-meta-list">
+            <div class="card-meta-row"><span>Structure</span><span>12 Toshu (Unarmed) + 9 Buki (Weapons)</span></div>
+            <div class="card-meta-row"><span>Weapons</span><span>Knife (Tantō), Stick (Jō), Pistol (Kenjū)</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="pill-tag">21 Techniques</span>
+            <span class="card-link-text">Open Module &rarr;</span>
+          </div>
+        </div>
+
+        <!-- 5. Kime-no-Kata -->
+        <div class="kata-card" onclick="openModuleViewer('Kime-no-Kata.html', 'Kime-no-Kata (極の形)')">
+          <div class="card-top">
+            <span class="card-tag">05. Classical Combat</span>
+            <span class="card-kanji-glyph">極</span>
+          </div>
+          <h3>Kime-no-Kata</h3>
+          <div class="kanji-sub">極の形 — Forms of Decision</div>
+          <p>The decisive combative forms (Shinken Shobu) executed from kneeling (Idori) and standing (Tachiai) postures against unarmed attacks, daggers, and swords[cite: 5, 6].</p>
+          <div class="card-meta-list">
+            <div class="card-meta-row"><span>Structure</span><span>8 Idori + 12 Tachiai[cite: 6]</span></div>
+            <div class="card-meta-row"><span>Weapons</span><span>Dagger (Tantō) & Sword (Katana)[cite: 6]</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="pill-tag">20 Techniques</span>
+            <span class="card-link-text">Open Module &rarr;</span>
+          </div>
+        </div>
+
+        <!-- 6. Koshiki-no-Kata -->
+        <div class="kata-card" onclick="openModuleViewer('Koshiki-no-Kata.html', 'Koshiki-no-Kata (古式の形)')">
+          <div class="card-top">
+            <span class="card-tag">06. Ancient Lineage</span>
+            <span class="card-kanji-glyph">古</span>
+          </div>
+          <h3>Koshiki-no-Kata</h3>
+          <div class="kanji-sub">古式の形 — Forms of Antiquity</div>
+          <p>Preserved directly from Kito-ryu Jujutsu within the official Kodokan canon, demonstrating yielding mechanics in heavy samurai armor (Omote) and unarmored speed (Ura)[cite: 8, 9].</p>
+          <div class="card-meta-list">
+            <div class="card-meta-row"><span>Structure</span><span>14 Omote (Armored) + 7 Ura (Fast)[cite: 9]</span></div>
+            <div class="card-meta-row"><span>Lineage</span><span>Kito-ryu Jujutsu (起倒流)[cite: 9]</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="pill-tag">21 Techniques</span>
+            <span class="card-link-text">Open Module &rarr;</span>
+          </div>
+        </div>
+
+        <!-- 7. Itsutsu-no-Kata -->
+        <div class="kata-card" onclick="openModuleViewer('itsutsu-no-kata.html', 'Itsutsu-no-Kata (五の形)')">
+          <div class="card-top">
+            <span class="card-tag">07. Natural Kinetics</span>
+            <span class="card-kanji-glyph">五</span>
+          </div>
+          <h3>Itsutsu-no-Kata</h3>
+          <div class="kanji-sub">五の形 — The Five Forms</div>
+          <p>Kano's profound philosophical masterpiece expressing universal natural laws, kinetic energy, fluid vortexes, tidal wave forces, and cosmic energy dissipation through five nameless forms.</p>
+          <div class="card-meta-list">
+            <div class="card-meta-row"><span>Structure</span><span>5 Nameless Conceptual Forms (1–5)</span></div>
+            <div class="card-meta-row"><span>Theme</span><span>Cosmic Energy & Fluid Kinetics</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="pill-tag">5 Universal Forms</span>
+            <span class="card-link-text">Open Module &rarr;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Foundational Throwing Curriculum (Gokyo) -->
+  <section id="gokyo" class="alt-bg">
+    <div class="section-wrap">
+      <p class="sec-kicker">Division 02 — Foundational Throwing Syllabus</p>
+      <h2 class="sec-heading">The Gokyo-no-Waza Curriculum</h2>
+      <p class="sec-sub">The official 40-throw pedagogical syllabus formulated in 1895 and revised in 1920, systematically organizing Kodokan throwing techniques into five progressive teachings (Kyo) from fundamental foot sweeps to advanced sacrifice projections[cite: 3].</p>
+
+      <div class="kata-grid">
+        <div class="kata-card" style="grid-column: 1 / -1;" onclick="openModuleViewer('gokyo-no-waza.html', 'Gokyo-no-Waza (五教の技 - 40 Throws)')">
+          <div class="card-top">
+            <span class="card-tag">Official Pedagogical Curriculum</span>
+            <span class="card-kanji-glyph">教</span>
+          </div>
+          <h3>Gokyo-no-Waza</h3>
+          <div class="kanji-sub">五教の技 — The Five Sets of Throwing Techniques (40 Throws)</div>
+          <p>The foundational instructional blueprint of Kodokan Judo Nage-waza[cite: 3]. Organized into five progressive groups of eight techniques each: <strong>Dai-ikkyo</strong> (Basics: Deashi-harai, Hiza-guruma, Sasae, Uki-goshi, Osoto-gari, O-goshi, Ouchi-gari, Seoi-nage), <strong>Dai-nikyo</strong> (Kosoto-gari, Kouchi-gari, Koshi-guruma, Tsurikomi-goshi, Okuri-ashi-harai, Tai-otoshi, Harai-goshi, Uchi-mata), <strong>Dai-sankyo</strong> (Kosoto-gake, Tsuri-goshi, Yoko-otoshi, Ashi-guruma, Hane-goshi, Harai-tsurikomi-ashi, Tomoe-nage, Kata-guruma), <strong>Dai-yonkyo</strong> (Sumi-gaeshi, Tani-otoshi, Hane-makikomi, Sukui-nage, Utsuri-goshi, O-guruma, Soto-makikomi, Uki-otoshi), and <strong>Dai-gokyo</strong> (Osoto-guruma, Uki-waza, Yoko-wakare, Yoko-guruma, Ushiro-goshi, Ura-nage, Sumi-otoshi, Yoko-gake).</p>
+          <div class="card-meta-list">
+            <div class="card-meta-row"><span>Structure</span><span>5 Teachings × 8 Throws (40 Standard Techniques)</span></div>
+            <div class="card-meta-row"><span>Established</span><span>1895 (Original 42 Throws) &bull; 1920 (Standardized 40 Throws)</span></div>
+            <div class="card-meta-row"><span>Pedagogy</span><span>Progressive Skill Acquisition & Safe Breakfall Loading</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="pill-tag">40 Official Throws</span>
+            <span class="card-link-text">Open Curriculum Breakdown &rarr;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Specialized & Pedagogical Forms (3) -->
+  <section id="pedagogical">
+    <div class="section-wrap">
+      <p class="sec-kicker">Division 03 — Physical Culture & Specialized Education</p>
+      <h2 class="sec-heading">Specialized, Youth & Physical Culture Kata</h2>
+      <p class="sec-sub">Official Kodokan specialized curricula developed for national physical education, women's leverage-based self-defense, and youth breakfall and safety foundations.</p>
+
+      <div class="kata-grid">
+        <!-- 8. Seiryoku Zen'yo Kokumin Taiiku -->
+        <div class="kata-card" onclick="openModuleViewer('seiryoku-zenyo.html', 'Seiryoku Zen\'yo Kokumin Taiiku (精力善用国民体育)')">
+          <div class="card-top">
+            <span class="card-tag">08. Physical Culture</span>
+            <span class="card-kanji-glyph">体</span>
+          </div>
+          <h3>Seiryoku Zen'yo Kokumin Taiiku</h3>
+          <div class="kanji-sub">精力善用国民体育 — Maximum-Efficiency Physical Education</div>
+          <p>Kano's comprehensive system of physical culture and atemi strikes, divided into solo shadow practice (Tandoku-renshu) and paired combative applications (Sotai-renshu).</p>
+          <div class="card-meta-list">
+            <div class="card-meta-row"><span>Structure</span><span>Tandoku (Solo: 29) + Sotai (Paired: 20)</span></div>
+            <div class="card-meta-row"><span>Focus</span><span>Atemi-waza & Calisthenics</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="pill-tag">49 Movements</span>
+            <span class="card-link-text">Open Module &rarr;</span>
+          </div>
+        </div>
+
+        <!-- 9. Joshi Goshin-ho -->
+        <div class="kata-card" onclick="openModuleViewer('joshi-goshin-ho.html', 'Joshi Goshin-hō (女子護身法)')">
+          <div class="card-top">
+            <span class="card-tag">09. Women's Self-Defense</span>
+            <span class="card-kanji-glyph">女</span>
+          </div>
+          <h3>Joshi Goshin-hō</h3>
+          <div class="kanji-sub">女子護身法 — Women's Self-Defense Forms</div>
+          <p>Established in 1943 by the Kodokan Women's Section, focusing on anatomical weak points, joint torque, and escapes from grabs, chokes, hair pulls, and weapons.</p>
+          <div class="card-meta-list">
+            <div class="card-meta-row"><span>Structure</span><span>3 Sets × 6 Tech. (Front, Rear, Strikes/Weapons)</span></div>
+            <div class="card-meta-row"><span>Focus</span><span>Leverage, Atemi & Wrist Locks</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="pill-tag">18 Techniques</span>
+            <span class="card-link-text">Open Module &rarr;</span>
+          </div>
+        </div>
+
+        <!-- 10. Kodomo-no-Kata -->
+        <div class="kata-card" onclick="openModuleViewer('Kodomo-no-Kata.html', 'Kodomo-no-Kata (こどもの形)')">
+          <div class="card-top">
+            <span class="card-tag">10. Junior & Youth Standard</span>
+            <span class="card-kanji-glyph">子</span>
+          </div>
+          <h3>Kodomo-no-Kata</h3>
+          <div class="kanji-sub">こどもの形 — Children's Basic Forms</div>
+          <p>The official Kodokan introductory youth syllabus cultivating dojo etiquette (Reihō), injury-preventing breakfalls (Ukemi), safe unbalancing, throws, and pins[cite: 6, 7].</p>
+          <div class="card-meta-list">
+            <div class="card-meta-row"><span>Structure</span><span>3 Groups (Ukemi, Throws, Holds)[cite: 7]</span></div>
+            <div class="card-meta-row"><span>Safety</span><span>Zero Chokes or Joint Locks[cite: 7]</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="pill-tag">12 Foundations</span>
+            <span class="card-link-text">Open Module &rarr;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Counter & Reversal Systems (5) -->
+  <section id="counter" class="alt-bg">
+    <div class="section-wrap">
+      <p class="sec-kicker">Division 04 — Reversal Methodologies & Tactical Control</p>
+      <h2 class="sec-heading">Counter, Reversal & Custodial Systems</h2>
+      <p class="sec-sub">Technical syllabi specializing in taking the late initiative (Go-no-sen), groundwork counters, and law enforcement custody/arrest hold procedures (Taiho-jutsu)[cite: 2, 3].</p>
+
+      <div class="kata-grid">
+        <!-- 11. Kaeshi-no-Kata -->
+        <div class="kata-card" onclick="openModuleViewer('kaeshi-no-kata.html', 'Kaeshi-no-Kata (返しの形)')">
+          <div class="card-top">
+            <span class="card-tag">11. Standing Counter System</span>
+            <span class="card-kanji-glyph">返</span>
+          </div>
+          <h3>Kaeshi-no-Kata</h3>
+          <div class="kanji-sub">返しの形 (後の先の形) — Counter Throwing Forms</div>
+          <p>The master study of counter-throwing across foot sweep counters, pelvic hip blocks, and sacrifice counter-projections against committed attacks[cite: 2, 3].</p>
+          <div class="card-meta-list">
+            <div class="card-meta-row"><span>Structure</span><span>3 Sets (Ashi, Koshi, Te & Sutemi)[cite: 3]</span></div>
+            <div class="card-meta-row"><span>Principle</span><span>Go-no-sen (Late Initiative)[cite: 3]</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="pill-tag">15 Counter Throws</span>
+            <span class="card-link-text">Open Module &rarr;</span>
+          </div>
+        </div>
+
+        <!-- 12. Katame-waza Ura-no-Kata -->
+        <div class="kata-card" onclick="openModuleViewer('Katame-waza Ura-no-Kata.html', 'Katame-waza Ura-no-Kata (固技裏の形)')">
+          <div class="card-top">
+            <span class="card-tag">12. Groundwork Counters</span>
+            <span class="card-kanji-glyph">裏</span>
+          </div>
+          <h3>Katame-waza Ura-no-Kata</h3>
+          <div class="kanji-sub">固技裏の形 — Groundwork Counter Forms</div>
+          <p>Formulated by 10th Dan Kyuzo Mifune to systematically counter, bridge through, and reverse all 15 holding, strangling, and locking forms of Katame-no-Kata[cite: 4, 5].</p>
+          <div class="card-meta-list">
+            <div class="card-meta-row"><span>Structure</span><span>3 Sets × 5 Ground Reversals[cite: 5]</span></div>
+            <div class="card-meta-row"><span>Originator</span><span>Kyuzo Mifune (10th Dan)[cite: 5]</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="pill-tag">15 Ground Counters</span>
+            <span class="card-link-text">Open Module &rarr;</span>
+          </div>
+        </div>
+
+        <!-- 13. Nage-waza Ura-no-Kata -->
+        <div class="kata-card" onclick="openModuleViewer('nage-waza-ura-no-kata.html', 'Nage-waza Ura-no-Kata (投技裏の形)')">
+          <div class="card-top">
+            <span class="card-tag">13. Mifune Standing Counters</span>
+            <span class="card-kanji-glyph">反</span>
+          </div>
+          <h3>Nage-waza Ura-no-Kata</h3>
+          <div class="kanji-sub">投技裏の形 — Standing Throw Counter Forms</div>
+          <p>Mifune's classic standing counter-throwing forms showing the fluid neutralization and counter-projection of primary throwing attacks through circular body evasions.</p>
+          <div class="card-meta-list">
+            <div class="card-meta-row"><span>Structure</span><span>3 Sets × 5 Standing Reversals</span></div>
+            <div class="card-meta-row"><span>Originator</span><span>Kyuzo Mifune (10th Dan)</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="pill-tag">15 Counter Throws</span>
+            <span class="card-link-text">Open Module &rarr;</span>
+          </div>
+        </div>
+
+        <!-- 14. Renko-ho -->
+        <div class="kata-card" onclick="openModuleViewer('renko-ho.html', 'Renko-hō (連行法)')">
+          <div class="card-top">
+            <span class="card-tag">14. Custodial Escort</span>
+            <span class="card-kanji-glyph">連</span>
+          </div>
+          <h3>Renko-hō</h3>
+          <div class="kanji-sub">連行法 — Methods of Custodial Escort</div>
+          <p>The custodial transport and arrest hold curriculum utilizing pain compliance, wrist hyperflexions, straight armlocks, and rear hammerlocks to walk a subject safely.</p>
+          <div class="card-meta-list">
+            <div class="card-meta-row"><span>Structure</span><span>3 Vectors (Wrist, Elbow, Shoulder)</span></div>
+            <div class="card-meta-row"><span>Domain</span><span>Police Tactics & Self-Defense</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="pill-tag">6 Core Holds</span>
+            <span class="card-link-text">Open Module &rarr;</span>
+          </div>
+        </div>
+
+        <!-- 15. Keisatsu Taiho-jutsu Kata -->
+        <div class="kata-card" onclick="openModuleViewer('taiho-jutsu.html', 'Keisatsu Taiho-jutsu Kata (逮捕術基本形)')">
+          <div class="card-top">
+            <span class="card-tag">15. Police Arrest Tactics</span>
+            <span class="card-kanji-glyph">捕</span>
+          </div>
+          <h3>Keisatsu Taiho-jutsu Kata</h3>
+          <div class="kanji-sub">逮捕術基本形 — Police Arrest Technique Forms</div>
+          <p>The official Japanese Police arrest tactics curriculum synthesizing Judo, Keibo (baton), Kendo, and Aikijujutsu for rapid disarming, restraining, and handcuffing.</p>
+          <div class="card-meta-list">
+            <div class="card-meta-row"><span>Structure</span><span>Toshu (Unarmed) + Keibo (Baton) Defenses</span></div>
+            <div class="card-meta-row"><span>Application</span><span>Law Enforcement Restraint</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="pill-tag">14 Arrest Drills</span>
+            <span class="card-link-text">Open Module &rarr;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Lineage, University & Classical Budo (4) -->
+  <section id="lineage">
+    <div class="section-wrap">
+      <p class="sec-kicker">Division 05 — Lineage, Academic & Classical Budo</p>
+      <h2 class="sec-heading">Lineage, University & Historical Budo Kata</h2>
+      <p class="sec-sub">Specialized groundwork pull-in (Hikikomi) doctrines preserved in the Imperial University leagues, classical force studies, esoteric kinetic forms, and Kano's ancestral Jujutsu roots[cite: 7, 8].</p>
+
+      <div class="kata-grid">
+        <!-- 16. Kosen Judo Ne-Waza -->
+        <div class="kata-card" onclick="openModuleViewer('Kosen Judo Ne-Waza - Hikikomi Kata.html', 'Kosen Judo Ne-Waza (高専柔道 引込技・寝技)')">
+          <div class="card-top">
+            <span class="card-tag">16. Imperial University Tradition</span>
+            <span class="card-kanji-glyph">高</span>
+          </div>
+          <h3>Kosen Judo Ne-Waza</h3>
+          <div class="kanji-sub">高専柔道 引込技・寝技 — Guard Pulls & Matwork</div>
+          <p>The specialized groundwork curriculum of the Higher Technical Schools and Nanatei leagues, mastering direct guard pulls (Hikikomi), Sankaku, and turtle breakdowns[cite: 7, 8].</p>
+          <div class="card-meta-list">
+            <div class="card-meta-row"><span>Structure</span><span>3 Pillars (Pulls, Sweeps, Turtle Cracks)[cite: 8]</span></div>
+            <div class="card-meta-row"><span>Doctrine</span><span>Hikikomi & Mat Dominance[cite: 8]</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="pill-tag">9 Core Sequences</span>
+            <span class="card-link-text">Open Module &rarr;</span>
+          </div>
+        </div>
+
+        <!-- 17. Go-no-Kata -->
+        <div class="kata-card" onclick="openModuleViewer('go-no-kata.html', 'Go-no-Kata (剛の形)')">
+          <div class="card-top">
+            <span class="card-tag">17. Classical Force Study</span>
+            <span class="card-kanji-glyph">剛</span>
+          </div>
+          <h3>Go-no-Kata</h3>
+          <div class="kanji-sub">剛の形 — Forms of Force / Hardness</div>
+          <p>Kano's early counterpart to Ju-no-Kata exploring direct physical engagement, collision forces, and muscular hardness, preserved through early Kodokan and Tenri records.</p>
+          <div class="card-meta-list">
+            <div class="card-meta-row"><span>Structure</span><span>10 Direct Force Interactions</span></div>
+            <div class="card-meta-row"><span>Pairing</span><span>Counterpart to Ju-no-Kata[cite: 1]</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="pill-tag">10 Techniques</span>
+            <span class="card-link-text">Open Module &rarr;</span>
+          </div>
+        </div>
+
+        <!-- 18. Nanatsu-no-Kata -->
+        <div class="kata-card" onclick="openModuleViewer('Nanatsu-no-Kata.html', 'Nanatsu-no-Kata (七つの形)')">
+          <div class="card-top">
+            <span class="card-tag">18. Energetic & Kinetic Doctrine</span>
+            <span class="card-kanji-glyph">七</span>
+          </div>
+          <h3>Nanatsu-no-Kata</h3>
+          <div class="kanji-sub">七つの形 — The Seven Forms</div>
+          <p>An esoteric conceptual kata exploring linear inertia, circular vortex acceleration, tidal wave motion, spherical balance, and ultimate void dissipation[cite: 10, 11].</p>
+          <div class="card-meta-list">
+            <div class="card-meta-row"><span>Structure</span><span>3 Energetic Phases[cite: 11]</span></div>
+            <div class="card-meta-row"><span>Core Theme</span><span>Inertia, Centrifugal Force, Void[cite: 11]</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="pill-tag">7 Cosmic Forms</span>
+            <span class="card-link-text">Open Module &rarr;</span>
+          </div>
+        </div>
+
+        <!-- 19. Tenjin Shinyo-ryu no Kata -->
+        <div class="kata-card" onclick="openModuleViewer('tenjin-shinyo-ryu.html', 'Tenjin Shinyō-ryū no Kata (天神真楊流の形)')">
+          <div class="card-top">
+            <span class="card-tag">19. Ancestral Lineage</span>
+            <span class="card-kanji-glyph">天</span>
+          </div>
+          <h3>Tenjin Shinyō-ryū no Kata</h3>
+          <div class="kanji-sub">天神真楊流の形 — Ancestral Jujutsu Heritage</div>
+          <p>The foundational Jujutsu lineage mastered by Jigoro Kano under Hachinosuke Fukuda and Masatomo Iso, preserving classical vital strikes (Atemi-waza) and joint submissions[cite: 9].</p>
+          <div class="card-meta-list">
+            <div class="card-meta-row"><span>Structure</span><span>Shoden, Chuden & Okuden Transmissions</span></div>
+            <div class="card-meta-row"><span>Roots</span><span>Direct Source of Kodokan Ne-Waza & Atemi</span></div>
+          </div>
+          <div class="card-footer">
+            <span class="pill-tag">Classical Lineage</span>
+            <span class="card-link-text">Open Module &rarr;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="main-footer">
+    <p><strong>講道館柔道 形・教体系 — Complete Kodokan Kata & Gokyo Portal</strong></p>
+    <p style="margin-top: 0.4rem;">Comprehensive curriculum indexing all official Kodokan, Gokyo-no-Waza, Kosen, Taiho-jutsu, and classical Jujutsu lineage syllabi[cite: 3].</p>
+  </footer>
+
+  <!-- Dynamic Module Viewer Script -->
+  <script>
+    function openModuleViewer(url, title) {
+      const viewer = document.getElementById('module-viewer-container');
+      const frame = document.getElementById('module-frame');
+      const titleElement = document.getElementById('active-module-name');
+
+      titleElement.textContent = title;
+      frame.src = url;
+      viewer.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+
+      // Push state into browser history so the hardware/browser back button also cleanly returns
+      window.history.pushState({ modalOpen: true }, title);
+    }
+
+    function closeModuleViewer() {
+      const viewer = document.getElementById('module-viewer-container');
+      const frame = document.getElementById('module-frame');
+
+      viewer.style.display = 'none';
+      frame.src = 'about:blank';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Handle browser back button press cleanly
+    window.addEventListener('popstate', function(event) {
+      const viewer = document.getElementById('module-viewer-container');
+      if (viewer && viewer.style.display === 'flex') {
+        viewer.style.display = 'none';
+        document.getElementById('module-frame').src = 'about:blank';
+        document.body.style.overflow = 'auto';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>固の形 — Katame-no-Kata e-Learning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;600;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #9b2c2c;
+      --primary-dark: #742a2a;
+      --primary-light: #fff5f5;
+      --accent: #d97706;
+      --accent-light: #fef3c7;
+      --ink: #1e293b;
+      --text: #334155;
+      --text-muted: #64748b;
+      --bg: #ffffff;
+      --bg-alt: #f8fafc;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.03);
+      --font-display: 'Cinzel', serif;
+      --font-jp: 'Noto Serif JP', serif;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--ink);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
+
+    .nav-brand .kanji {
+      font-family: var(--font-jp);
+      color: var(--primary);
+      font-size: 1.25rem;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: color 0.2s ease;
+    }
+
+    .nav-menu a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      background: radial-gradient(circle at 80% 20%, rgba(155, 44, 44, 0.04) 0%, transparent 50%),
+                  radial-gradient(circle at 20% 80%, rgba(217, 119, 6, 0.04) 0%, transparent 50%),
+                  #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: 5.5rem 2rem 4.5rem;
+    }
+
+    .hero-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero h1 span.jp {
+      display: inline-block;
+      font-family: var(--font-jp);
+      font-size: 0.85em;
+      color: var(--primary);
+      margin-left: 0.6rem;
+      font-weight: 900;
+    }
+
+    .hero-lead {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin: 1.25rem 0 2rem;
+      font-weight: 400;
+      max-width: 600px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.6rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      border: 1px solid var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      border-color: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: var(--bg-alt);
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.75rem;
+    }
+
+    .stat-item .num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .stat-item .lbl {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+    }
+
+    .hero-emblem {
+      background: linear-gradient(135deg, var(--primary-light), #fff);
+      border: 1px solid #fed7d7;
+      border-radius: 8px;
+      padding: 3rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .hero-emblem::before {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 1px dashed rgba(155, 44, 44, 0.2);
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    .hero-emblem .big-kanji {
+      font-family: var(--font-jp);
+      font-size: 5rem;
+      font-weight: 900;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .hero-emblem .emblem-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-top: 1rem;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-emblem .emblem-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .section-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .sec-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .sec-heading {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+
+    .sec-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      max-width: 750px;
+    }
+
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      margin-bottom: 1.25rem;
+      color: #475569;
+    }
+
+    .about-sidebar {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sidebar-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+
+    .meta-row span:first-child {
+      color: var(--text-muted);
+    }
+
+    .meta-row span:last-child {
+      font-weight: 600;
+      color: var(--ink);
+      text-align: right;
+    }
+
+    .sets-bg {
+      background-color: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sets-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .set-panel {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .set-tag {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: var(--primary);
+      margin-bottom: 0.35rem;
+    }
+
+    .set-panel h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .set-panel .kanji-sub {
+      font-family: var(--font-jp);
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .set-panel p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .set-tech-list {
+      list-style: none;
+      margin-top: auto;
+      border-top: 1px solid var(--border);
+      padding-top: 0.75rem;
+    }
+
+    .set-tech-list li {
+      padding: 0.45rem 0;
+      font-size: 0.88rem;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed var(--border-light);
+    }
+
+    .set-tech-list li span.trans {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    .filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: none;
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      color: var(--ink);
+      background: var(--bg-alt);
+    }
+
+    .filter-btn.active {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .technique-item {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 1.75rem;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tech-idx {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #cbd5e1;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .tech-header-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .tech-name-jp {
+      font-family: var(--font-jp);
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--ink);
+    }
+
+    .tech-name-romaji {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .tech-name-trans {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .tech-overview-p {
+      color: var(--text);
+      font-size: 0.98rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .step-list {
+      background: var(--bg-alt);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .step-row {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 0.75rem;
+      font-size: 0.92rem;
+      color: #334155;
+    }
+
+    .step-num {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .principle-box {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      padding: 0.85rem 1.2rem;
+      border-radius: 0 4px 4px 0;
+      font-size: 0.88rem;
+      color: #92400e;
+      margin-bottom: 1.25rem;
+    }
+
+    .principle-box strong {
+      color: #78350f;
+    }
+
+    .tags-container {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .pill-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 50px;
+      background: #f1f5f9;
+      color: var(--text-muted);
+    }
+
+    .reiho-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .reiho-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+    }
+
+    .reiho-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .reiho-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .quiz-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .question-block {
+      margin-bottom: 2rem;
+    }
+
+    .question-title {
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 1.05rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .option-item {
+      display: block;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      padding: 0.85rem 1.2rem;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      font-size: 0.92rem;
+      transition: all 0.2s ease;
+    }
+
+    .option-item:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .option-item input {
+      margin-right: 0.75rem;
+      accent-color: var(--primary);
+    }
+
+    #quiz-feedback {
+      display: none;
+      padding: 1.25rem;
+      border-radius: 4px;
+      margin-top: 1.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 3rem 2rem;
+      background: var(--bg-alt);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-container, .about-layout, .sets-grid-3, .reiho-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-menu { display: none; }
+      .technique-item { grid-template-columns: 1fr; }
+      .tech-idx { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav>
+    <a href="#" class="nav-brand">
+      <span class="kanji">固の形</span>
+      <span>Katame-no-Kata</span>
+    </a>
+    <ul class="nav-menu">
+      <li><a href="#about">About</a></li>
+      <li><a href="#sets">Three Sets</a></li>
+      <li><a href="#techniques">Techniques</a></li>
+      <li><a href="#reiho">Reihō Protocol</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Header -->
+  <section class="hero">
+    <div class="hero-container">
+      <div>
+        <p class="hero-kicker">Kodokan Judo — Formal Randori-no-Kata</p>
+        <h1>Katame-no-Kata <span class="jp">固の形</span></h1>
+        <p class="hero-lead">The Forms of Grappling. A systematic study of judo's ground-control principles — holding, strangulation, joint manipulation, and dynamic center-of-gravity control on the mat.</p>
+        
+        <div class="hero-cta-group">
+          <a href="#techniques" class="btn btn-primary">Start Learning</a>
+          <a href="#sets" class="btn btn-secondary">Overview</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="num">15</div>
+            <div class="lbl">Techniques</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">3</div>
+            <div class="lbl">Sets (Dan)</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">1887</div>
+            <div class="lbl">Kodokan Standard</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-emblem">
+        <div class="big-kanji">固</div>
+        <div class="emblem-title">KATAME</div>
+        <div class="emblem-sub">Control · Immobilization</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="section-wrap">
+      <div class="about-layout">
+        <div class="about-text">
+          <p class="sec-kicker">Introduction</p>
+          <h2 class="sec-heading">What is Katame-no-Kata?</h2>
+          <p><strong>Katame-no-Kata (固の形)</strong>, meaning "Forms of Grappling" or "Immobilization," is the second half of Kodokan Judo's <em>Randori-no-Kata</em> (alongside Nage-no-Kata)[cite: 4, 10]. Developed between 1884 and 1887 under Jigoro Kano, it teaches the fundamental mechanics of control without reliance on raw muscular force[cite: 4].</p>
+          <p>While Nage-no-Kata focuses on dynamic standing throws, Katame-no-Kata focuses entirely on ground grappling (<em>Ne-waza</em>)[cite: 4]. The kata is arranged into three sets of five techniques: holding techniques (<em>Osaekomi-waza</em>), strangulations (<em>Shime-waza</em>), and joint locks (<em>Kansetsu-waza</em>)[cite: 4].</p>
+          <p>In the holding section, Uke makes three energetic, realistic escape attempts (<em>Kaisō</em>)[cite: 4]. Tori must neutralize every escape attempt by shifting their center of gravity, adjusting hip angles, and altering weight distribution to keep Uke immobilized[cite: 4].</p>
+          <p>Movement on the mat is conducted in high-kneeling posture (<em>Kyoshi</em>) and knee-walking (<em>Shikko</em>), making Katame-no-Kata a rigorous masterclass in stability, breathing, and mutual safety[cite: 4].</p>
+        </div>
+
+        <div class="about-sidebar">
+          <div class="sidebar-title">At a Glance</div>
+          <div class="meta-row"><span>Full Name</span><span>Katame-no-Kata 固の形</span></div>
+          <div class="meta-row"><span>Translation</span><span>Forms of Grappling</span></div>
+          <div class="meta-row"><span>Classification</span><span>Randori-no-Kata</span></div>
+          <div class="meta-row"><span>Creator</span><span>Jigoro Kano (Kodokan)</span></div>
+          <div class="meta-row"><span>Roles</span><span>Tori & Uke</span></div>
+          <div class="meta-row"><span>Structure</span><span>3 sets × 5 tech.</span></div>
+          <div class="meta-row"><span>Escapes (Kaisō)</span><span>3 per hold</span></div>
+          <div class="meta-row"><span>Submission</span><span>Mairi (Double Tap)</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Structure / Three Sets -->
+  <section id="sets" class="sets-bg">
+    <div class="section-wrap">
+      <p class="sec-kicker">Structure</p>
+      <h2 class="sec-heading">The Three Sets</h2>
+      <p class="sec-sub">Katame-no-Kata is structured into three disciplines (Dan), each featuring five standard techniques representing the pillars of Kodokan groundwork[cite: 4].</p>
+
+      <div class="sets-grid-3">
+        <!-- Set 1 -->
+        <div class="set-panel">
+          <div class="set-tag">SET 01</div>
+          <h3>Osaekomi-waza</h3>
+          <div class="kanji-sub">抑込技 — Holding Techniques</div>
+          <p>Controlling Uke supine on the tatami through chest-to-chest contact, hip pressure, and balance adjustments against 3 distinct escape attempts[cite: 4].</p>
+          <ul class="set-tech-list">
+            <li>1. Kesa-gatame <span class="trans">Scarf Hold</span></li>
+            <li>2. Kata-gatame <span class="trans">Shoulder Hold</span></li>
+            <li>3. Kami-shiho-gatame <span class="trans">Upper Four-Quarter</span></li>
+            <li>4. Yoko-shiho-gatame <span class="trans">Side Four-Quarter</span></li>
+            <li>5. Kuzure-kami-shiho <span class="trans">Modified Upper</span></li>
+          </ul>
+        </div>
+
+        <!-- Set 2 -->
+        <div class="set-panel">
+          <div class="set-tag">SET 02</div>
+          <h3>Shime-waza</h3>
+          <div class="kanji-sub">絞技 — Strangulation Techniques</div>
+          <p>Restricting blood flow via carotid compression using the gi lapels or forearm blades from mounted, rear, and guard positions[cite: 4].</p>
+          <ul class="set-tech-list">
+            <li>6. Kata-juji-jime <span class="trans">Half Cross Strangle</span></li>
+            <li>7. Hadaka-jime <span class="trans">Naked Strangle</span></li>
+            <li>8. Okuri-eri-jime <span class="trans">Sliding Collar</span></li>
+            <li>9. Kata-ha-jime <span class="trans">Single Wing</span></li>
+            <li>10. Gyaku-juji-jime <span class="trans">Reverse Cross</span></li>
+          </ul>
+        </div>
+
+        <!-- Set 3 -->
+        <div class="set-panel">
+          <div class="set-tag">SET 03</div>
+          <h3>Kansetsu-waza</h3>
+          <div class="kanji-sub">関節技 — Joint Locking Techniques</div>
+          <p>Hyperextending and twisting the elbow joint using fulcrums created by the arms, knees, legs, and pelvis[cite: 4].</p>
+          <ul class="set-tech-list">
+            <li>11. Ude-garami <span class="trans">Arm Entanglement</span></li>
+            <li>12. Ude-hishigi-juji-gatame <span class="trans">Cross Armlock</span></li>
+            <li>13. Ude-hishigi-ude-gatame <span class="trans">Arm Armlock</span></li>
+            <li>14. Ude-hishigi-hiza-gatame <span class="trans">Knee Armlock</span></li>
+            <li>15. Ude-hishigi-ashi-gatame <span class="trans">Leg Armlock</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step-by-Step Technical Breakdown -->
+  <section id="techniques">
+    <div class="section-wrap">
+      <p class="sec-kicker">Step-by-Step</p>
+      <h2 class="sec-heading">Technique Breakdown</h2>
+      <p class="sec-sub">Each technique is detailed according to the official Kodokan Judo textbook standard, including positioning, mechanics, and escape responses[cite: 4].</p>
+
+      <!-- Filter Controls -->
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterCategory('all')">All (15)</button>
+        <button class="filter-btn" onclick="filterCategory('osaekomi')">1. Osaekomi-waza</button>
+        <button class="filter-btn" onclick="filterCategory('shime')">2. Shime-waza</button>
+        <button class="filter-btn" onclick="filterCategory('kansetsu')">3. Kansetsu-waza</button>
+      </div>
+
+      <!-- Techniques Container -->
+      <div id="tech-container">
+
+        <!-- 1 -->
+        <div class="technique-item" data-category="osaekomi">
+          <div class="tech-idx">01</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">袈裟固</span>
+              <span class="tech-name-romaji">Kesa-gatame</span>
+              <span class="tech-name-trans">"Scarf Hold"</span>
+            </div>
+            <p class="tech-overview-p">Tori sits with their right hip against Uke's right flank, wraps their left arm around Uke's neck, and locks Uke's right arm under their left armpit[cite: 4].</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Tori approaches Uke's right side in Kyoshi, stepping the right foot forward and lowering the right hip beside Uke's chest[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Left hand encircles Uke's neck, gripping the rear collar; right hand firmly clamps Uke's right upper arm to Tori's ribs[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori extends the right leg forward and bends the left leg back, lowering the hips firmly onto the tatami[cite: 4].</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Escape Attempts (Kaisō):</strong> 1. Uke bridges into Tori attempting to roll them over; 2. Uke pushes Tori's chin with the left hand to free the right arm; 3. Uke bridges away to slip out[cite: 4].
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Osaekomi-waza</span><span class="pill-tag">Side Control</span><span class="pill-tag">Wide Base</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="technique-item" data-category="osaekomi">
+          <div class="tech-idx">02</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">肩固</span>
+              <span class="tech-name-romaji">Kata-gatame</span>
+              <span class="tech-name-trans">"Shoulder Hold"</span>
+            </div>
+            <p class="tech-overview-p">Tori pushes Uke's right arm across Uke's neck, clasps hands around Uke's neck and arm, and pins downward with the right knee against Uke's ribs[cite: 4].</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Tori shifts from Kesa-gatame, pushing Uke's right upper arm across Uke's throat[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori slides the right arm behind Uke's neck and clasps hands firmly at the side of Uke's head[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori plants the right knee against Uke's ribs, extends the left leg wide, and drives chest pressure down[cite: 4].</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Escape Attempts (Kaisō):</strong> 1. Uke clasps hands to pull the trapped arm back; 2. Uke turns body inward into Tori; 3. Uke bridges diagonally to the right[cite: 4].
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Osaekomi-waza</span><span class="pill-tag">Shoulder Clamp</span><span class="pill-tag">Chest Pressure</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="technique-item" data-category="osaekomi">
+          <div class="tech-idx">03</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">上四方固</span>
+              <span class="tech-name-romaji">Kami-shiho-gatame</span>
+              <span class="tech-name-trans">"Upper Four-Quarter Hold"</span>
+            </div>
+            <p class="tech-overview-p">From above Uke's head, Tori slides both arms under Uke's shoulders to grip the belt on both sides, lowering the chest firmly onto Uke's chest[cite: 4].</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>From Kyoshi at Uke's head, Tori slides both arms under Uke's shoulders to grip the belt[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori lowers their chest onto Uke's chest and rests their forehead against Uke's lower abdomen[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori spreads both knees wide with toes engaged in Kiza, maintaining a low, balanced center of mass[cite: 4].</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Escape Attempts (Kaisō):</strong> 1. Uke bridges and turns hips to roll Tori left; 2. Uke bridges to roll Tori right; 3. Uke pushes Tori's shoulders to slide out[cite: 4].
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Osaekomi-waza</span><span class="pill-tag">Head-On Pin</span><span class="pill-tag">Belt Grips</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="technique-item" data-category="osaekomi">
+          <div class="tech-idx">04</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">横四方固</span>
+              <span class="tech-name-romaji">Yoko-shiho-gatame</span>
+              <span class="tech-name-trans">"Side Four-Quarter Hold"</span>
+            </div>
+            <p class="tech-overview-p">Tori positions perpendicularly across Uke's right flank, threading the left arm under Uke's neck and the right arm between Uke's legs to grip the belt[cite: 4].</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Tori approaches Uke's right flank, sliding the left arm under Uke's neck to grip the back collar[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori passes the right arm between Uke's thighs to hold the rear belt[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori drops chest weight onto Uke's chest, spreading knees wide with hips low[cite: 4].</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Escape Attempts (Kaisō):</strong> 1. Uke inserts the left knee between bodies; 2. Uke wraps the right arm around Tori's neck to roll; 3. Uke pushes Tori's head to turn face down[cite: 4].
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Osaekomi-waza</span><span class="pill-tag">Perpendicular</span><span class="pill-tag">Crotch Grip</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="technique-item" data-category="osaekomi">
+          <div class="tech-idx">05</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">崩上四方固</span>
+              <span class="tech-name-romaji">Kuzure-kami-shiho-gatame</span>
+              <span class="tech-name-trans">"Modified Upper Four-Quarter Hold"</span>
+            </div>
+            <p class="tech-overview-p">From Uke's head, Tori wraps the right arm over Uke's right shoulder/collar and passes the left arm under Uke's left armpit to grip the belt[cite: 4].</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>From Uke's head, Tori wraps the right arm over Uke's right shoulder to hold the collar[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori threads the left arm under Uke's left armpit to grip the back belt[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori presses their torso down diagonally across Uke's chest, controlling Uke's head[cite: 4].</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Escape Attempts (Kaisō):</strong> 1. Uke bridges and turns right to free the shoulder; 2. Uke turns left to extract head; 3. Uke bridges straight up[cite: 4].
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Osaekomi-waza</span><span class="pill-tag">Asymmetrical</span><span class="pill-tag">Head Immobilization</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="technique-item" data-category="shime">
+          <div class="tech-idx">06</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">片十字絞</span>
+              <span class="tech-name-romaji">Kata-juji-jime</span>
+              <span class="tech-name-trans">"Half Cross Strangle"</span>
+            </div>
+            <p class="tech-overview-p">Tori sits mounted astride Uke's hips (Tate-shiho), gripping one collar palm up and the other palm down to cross the wrists and constrict the carotids[cite: 4].</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Tori mounts Uke in Tate-shiho position[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Left hand grips deep into Uke's left collar with four fingers inside (palm up)[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Right hand crosses over, inserting the thumb inside Uke's right collar (palm down), drawing elbows in and pulling chest close[cite: 4].</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Submission Protocol:</strong> Uke signals submission by tapping twice (Mairi) on Tori or the tatami[cite: 4]. Tori releases immediately[cite: 4].
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Shime-waza</span><span class="pill-tag">Mounted</span><span class="pill-tag">Cross Grip</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="technique-item" data-category="shime">
+          <div class="tech-idx">07</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">裸絞</span>
+              <span class="tech-name-romaji">Hadaka-jime</span>
+              <span class="tech-name-trans">"Naked Strangle"</span>
+            </div>
+            <p class="tech-overview-p">Applied from behind a seated Uke without using the gi. The radial edge of Tori's right forearm wraps around the throat while Tori clasps palms together[cite: 4].</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke sits in Seiza; Tori kneels behind in Kyoshi[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori wraps the radial blade of the right forearm across Uke's throat[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori clasps palms at Uke's left shoulder, presses head against Uke's occiput, and expands chest[cite: 4].</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Submission Protocol:</strong> Uke signals submission by tapping twice on Tori's thigh[cite: 4].
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Shime-waza</span><span class="pill-tag">Rear Position</span><span class="pill-tag">No-Gi Choke</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="technique-item" data-category="shime">
+          <div class="tech-idx">08</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">送襟絞</span>
+              <span class="tech-name-romaji">Okuri-eri-jime</span>
+              <span class="tech-name-trans">"Sliding Collar Strangle"</span>
+            </div>
+            <p class="tech-overview-p">From behind the seated Uke, Tori reaches around the neck to take a deep collar grip while the other hand pulls down on the opposite lapel under the armpit[cite: 4].</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Tori reaches right hand over Uke's right shoulder, gripping deep into Uke's left collar (thumb inside)[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Left hand passes under Uke's left armpit to grip the right lapel, pulling down to tighten the jacket across the neck[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori draws Uke back against their chest, sliding the collar to constrict the carotid arteries[cite: 4].</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Submission Protocol:</strong> Uke taps twice to submit[cite: 4].
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Shime-waza</span><span class="pill-tag">Rear Position</span><span class="pill-tag">Sliding Collar</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="technique-item" data-category="shime">
+          <div class="tech-idx">09</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">片羽絞</span>
+              <span class="tech-name-romaji">Kata-ha-jime</span>
+              <span class="tech-name-trans">"Single Wing Strangle"</span>
+            </div>
+            <p class="tech-overview-p">Tori sets a deep right collar grip from behind, threads the left arm under Uke's left armpit, and places the left palm behind Uke's neck[cite: 4].</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Tori secures a deep right collar grip around Uke's left neck as in Okuri-eri-jime[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori raises Uke's left arm, threads the left arm under the armpit, and anchors the palm behind Uke's neck[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori lifts Uke's trapped arm (the "wing") while tightening the collar with the right hand[cite: 4].</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Submission Protocol:</strong> Uke taps twice to submit[cite: 4].
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Shime-waza</span><span class="pill-tag">Wing Lock</span><span class="pill-tag">Shoulder Control</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="technique-item" data-category="shime">
+          <div class="tech-idx">10</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">逆十字絞</span>
+              <span class="tech-name-romaji">Gyaku-juji-jime</span>
+              <span class="tech-name-trans">"Reverse Cross Strangle"</span>
+            </div>
+            <p class="tech-overview-p">Mounted atop Uke, Tori crosses forearms and inserts both thumbs deep inside both collars with four fingers outside (both palms facing up toward Tori)[cite: 4].</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Tori sits mounted astride Uke's hips (Tate-shiho)[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori crosses forearms and inserts both thumbs deep into both collars with palms facing up[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori lowers the torso, straightens the wrists, and expands the chest to complete the choke[cite: 4].</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Submission Protocol:</strong> Uke taps twice to submit[cite: 4].
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Shime-waza</span><span class="pill-tag">Mounted</span><span class="pill-tag">Double Palms Up</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 11 -->
+        <div class="technique-item" data-category="kansetsu">
+          <div class="tech-idx">11</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">腕緘</span>
+              <span class="tech-name-romaji">Ude-garami</span>
+              <span class="tech-name-trans">"Arm Entanglement / Keylock"</span>
+            </div>
+            <p class="tech-overview-p">Tori pins Uke's bent right arm to the mat (elbow at 90 degrees), weaves their right arm under Uke's upper arm, and grasps their own left wrist to form a figure-four lock[cite: 4].</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Tori pins Uke's right wrist to the mat with the left hand[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori threads the right arm under Uke's right triceps and grabs their own left wrist[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori lifts Uke's elbow while sliding the wrist along the mat toward Uke's hips[cite: 4].</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Submission Protocol:</strong> Uke taps twice immediately due to joint rotational torque[cite: 4].
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Kansetsu-waza</span><span class="pill-tag">Figure-Four</span><span class="pill-tag">Shoulder & Elbow Lock</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 12 -->
+        <div class="technique-item" data-category="kansetsu">
+          <div class="tech-idx">12</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">腕挫十字固</span>
+              <span class="tech-name-romaji">Ude-hishigi-juji-gatame</span>
+              <span class="tech-name-trans">"Cross Armlock"</span>
+            </div>
+            <p class="tech-overview-p">Tori traps Uke's extended right arm between the thighs, places one leg over Uke's neck and one over the chest, and extends the hips to hyperextend the elbow[cite: 4].</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Tori secures Uke's right arm with both hands, placing left leg over Uke's neck and right leg across the chest[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori clamps knees tightly together, keeping Uke's thumb pointing straight toward the ceiling[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori leans back smoothly, elevating the hips to hyperextend the elbow across the pelvis[cite: 4].</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Submission Protocol:</strong> Uke taps twice with the free hand or foot[cite: 4].
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Kansetsu-waza</span><span class="pill-tag">Cross Body</span><span class="pill-tag">Pelvic Fulcrum</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 13 -->
+        <div class="technique-item" data-category="kansetsu">
+          <div class="tech-idx">13</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">腕挫腕固</span>
+              <span class="tech-name-romaji">Ude-hishigi-ude-gatame</span>
+              <span class="tech-name-trans">"Arm Armlock"</span>
+            </div>
+            <p class="tech-overview-p">As Uke pushes up, Tori traps Uke's wrist against their own neck/shoulder, placing both hands on Uke's elbow joint to apply downward leverage[cite: 4].</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Tori traps Uke's right wrist tightly against the side of their neck and shoulder[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori places both hands directly over Uke's extended elbow joint (palms layered)[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori twists the torso slightly and applies downward, leveraged pressure against the joint[cite: 4].</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Submission Protocol:</strong> Uke taps twice on the tatami[cite: 4].
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Kansetsu-waza</span><span class="pill-tag">Direct Arm Lock</span><span class="pill-tag">Neck Trap</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 14 -->
+        <div class="technique-item" data-category="kansetsu">
+          <div class="tech-idx">14</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">腕挫膝固</span>
+              <span class="tech-name-romaji">Ude-hishigi-hiza-gatame</span>
+              <span class="tech-name-trans">"Knee Armlock"</span>
+            </div>
+            <p class="tech-overview-p">Tori traps Uke's extended right arm under the left armpit and uses the right knee directly against the elbow joint as a fulcrum to apply hyperextension[cite: 4].</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Tori secures Uke's right wrist under the left armpit[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori positions the right knee/shin directly on the outside of Uke's right elbow joint[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori pushes the knee forward while pulling Uke's upper torso inward, hyperextending the elbow[cite: 4].</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Submission Protocol:</strong> Uke taps twice[cite: 4].
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Kansetsu-waza</span><span class="pill-tag">Knee Fulcrum</span><span class="pill-tag">Leverage</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 15 -->
+        <div class="technique-item" data-category="kansetsu">
+          <div class="tech-idx">15</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">腕挫脚固</span>
+              <span class="tech-name-romaji">Ude-hishigi-ashi-gatame</span>
+              <span class="tech-name-trans">"Leg Armlock"</span>
+            </div>
+            <p class="tech-overview-p">The final technique of Katame-no-Kata. Tori captures Uke's extended arm, drapes their leg/calf over the elbow joint, and uses bodyweight leverage to apply hyperextension[cite: 4].</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Tori traps Uke's extended arm flat against the mat[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori drapes their leg over Uke's triceps/elbow, hooking the foot underneath to anchor the fulcrum[cite: 4].</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori applies controlled downward pressure through the calf and bodyweight to hyperextend the joint[cite: 4].</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Submission Protocol:</strong> Uke taps twice to conclude the 15th technique of Katame-no-Kata[cite: 4].
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Kansetsu-waza</span><span class="pill-tag">Leg Fulcrum</span><span class="pill-tag">Final Technique</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Reihō (Etiquette) Section -->
+  <section id="reiho" class="sets-bg">
+    <div class="section-wrap">
+      <p class="sec-kicker">Principles & Etiquette</p>
+      <h2 class="sec-heading">Kodokan Reihō & Floor Protocol</h2>
+      <p class="sec-sub">Kata begins and ends with formal respect (Rei). Smooth execution depends on strictly adhering to Kodokan mat rules[cite: 4].</p>
+
+      <div class="reiho-grid">
+        <div class="reiho-card">
+          <h4>Opening & Closing Distance</h4>
+          <p>Tori and Uke stand approximately 5.5 meters apart (6 tatami lengths)[cite: 4]. Tori stands to the right of Joseki, Uke to the left[cite: 4]. Both perform Ritsurei toward Joseki, turn to face each other, drop to Seiza, and execute Zarei[cite: 4].</p>
+        </div>
+        <div class="reiho-card">
+          <h4>Kyoshi & Shikko Movement</h4>
+          <p>All floor transitions in Katame-no-Kata are conducted from Kyoshi (high kneeling on one knee with toes in Kiza)[cite: 4]. Movements across the tatami are performed with smooth knee-walking (Shikko)[cite: 4].</p>
+        </div>
+        <div class="reiho-card">
+          <h4>Mairi (Submission) Signal</h4>
+          <p>Uke signals submission by tapping twice (Mairi) with the free hand or foot on Tori or the mat[cite: 4]. Tori must release all pressure immediately and smoothly return to Kyoshi[cite: 4].</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz Section -->
+  <section id="quiz">
+    <div class="section-wrap">
+      <div style="text-align: center; margin-bottom: 2.5rem;">
+        <p class="sec-kicker">Self-Assessment</p>
+        <h2 class="sec-heading">Katame-no-Kata Knowledge Check</h2>
+        <p class="sec-sub" style="margin: 0 auto;">Test your understanding of the Kodokan textbook requirements for Katame-no-Kata[cite: 4].</p>
+      </div>
+
+      <div class="quiz-card">
+        <form id="quiz-form">
+          <div class="question-block">
+            <div class="question-title">1. What is the total composition of Kodokan Katame-no-Kata?</div>
+            <label class="option-item"><input type="radio" name="q1" value="a"> 12 techniques (4 sets of 3)</label>
+            <label class="option-item"><input type="radio" name="q1" value="b"> 15 techniques (3 sets of 5)</label>
+            <label class="option-item"><input type="radio" name="q1" value="c"> 21 techniques (3 sets of 7)</label>
+          </div>
+
+          <div class="question-block">
+            <div class="question-title">2. In Osaekomi-waza, how many distinct escape attempts (Kaisō) does Uke perform for each hold?</div>
+            <label class="option-item"><input type="radio" name="q2" value="a"> 1 continuous attempt</label>
+            <label class="option-item"><input type="radio" name="q2" value="b"> 2 alternating attempts</label>
+            <label class="option-item"><input type="radio" name="q2" value="c"> 3 distinct escape attempts</label>
+          </div>
+
+          <div class="question-block">
+            <div class="question-title">3. What is the hand grip distinction in Gyaku-juji-jime?</div>
+            <label class="option-item"><input type="radio" name="q3" value="a"> Both thumbs are inside the collars with both palms facing up toward Tori</label>
+            <label class="option-item"><input type="radio" name="q3" value="b"> One palm is up and one is down</label>
+            <label class="option-item"><input type="radio" name="q3" value="c"> Both hands grip behind the neck without the gi</label>
+          </div>
+
+          <div class="question-block">
+            <div class="question-title">4. Which technique is the 15th (final) technique of Katame-no-Kata?</div>
+            <label class="option-item"><input type="radio" name="q4" value="a"> Ude-hishigi-juji-gatame</label>
+            <label class="option-item"><input type="radio" name="q4" value="b"> Ude-hishigi-ashi-gatame</label>
+            <label class="option-item"><input type="radio" name="q4" value="c"> Ude-garami</label>
+          </div>
+
+          <button type="button" class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="evaluateQuiz()">Submit Answers</button>
+        </form>
+
+        <div id="quiz-feedback"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Kodokan Judo Katame-no-Kata (固の形) e-Learning Module</p>
+    <p style="margin-top: 0.35rem;">Standardized syllabus based on the official Kodokan Judo textbook[cite: 4].</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    function filterCategory(category) {
+      const items = document.querySelectorAll('.technique-item');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      items.forEach(item => {
+        if (category === 'all' || item.getAttribute('data-category') === category) {
+          item.style.display = 'grid';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    function evaluateQuiz() {
+      const answers = { q1: 'b', q2: 'c', q3: 'a', q4: 'b' };
+      const form = document.forms['quiz-form'];
+      let score = 0;
+      let total = 4;
+
+      for (let q in answers) {
+        if (form[q] && form[q].value === answers[q]) {
+          score++;
+        }
+      }
+
+      const percentage = Math.round((score / total) * 100);
+      const feedback = document.getElementById('quiz-feedback');
+      feedback.style.display = 'block';
+
+      if (percentage >= 75) {
+        feedback.style.background = '#dcfce7';
+        feedback.style.color = '#15803d';
+        feedback.style.border = '1px solid #bbf7d0';
+        feedback.innerHTML = `Assessment Passed! Score: ${percentage}% (${score}/${total} correct). You have demonstrated solid comprehension of Kodokan Katame-no-Kata.`;
+      } else {
+        feedback.style.background = '#fee2e2';
+        feedback.style.color = '#b91c1c';
+        feedback.style.border = '1px solid #fecaca';
+        feedback.innerHTML = `Score: ${percentage}% (${score}/${total} correct). Review the technique breakdowns above and try again.`;
+      }
+    }
+  </script>
+</body>
+</html>

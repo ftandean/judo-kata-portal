@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>五の形 — Itsutsu-no-Kata e-Learning</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;600;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #9b2c2c;
+      --primary-dark: #742a2a;
+      --primary-light: #fff5f5;
+      --accent: #d97706;
+      --accent-light: #fef3c7;
+      --ink: #1e293b;
+      --text: #334155;
+      --text-muted: #64748b;
+      --bg: #ffffff;
+      --bg-alt: #f8fafc;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
+      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -2px rgba(0,0,0,0.03);
+      --font-display: 'Cinzel', serif;
+      --font-jp: 'Noto Serif JP', serif;
+      --font-sans: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.7;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--ink);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-brand .kanji {
+      font-family: var(--font-jp);
+      color: var(--primary);
+      font-size: 1.25rem;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: color 0.2s ease;
+    }
+
+    .nav-menu a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      background: radial-gradient(circle at 80% 20%, rgba(155, 44, 44, 0.04) 0%, transparent 50%),
+                  radial-gradient(circle at 20% 80%, rgba(217, 119, 6, 0.04) 0%, transparent 50%),
+                  #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: 5.5rem 2rem 4.5rem;
+    }
+
+    .hero-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero h1 span.jp {
+      display: inline-block;
+      font-family: var(--font-jp);
+      font-size: 0.85em;
+      color: var(--primary);
+      margin-left: 0.6rem;
+      font-weight: 900;
+    }
+
+    .hero-lead {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin: 1.25rem 0 2rem;
+      font-weight: 400;
+      max-width: 600px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.75rem 1.6rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      border: 1px solid var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      border-color: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: var(--bg-alt);
+      color: var(--ink);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      border-top: 1px solid var(--border);
+      padding-top: 1.75rem;
+    }
+
+    .stat-item .num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .stat-item .lbl {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+    }
+
+    /* Hero Emblem Badge */
+    .hero-emblem {
+      background: linear-gradient(135deg, var(--primary-light), #fff);
+      border: 1px solid #fed7d7;
+      border-radius: 8px;
+      padding: 3rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .hero-emblem::before {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 1px dashed rgba(155, 44, 44, 0.2);
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    .hero-emblem .big-kanji {
+      font-family: var(--font-jp);
+      font-size: 5rem;
+      font-weight: 900;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .hero-emblem .emblem-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-top: 1rem;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-emblem .emblem-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    /* Section Global Styles */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .section-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .sec-kicker {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .sec-heading {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+
+    .sec-sub {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 2.5rem;
+      max-width: 750px;
+    }
+
+    /* About Section */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      margin-bottom: 1.25rem;
+      color: #475569;
+    }
+
+    .about-sidebar {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sidebar-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.65rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+    }
+
+    .meta-row span:first-child {
+      color: var(--text-muted);
+    }
+
+    .meta-row span:last-child {
+      font-weight: 600;
+      color: var(--ink);
+      text-align: right;
+    }
+
+    /* Overview Grid */
+    .sets-bg {
+      background-color: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sets-grid-5 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .set-panel {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .set-tag {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: var(--primary);
+      margin-bottom: 0.35rem;
+    }
+
+    .set-panel h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .set-panel .kanji-sub {
+      font-family: var(--font-jp);
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+
+    .set-panel p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    /* Technique Breakdown Section */
+    .filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: none;
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      color: var(--ink);
+      background: var(--bg-alt);
+    }
+
+    .filter-btn.active {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .technique-item {
+      display: grid;
+      grid-template-columns: 70px 1fr;
+      gap: 1.75rem;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 1.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tech-idx {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #cbd5e1;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .tech-header-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .tech-name-jp {
+      font-family: var(--font-jp);
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: var(--ink);
+    }
+
+    .tech-name-romaji {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .tech-name-trans {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .tech-overview-p {
+      color: var(--text);
+      font-size: 0.98rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .step-list {
+      background: var(--bg-alt);
+      border-radius: 6px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .step-row {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 0.75rem;
+      font-size: 0.92rem;
+      color: #334155;
+    }
+
+    .step-num {
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .principle-box {
+      background: var(--accent-light);
+      border-left: 3px solid var(--accent);
+      padding: 0.85rem 1.2rem;
+      border-radius: 0 4px 4px 0;
+      font-size: 0.88rem;
+      color: #92400e;
+      margin-bottom: 1.25rem;
+    }
+
+    .principle-box strong {
+      color: #78350f;
+    }
+
+    .tags-container {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .pill-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: 50px;
+      background: #f1f5f9;
+      color: var(--text-muted);
+    }
+
+    /* Reihō & Principles Section */
+    .reiho-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .reiho-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+    }
+
+    .reiho-card h4 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+    }
+
+    .reiho-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    /* Quiz Section */
+    .quiz-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .question-block {
+      margin-bottom: 2rem;
+    }
+
+    .question-title {
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 1.05rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .option-item {
+      display: block;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      padding: 0.85rem 1.2rem;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      font-size: 0.92rem;
+      transition: all 0.2s ease;
+    }
+
+    .option-item:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .option-item input {
+      margin-right: 0.75rem;
+      accent-color: var(--primary);
+    }
+
+    #quiz-feedback {
+      display: none;
+      padding: 1.25rem;
+      border-radius: 4px;
+      margin-top: 1.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 3rem 2rem;
+      background: var(--bg-alt);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-container, .about-layout, .reiho-grid {
+        grid-template-columns: 1fr;
+      }
+      .nav-menu { display: none; }
+      .technique-item { grid-template-columns: 1fr; }
+      .tech-idx { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav>
+    <div class="nav-brand">
+      <span class="kanji">五の形</span>
+      <span>Itsutsu-no-Kata</span>
+    </div>
+    <ul class="nav-menu">
+      <li><a href="#about">About</a></li>
+      <li><a href="#principles">Five Forms</a></li>
+      <li><a href="#techniques">Techniques</a></li>
+      <li><a href="#reiho">Philosophy & Reihō</a></li>
+      <li><a href="#quiz">Quiz</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container">
+      <div>
+        <p class="hero-kicker">Kodokan Judo — The Philosophical Essence</p>
+        <h1>Itsutsu-no-Kata <span class="jp">五の形</span></h1>
+        <p class="hero-lead">The Forms of Five. The pinnacle of Kodokan Judo's philosophical expression, created by Jigoro Kano in 1887 to illustrate the fundamental cosmic and physical laws of nature through continuous biomechanical energy, yielding, whirlpool forces, and tides.</p>
+        
+        <div class="hero-cta-group">
+          <a href="#techniques" class="btn btn-primary">Start Learning</a>
+          <a href="#principles" class="btn btn-secondary">Overview</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="num">5</div>
+            <div class="lbl">Principles (Kyo)</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">Unnamed</div>
+            <div class="lbl">Classical Tradition</div>
+          </div>
+          <div class="stat-item">
+            <div class="num">1887</div>
+            <div class="lbl">Kodokan Formulated</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-emblem">
+        <div class="big-kanji">五</div>
+        <div class="emblem-title">ITSUTSU</div>
+        <div class="emblem-sub">The Five Cosmic Principles</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about">
+    <div class="section-wrap">
+      <div class="about-layout">
+        <div class="about-text">
+          <p class="sec-kicker">Introduction</p>
+          <h2 class="sec-heading">What is Itsutsu-no-Kata?</h2>
+          <p><strong>Itsutsu-no-Kata (五の形)</strong>, meaning the "Forms of Five," is the most abstract, philosophical, and aesthetically elevated kata in Kodokan Judo. Formulated by Jigoro Kano around 1887, it draws deeply from the cosmology and biomechanics of <em>Tenjin Shinyo-ryu</em> and <em>Kito-ryu Jujutsu</em>.</p>
+          <p>Unlike other kata, the five techniques of Itsutsu-no-Kata were <strong>intentionally left unnamed by Jigoro Kano</strong>. They are formally referred to simply as <em>Dai-ikkyo</em> (First Form) through <em>Dai-gokyo</em> (Fifth Form) to avoid confining their vast universal principles to single technical labels.</p>
+          <p>The kata demonstrates the laws of physics that govern Judo and the natural universe: the direct application of unceasing energy, yielding redirection to evade an overwhelming charge, the centrifugal whirlpool of water, the irresistible rhythm of ocean tides, and the complete yielding void that neutralizes a head-on collision.</p>
+          <p>Execution requires sublime harmony, seamless breathing (<em>Kokyu</em>), unified center of gravity (<em>Tanden</em>), and perfect mutual synchronization between Tori and Uke.</p>
+        </div>
+
+        <div class="about-sidebar">
+          <div class="sidebar-title">At a Glance</div>
+          <div class="meta-row"><span>Full Name</span><span>Itsutsu-no-Kata 五の形</span></div>
+          <div class="meta-row"><span>Translation</span><span>The Forms of Five</span></div>
+          <div class="meta-row"><span>Creator</span><span>Jigoro Kano (Kodokan)</span></div>
+          <div class="meta-row"><span>Formalization</span><span>1887</span></div>
+          <div class="meta-row"><span>Total Forms</span><span>5 Forms (Dai-ikkyo to Dai-gokyo)</span></div>
+          <div class="meta-row"><span>Technique Names</span><span>Officially Unnamed (Numbered)</span></div>
+          <div class="meta-row"><span>Primary Theme</span><span>Cosmic Energy & Physical Law</span></div>
+          <div class="meta-row"><span>Grade Requirement</span><span>High Dan Grades (7th Dan+)</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Structure / Five Forms Overview -->
+  <section id="principles" class="sets-bg">
+    <div class="section-wrap">
+      <p class="sec-kicker">Structure</p>
+      <h2 class="sec-heading">The Five Universal Principles</h2>
+      <p class="sec-sub">Each form illustrates a fundamental law of force, momentum, and cosmic balance through paired physical interaction.</p>
+
+      <div class="sets-grid-5">
+        <!-- Form 1 -->
+        <div class="set-panel">
+          <div class="set-tag">FORM 01</div>
+          <h3>Dai-ikkyo</h3>
+          <div class="kanji-sub">第一教 — Continuous Positive Energy</div>
+          <p>Illustrates the principle that a small, continuous, micro-adjusting force applied persistently can overcome a massive, stationary opposing body.</p>
+        </div>
+
+        <!-- Form 2 -->
+        <div class="set-panel">
+          <div class="set-tag">FORM 02</div>
+          <h3>Dai-nikyo</h3>
+          <div class="kanji-sub">第二教 — Yielding Redirection</div>
+          <p>Illustrates the core principle of Ju: yielding to an overwhelming rushing attack, redirecting its vector, and allowing its momentum to cause self-defeat.</p>
+        </div>
+
+        <!-- Form 3 -->
+        <div class="set-panel">
+          <div class="set-tag">FORM 03</div>
+          <h3>Dai-sankyo</h3>
+          <div class="kanji-sub">第三教 — The Whirlpool (Centrifugal Force)</div>
+          <p>Demonstrates the vortex or whirlpool effect: spinning around an immovable vertical center of rotation to control and throw the adversary outward.</p>
+        </div>
+
+        <!-- Form 4 -->
+        <div class="set-panel">
+          <div class="set-tag">FORM 04</div>
+          <h3>Dai-yonkyo</h3>
+          <div class="kanji-sub">第四教 — The Ocean Tide (Ebb and Flow)</div>
+          <p>Illustrates the immense, rhythmic ebb and flow of ocean tides: drawing in the opponent smoothly before sweeping forward in an irresistible wave.</p>
+        </div>
+
+        <!-- Form 5 -->
+        <div class="set-panel">
+          <div class="set-tag">FORM 05</div>
+          <h3>Dai-gokyo</h3>
+          <div class="kanji-sub">第五教 — The Yielding Void (Cosmic Harmony)</div>
+          <p>Illustrates the universe absorbing a headlong collision: yielding entirely into a void, preserving mutual safety, and floating together in cosmic harmony.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step-by-Step Technical Breakdown -->
+  <section id="techniques">
+    <div class="section-wrap">
+      <p class="sec-kicker">Step-by-Step</p>
+      <h2 class="sec-heading">Technique Breakdown</h2>
+      <p class="sec-sub">The five forms detailed step-by-step according to the official Kodokan Judo textbook standard.</p>
+
+      <!-- Filter Controls -->
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterCategory('all')">All 5 Forms</button>
+        <button class="filter-btn" onclick="filterCategory('form1')">Form 1 (Continuous Force)</button>
+        <button class="filter-btn" onclick="filterCategory('form2')">Form 2 (Yielding)</button>
+        <button class="filter-btn" onclick="filterCategory('form3')">Form 3 (Whirlpool)</button>
+        <button class="filter-btn" onclick="filterCategory('form4')">Form 4 (Tide)</button>
+        <button class="filter-btn" onclick="filterCategory('form5')">Form 5 (Void)</button>
+      </div>
+
+      <!-- Techniques Container -->
+      <div id="tech-container">
+
+        <!-- ================= FORM 1 ================= -->
+        <div class="technique-item" data-category="form1">
+          <div class="tech-idx">01</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">第一教</span>
+              <span class="tech-name-romaji">Dai-ikkyo</span>
+              <span class="tech-name-trans">"The First Form — Continuous Direct Energy"</span>
+            </div>
+            <p class="tech-overview-p">Tori approaches Uke in natural posture, places the right palm lightly on Uke's chest, and applies steady, continuous, focused forward pressure (Oshi) without sudden shoving, driving Uke backward step by step until Uke loses balance and falls rearward.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Tori and Uke stand facing each other in Shizen-hontai at standard distance (approx. 1.8m).</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori steps forward with the right foot, placing the right palm flat against Uke's sternum/chest, keeping the left hand natural.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori applies continuous, micro-adjusting forward driving force from the center of gravity (Tanden) in Tsugi-ashi.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Uke is forced backward step by step, gradually overbalanced onto the heels, and collapses straight backward to the mat.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Unbroken pressure — no sudden muscular thrust or pushing impact. The energy must flow in an unbroken, constant stream from Tori's core into Uke's spine.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Principle 1</span><span class="pill-tag">Continuous Force</span><span class="pill-tag">Tanden Drive</span><span class="pill-tag">Linear Kuzushi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= FORM 2 ================= -->
+        <div class="technique-item" data-category="form2">
+          <div class="tech-idx">02</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">第二教</span>
+              <span class="tech-name-romaji">Dai-nikyo</span>
+              <span class="tech-name-trans">"The Second Form — Yielding Redirection"</span>
+            </div>
+            <p class="tech-overview-p">Uke charges forward with aggressive, powerful pushing force. Tori does not resist or brace, but steps back smoothly in a circular arc, leading Uke's force past the body and using Uke's own momentum to project Uke forward.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Uke advances aggressively toward Tori with outstretched arms and strong forward momentum.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori meets Uke's oncoming hands lightly, yielding immediately by stepping backward in a sweeping circular Tai-sabaki.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Tori guides Uke's arms along their natural vector of attack, accelerating Uke's forward momentum.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Uke overextends completely into empty space, pitches forward onto the toes, and falls cleanly to the tatami.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> The core of Ju (Yielding) — meeting strong force with zero resistance, adding guidance to the trajectory, and letting the attacker overthrow themselves.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Principle 2</span><span class="pill-tag">Yielding to Force</span><span class="pill-tag">Circular Evasion</span><span class="pill-tag">Self-Overthrow</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= FORM 3 ================= -->
+        <div class="technique-item" data-category="form3">
+          <div class="tech-idx">03</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">第三教</span>
+              <span class="tech-name-romaji">Dai-sankyo</span>
+              <span class="tech-name-trans">"The Third Form — The Whirlpool (Centrifugal Force)"</span>
+            </div>
+            <p class="tech-overview-p">Tori and Uke connect in the center, and Tori initiates a powerful spinning vortex. Tori acts as the calm, immovable central axis of a whirlpool while drawing Uke into the outer spiral, launching Uke outward by centrifugal force.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Tori and Uke step into close contact, engaging hand contact in the center.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori establishes an erect, immovable vertical axis of rotation, spinning rapidly on the spot in a tight circle.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Uke is drawn into the outer orbit of the vortex, revolving at high speed around Tori's core.</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Tori releases/extends the centrifugal arc, casting Uke outward in a wide, sweeping fall to the mat.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> The water vortex — Tori must remain perfectly upright and centered as the stationary core, while Uke experiences maximum centrifugal velocity at the perimeter.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Principle 3</span><span class="pill-tag">Vortex / Whirlpool</span><span class="pill-tag">Centrifugal Force</span><span class="pill-tag">Rotational Axis</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= FORM 4 ================= -->
+        <div class="technique-item" data-category="form4">
+          <div class="tech-idx">04</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">第四教</span>
+              <span class="tech-name-romaji">Dai-yonkyo</span>
+              <span class="tech-name-trans">"The Fourth Form — The Ocean Tide (Ebb and Flow)"</span>
+            </div>
+            <p class="tech-overview-p">Tori draws Uke forward in a retreating, receding motion like the ebbing tide drawing water out to sea, and then immediately surges forward like a surging tsunami wave, projecting Uke in an irresistible tide.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Both engage at close range with palms in contact.</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Tori glides smoothly backward in a long, rhythmic retreat, drawing Uke forward into deep overextension (The Ebbing Tide — Hiki-shio).</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>Without a pause, Tori reverses direction, swelling forward with surging, whole-body power (The Surging Tide — Michi-shio).</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Tori sweeps through Uke's center, throwing Uke backward onto the tatami like an ocean wave breaking on the shore.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Tidal rhythm — the transition from receding retreat (ebb) to surging projection (flow) must be continuous, seamless, and rhythmic without stopping.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Principle 4</span><span class="pill-tag">Ocean Tide</span><span class="pill-tag">Ebb & Flow</span><span class="pill-tag">Rhythmic Surge</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= FORM 5 ================= -->
+        <div class="technique-item" data-category="form5">
+          <div class="tech-idx">05</div>
+          <div>
+            <div class="tech-header-row">
+              <span class="tech-name-jp">第五教</span>
+              <span class="tech-name-romaji">Dai-gokyo</span>
+              <span class="tech-name-trans">"The Fifth Form — The Yielding Void (Cosmic Harmony)"</span>
+            </div>
+            <p class="tech-overview-p">The fifth and supreme form. Tori and Uke run toward each other from opposite sides of the mat at full speed. At the instant of collision, Tori yields completely, drops beneath Uke into a circular void, and both float together in safe, harmonized cosmic orbit.</p>
+            <div class="step-list">
+              <div class="step-row"><span class="step-num">1.</span><span>Tori and Uke start from opposite ends of the tatami (approx. 5.5 meters apart).</span></div>
+              <div class="step-row"><span class="step-num">2.</span><span>Both run directly toward each other at high velocity, appearing destined for a catastrophic head-on impact.</span></div>
+              <div class="step-row"><span class="step-num">3.</span><span>At the exact moment of contact, Tori creates an absolute void by dropping the hips and yielding underneath Uke's charge (classical Tomoe-nage / floating sacrifice).</span></div>
+              <div class="step-row"><span class="step-num">4.</span><span>Uke floats in a grand overhead celestial arc; both land and rise in harmonious mutual balance, concluding the kata.</span></div>
+            </div>
+            <div class="principle-box">
+              <strong>Kodokan Key Point:</strong> Mutual welfare (Jita Kyoei) — converting a destructive head-on collision into an elevated, circular, harmonious orbit where both partners preserve mutual safety and balance.
+            </div>
+            <div class="tags-container">
+              <span class="pill-tag">Principle 5</span><span class="pill-tag">Celestial Void</span><span class="pill-tag">Head-On Collision</span><span class="pill-tag">Harmonious Orbit</span><span class="pill-tag">Kata Finale</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Principles & Reihō Section -->
+  <section id="reiho" class="sets-bg">
+    <div class="section-wrap">
+      <p class="sec-kicker">Philosophy & Etiquette</p>
+      <h2 class="sec-heading">Kodokan Reihō & Cosmic Principles</h2>
+      <p class="sec-sub">Itsutsu-no-Kata represents the theoretical foundation of Jigoro Kano's philosophical doctrine.</p>
+
+      <div class="reiho-grid">
+        <div class="reiho-card">
+          <h4>Unnamed Tradition (Mujingyō)</h4>
+          <p>Kano deliberately did not name the five techniques. By leaving them numbered (Dai-ikkyo to Dai-gokyo), he ensured that practitioners would not reduce these universal physical principles to static mechanical forms.</p>
+        </div>
+        <div class="reiho-card">
+          <h4>Seiryoku Zen'yo & Jita Kyoei</h4>
+          <p>The kata demonstrates Maximum Efficiency with Minimum Effort (Seiryoku Zen'yo) and Mutual Welfare and Benefit (Jita Kyoei) through the laws of momentum, gravity, centrifugal energy, and fluid dynamics.</p>
+        </div>
+        <div class="reiho-card">
+          <h4>Reihō & Spatial Protocol</h4>
+          <p>Tori and Uke stand 5.5 meters apart. They perform standing bow (Ritsurei) to Joseki, face each other, drop into Seiza for seated bow (Zarei), rise, and step forward into Shizen-hontai to begin Dai-ikkyo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz Section -->
+  <section id="quiz">
+    <div class="section-wrap">
+      <div style="text-align: center; margin-bottom: 2.5rem;">
+        <p class="sec-kicker">Self-Assessment</p>
+        <h2 class="sec-heading">Itsutsu-no-Kata Knowledge Check</h2>
+        <p class="sec-sub" style="margin: 0 auto;">Test your understanding of the official Kodokan textbook requirements for Itsutsu-no-Kata.</p>
+      </div>
+
+      <div class="quiz-card">
+        <form id="quiz-form">
+          <div class="question-block">
+            <div class="question-title">1. Why did Jigoro Kano leave the five forms of Itsutsu-no-Kata officially unnamed?</div>
+            <label class="option-item"><input type="radio" name="q1" value="a"> The original names were lost during the Meiji era</label>
+            <label class="option-item"><input type="radio" name="q1" value="b"> To avoid confining universal, cosmic physical principles to narrow technical labels</label>
+            <label class="option-item"><input type="radio" name="q1" value="c"> The kata was intended to be secret and unnamed for non-Japanese practitioners</label>
+          </div>
+
+          <div class="question-block">
+            <div class="question-title">2. What natural phenomenon does Dai-sankyo (The Third Form) illustrate?</div>
+            <label class="option-item"><input type="radio" name="q2" value="a"> A whirlpool / vortex utilizing centrifugal force around a stable vertical axis</label>
+            <label class="option-item"><input type="radio" name="q2" value="b"> A sudden earthquake splitting the ground</label>
+            <label class="option-item"><input type="radio" name="q2" value="c"> A lightning strike breaking through a tree</label>
+          </div>
+
+          <div class="question-block">
+            <div class="question-title">3. What natural motion is demonstrated in Dai-yonkyo (The Fourth Form)?</div>
+            <label class="option-item"><input type="radio" name="q3" value="a"> Falling leaves in autumn</label>
+            <label class="option-item"><input type="radio" name="q3" value="b"> The ebb and flow of ocean tides (receding retreat followed by surging wave)</label>
+            <label class="option-item"><input type="radio" name="q3" value="c"> A volcanic eruption from the center of the earth</label>
+          </div>
+
+          <div class="question-block">
+            <div class="question-title">4. In Dai-gokyo (The Fifth Form), how do Tori and Uke interact at the moment of high-speed collision?</div>
+            <label class="option-item"><input type="radio" name="q4" value="a"> They collide chest-to-chest to test physical conditioning</label>
+            <label class="option-item"><input type="radio" name="q4" value="b"> Tori yields completely into a void underneath Uke, turning a head-on collision into an elevated, safe celestial orbit</label>
+            <label class="option-item"><input type="radio" name="q4" value="c"> Tori stops abruptly and strikes Uke's chin with a palm strike</label>
+          </div>
+
+          <button type="button" class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="evaluateQuiz()">Submit Answers</button>
+        </form>
+
+        <div id="quiz-feedback"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Kodokan Judo Itsutsu-no-Kata (五の形) e-Learning Module</p>
+    <p style="margin-top: 0.35rem;">Standardized syllabus based on the official Kodokan Judo textbook.</p>
+  </footer>
+
+  <!-- Filter & Quiz Logic -->
+  <script>
+    function filterCategory(category) {
+      const items = document.querySelectorAll('.technique-item');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      items.forEach(item => {
+        if (category === 'all' || item.getAttribute('data-category') === category) {
+          item.style.display = 'grid';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    function evaluateQuiz() {
+      const answers = { q1: 'b', q2: 'a', q3: 'b', q4: 'b' };
+      const form = document.forms['quiz-form'];
+      let score = 0;
+      let total = 4;
+
+      for (let q in answers) {
+        if (form[q] && form[q].value === answers[q]) {
+          score++;
+        }
+      }
+
+      const percentage = Math.round((score / total) * 100);
+      const feedback = document.getElementById('quiz-feedback');
+      feedback.style.display = 'block';
+
+      if (percentage >= 75) {
+        feedback.style.background = '#dcfce7';
+        feedback.style.color = '#15803d';
+        feedback.style.border = '1px solid #bbf7d0';
+        feedback.innerHTML = `Assessment Passed! Score: ${percentage}% (${score}/${total} correct). You have demonstrated solid comprehension of Kodokan Itsutsu-no-Kata.`;
+      } else {
+        feedback.style.background = '#fee2e2';
+        feedback.style.color = '#b91c1c';
+        feedback.style.border = '1px solid #fecaca';
+        feedback.innerHTML = `Score: ${percentage}% (${score}/${total} correct). Review the five forms above and try again.`;
+      }
+    }
+  </script>
+</body>
+</html>
